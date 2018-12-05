@@ -9,7 +9,7 @@ class JavascriptPluginManager {
     JavascriptPlugin[] plugins;
 
     public JavascriptPluginManager() {
-        String dir = "server/plugins";
+        String dir = "server/plugins/javascript";
 
         plugins = new JavascriptPlugin[0];
 
