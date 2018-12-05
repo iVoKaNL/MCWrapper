@@ -3,6 +3,7 @@ package nl.ivoka;
 import nl.ivoka.API.Console;
 import nl.ivoka.API.Player;
 import nl.ivoka.API.Server;
+import nl.ivoka.API.Config;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -24,7 +25,7 @@ class JavascriptPlugin {
         runtime.put("Console", Console.instance);
         runtime.put("Player", Player.instance);
         runtime.put("Server", Server.instance);
-        // runtime.put("Config", new Config(name));
+        runtime.put("Config", new Config(name));
 
         run(source);
     }
