@@ -10,12 +10,8 @@ import nl.ivoka.EventArgs.ServerEvents.ServerSaveEventArgs;
 import nl.ivoka.EventArgs.ServerEvents.ServerStatusEventArgs;
 import nl.ivoka.Plugins.PluginManager;
 import org.dom4j.DocumentException;
-import org.xml.sax.SAXException;
 
-import javax.xml.bind.PropertyException;
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
-import java.util.Arrays;
 
 public class Main {
     public static Config config;
@@ -25,42 +21,33 @@ public class Main {
     private static BufferedReader reader;
     private static Thread inputThread;
 
+    public static File pluginsDir;
+    public static File configsDir;
+
     public static void main(String[] args) {
-        try {
-            config = new Config(new File("MCWrapper_3.xml"));
-
-            config.saveConfig();
-
-            System.out.println(Arrays.toString(config.getValues()));
-        } catch (DocumentException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void main2(String[] args) {
         reader = new BufferedReader(new InputStreamReader(System.in));
+
+        pluginsDir = new File("plugins/MCWrapper");
+        configsDir = new File(pluginsDir+"/configs");
+
+        if (!pluginsDir.exists())
+            pluginsDir.mkdirs();
+        if (!configsDir.exists())
+            configsDir.mkdirs();
 
         new Console.console();
         new Player.player();
         new Server.server();
 
         try {
-            //config = new Config_old("MCWrapper.xml");
-            config = new Config(new File("MCWrapper_2.xml"));
-            config.setValue("ServerFile", "HOI");
-            System.out.println(config.getValue("ServerFile"));
+            config = new Config(new File(configsDir+"/MCWrapper.xml"));
 
-            //serverManager = new ServerManager(config.getValue("ServerFile"));
-            serverManager = new ServerManager("minecraft.jar", "server");
+            serverManager = new ServerManager(config.getValue("ServerFile"));
 
             serverManager.start();
 
-            //if (config.getValue("EnablePlugins") == "true")
-            //   pluginManager = new PluginManager();
-            if ("true" == "true")
-                pluginManager = new PluginManager("server", serverManager);
+            if (config.getValue("UsePlugins") == "true")
+                pluginManager = new PluginManager(pluginsDir, serverManager);
 
             inputThread = new Thread(() -> inputThread());
             inputThread.start();
@@ -91,14 +78,9 @@ public class Main {
                 } else
                     return;
             });
-        //} catch (ParserConfigurationException pcException) {
-
-        //} catch (SAXException saxException) {
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
