@@ -16,11 +16,13 @@ function PlayerPosition(name, position) {
 function ServerStart() {} //ServerStart() is invoked when the server starts
 function ServerStop() {} //ServerStop() is invoked when the server stops
 
-Server.runCommand("kick "+name+" Please do not use caps lock!"); //kick player cause he used caps
+function test() {
+	Server.runCommand("kick "+name+" Please do not use caps lock!"); //kick player cause he used caps
 
-Console.writeLine("Name '"+name+"'"); // Write to console
-Console.beep(); // Play a beep sound
+	Console.writeLine("Name '"+name+"'"); // Write to console
+	Console.beep(); // Play a beep sound
 
-Player.sendMessageTo(name, "Welcome to this server!", "gold"); //Send a welcome message to the new Player
-Player.refreshPosition(name);
+	Player.sendMessageTo(name, "Welcome to this server!", "gold"); //Send a welcome message to the new Player
+	Player.refreshPosition(name);
+}
 ```
