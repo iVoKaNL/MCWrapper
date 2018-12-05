@@ -17,6 +17,7 @@ import java.util.Map;
 public class Config {
     Document document;
     Element rootNode;
+    Element currentNode;
     File file;
 
     /**
@@ -44,7 +45,9 @@ public class Config {
      */
     public void createConfig() {
         document = DocumentHelper.createDocument();
+
         rootNode = document.addElement("root");
+        currentNode = rootNode;
     }
 
     /**
@@ -81,7 +84,9 @@ public class Config {
         if (file.exists()) {
             SAXReader reader = new SAXReader();
             document = reader.read(file);
+
             rootNode = document.getRootElement();
+            currentNode = rootNode;
         } else
             createConfig();
 
@@ -91,7 +96,7 @@ public class Config {
     Element[] getElements(String key) {
         List<Element> e = new ArrayList<>();
 
-        for (Iterator<Element> element = rootNode.elementIterator(key); element.hasNext();) {
+        for (Iterator<Element> element = currentNode.elementIterator(key); element.hasNext();) {
             e.add(element.next());
         }
         return e.toArray(new Element[0]);
@@ -103,7 +108,7 @@ public class Config {
      * @return Returns a String containing value
      */
     public String getValue(String key) {
-        for (Iterator<Element> element = rootNode.elementIterator(key); element.hasNext();) {
+        for (Iterator<Element> element = currentNode.elementIterator(key); element.hasNext();) {
             return element.next().getText();
         }
         return null;
@@ -117,7 +122,7 @@ public class Config {
     public String[] getValues(String key) {
         List<String> s = new ArrayList<>();
 
-        for (Iterator<Element> element = rootNode.elementIterator(key); element.hasNext();) {
+        for (Iterator<Element> element = currentNode.elementIterator(key); element.hasNext();) {
             s.add(element.next().getText());
         }
         return s.toArray(new String[0]);
@@ -130,7 +135,7 @@ public class Config {
     public String[] getValues() {
         List<String> s = new ArrayList<>();
 
-        for (Iterator<Element> element = rootNode.elementIterator(); element.hasNext();) {
+        for (Iterator<Element> element = currentNode.elementIterator(); element.hasNext();) {
             s.add(element.next().getText());
         }
         return s.toArray(new String[0]);
@@ -171,7 +176,7 @@ public class Config {
      * @param index Integer - Which item in array to take
      */
     public void setAttribute(String key, String attrKey, String attrValue, Integer index) {
-        if (rootNode.elementIterator(key).hasNext()) {
+        if (currentNode.elementIterator(key).hasNext()) {
             getElements(key)[index].addAttribute(attrKey, attrValue);
         }
     }
@@ -220,46 +225,43 @@ public class Config {
      * @param index Integer - Which item in array to take
      */
     public void setValue(String key, String value, Integer index) {
-        if (rootNode.elementIterator(key).hasNext())
+        if (currentNode.elementIterator(key).hasNext())
             getElements(key)[index].setText(value);
         else
-            rootNode.addElement(key)
+            currentNode.addElement(key)
                     .addText(value);
     }
+
+    public class XMLValues {
+        public String value, attrKey, attrValue;
+
+        /**
+         * This is used when calling setValues(Map<String, XMLValues>);
+         * @param value String - element value
+         * @param attrKey   String - attribute key
+         * @param attrValue String - attribute value
+         */
+        public XMLValues(String value, String attrKey, String attrValue) {
+            this.value = value;
+            this.attrKey = attrKey;
+            this.attrValue = attrValue;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (!(obj instanceof XMLValues))
+                return false;
+            XMLValues ref = (XMLValues) obj;
+            return this.value.equals(ref.value) &&
+                    this.attrKey.equals(ref.attrKey) &&
+                    this.attrValue.equals(ref.attrValue);
+        }
+
+        @Override
+        public int hashCode() {
+            return value.hashCode() ^
+                    attrKey.hashCode() ^
+                    attrValue.hashCode();
+        }
+    }
 }
-
-class XMLValues {
-    public String value, attrKey, attrValue;
-
-    /**
-     * This is used when calling setValues(Map<String, XMLValues>);
-     * @param value String - element value
-     * @param attrKey   String - attribute key
-     * @param attrValue String - attribute value
-     */
-    public XMLValues(String value, String attrKey, String attrValue) {
-        this.value = value;
-        this.attrKey = attrKey;
-        this.attrValue = attrValue;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof XMLValues))
-            return false;
-        XMLValues ref = (XMLValues) obj;
-        return this.value.equals(ref.value) &&
-                this.attrKey.equals(ref.attrKey) &&
-                this.attrValue.equals(ref.attrValue);
-    }
-
-    @Override
-    public int hashCode() {
-        return value.hashCode() ^
-                attrKey.hashCode() ^
-                attrValue.hashCode();
-    }
-}
-
-// https://www.baeldung.com/java-xml-libraries
-// https://dom4j.github.io
