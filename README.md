@@ -3,48 +3,24 @@ This is a Minecraft server wrapper
 
 ## Javascript plugin example
 ```javascript
-function OnCommand(name, arg) //OnCommand(name, args) is invoked when a player says something beginning with an '!'
-{
-  if(arg.split(' ')[0] == "leave") //if command is "leave"
-    Server.runCommand("kick "+name+" Own decision"); //kick player
+function OnCommand(name, arg) {} //OnCommand(name, args) is invoked when a player says something beginning with an '!'
+
+function PlayerJoin(name) {} //PlayerJoin(name) is invoked when a player with name name joins the server
+function PlayerLeave(name) {} //PlayerLeave(name) is invoked when a player with name name leaves the server
+function ChatReceived(name, message) {} //ChatReceived(name, message) is invoked when a Player says something
+function PlayerPosition(name, position) {
+	//PlayerPosition is invoked when a player is teleported to specific coordinates
+	//position is a ready to use string for command like tp or setblock (e. g. '10.3356 125.1234 46.6368')
 }
 
-function PlayerJoin(name) //PlayerJoin(name) is invoked when a player with name name joins the server
-{
-	Console.writeLine("Name '"+name+"'");
-	Player.sendMessageTo(name, "Welcome to this server!", "gold"); //Send a welcome message to the new Player
-}
+function ServerStart() {} //ServerStart() is invoked when the server starts
+function ServerStop() {} //ServerStop() is invoked when the server stops
 
-function PlayerLeave(name) //PlayerLeave(name) is invoked when a player with name name leaves the server
-{
-	Console.writeLine("Name '"+name+"'");
-	Console.beep(); //play a beep sound
-}
+Server.runCommand("kick "+name+" Please do not use caps lock!"); //kick player cause he used caps
 
-function ChatReceived(name, message) //ChatReceived(name, message) is invoked when a Player says something
-{
-	if(message.toUpperCase() == message && message.length > 3) //check if message is caps only and longer than 3 characters long
-		Server.runCommand("kick "+name+" Please do not use caps lock!"); //kick player cause he used caps
+Console.writeLine("Name '"+name+"'"); // Write to console
+Console.beep(); // Play a beep sound
 
-	Console.WriteLine("Message: "+message+"\nIs .light: "+(message.toLowerCase().trim() == ".light"));
-	if(message.toLowerCase() == ".light")
-		Player.refreshPosition(name);
-	else if(message.split(' ')[0] == '.tpme')
-		Server.runCommand("tp "+name+" "+message.split(' ')[1]);
-}
-
-function PlayerPosition(name, position) //PlayerPosition is invoked when a player is teleported to specific coordinates
-{ //position is a ready to use string for command like tp or setblock (e. g. '10.3356 125.1234 46.6368')
-	Server.runCommand("setblock "+position+" minecraft:torch"); //set block where the player stands to a torch so the player has light
-}
-
-function ServerStart() //ServerStart() is invoked when the server starts
-{
-	Console.writeLine("Example Plugin active!\nCommands: .tpme <player> and .light\nThis Plugin has an anti-caps lock function!"); //display message to server log
-}
-
-function ServerStop() //ServerStop() is invoked when the server stops
-{
-	Console.beep();
-}
+Player.sendMessageTo(name, "Welcome to this server!", "gold"); //Send a welcome message to the new Player
+Player.refreshPosition(name);
 ```
