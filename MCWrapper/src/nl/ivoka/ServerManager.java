@@ -4,12 +4,10 @@ import nl.ivoka.EventArgs.ServerEvents.ServerOutputEventArgs;
 import nl.ivoka.EventArgs.PlayerEvent;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ServerManager {
     public MinecraftConnector connector;
-    PlayerEvent events;
+    public PlayerEvent events;
 
     private Process mc;
     private ProcessBuilder pb;
@@ -18,27 +16,20 @@ public class ServerManager {
     private BufferedReader reader;
     private Thread outputThread;
 
-    private List _listeners = new ArrayList();
-
-    public ServerManager(String jarFile, String dir) {
-        /*
+    public ServerManager(String jarFile) {
         String executable = Main.config.getValue("JavaExecutable");
         String arguments = Main.config.getValue("JavaArguments");
-        String dir = Main.config.getValue("ServerDirectory");
-        */
+        String serverArgs = Main.config.getValue("ServerJarArguments");
 
-        String executable = "java";
-        String arguments = "-jar";
-
-        pb = new ProcessBuilder(executable, arguments, jarFile, "nogui");
+        pb = new ProcessBuilder(executable, arguments, jarFile, serverArgs);
         pb.redirectErrorStream(true);
-        pb.directory(new File(dir));
 
         events = new PlayerEvent();
     }
 
-    public void start() throws IOException, InterruptedException {
+    public void start() throws IOException {
         System.out.println("Starting java...");
+
         mc = pb.start();
         writer = new BufferedWriter(new OutputStreamWriter(mc.getOutputStream()));
         reader = new BufferedReader(new InputStreamReader(mc.getInputStream()));
@@ -47,8 +38,6 @@ public class ServerManager {
         outputThread.start();
 
         connector = new MinecraftConnector(this);
-
-        //mc.waitFor();
     }
 
     public void stop() throws IOException, InterruptedException {
