@@ -1,6 +1,20 @@
 # MCWrapper
 This is a Minecraft server wrapper
 
+## API
+### Config
+```java
+config = new Config(new File("testjeuh.xml"));
+
+Map<String, Config.XMLValues> values = new LinkedHashMap<>();
+values.put("JavaFile", new Config().new XMLValues("server.jar", "required", "yes"));
+values.put("Argument", new Config().new XMLValues("-Xmx1G -Xms1G -jar", "required", "yes"));
+values.put("UsePlugins", new Config().new XMLValues("true", "required", "yes"));
+config.setValues(values);
+
+config.saveConfig();
+```
+
 ## Javascript plugin example
 ```javascript
 function OnCommand(name, arg) {} //OnCommand(name, args) is invoked when a player says something beginning with an '!'
