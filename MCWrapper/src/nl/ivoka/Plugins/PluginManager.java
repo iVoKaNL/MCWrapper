@@ -1,7 +1,5 @@
 package nl.ivoka.Plugins;
 
-import nl.ivoka.API.Player;
-import nl.ivoka.Main;
 import nl.ivoka.MinecraftConnector;
 import nl.ivoka.ServerManager;
 
@@ -9,7 +7,6 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -22,14 +19,12 @@ public class PluginManager {
     URLClassHacker urlClassHacker;
     ServerManager serverManager;
 
-    public PluginManager(String dir, ServerManager serverManager) {
+    public PluginManager(File dir, ServerManager serverManager) {
         plugins = new ArrayList<>();
         urlClassHacker = new URLClassHacker();
         this.serverManager = serverManager;
 
-        dir += "/plugins";
-
-        File[] pluginFiles = new File(dir).listFiles(new FilenameFilter() {
+        File[] pluginFiles = dir.listFiles(new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
                 return name.endsWith(".jar");
@@ -65,30 +60,13 @@ public class PluginManager {
             IMCWrapperPlugin instance = constructor.newInstance(serverManager.connector);
 
             plugins.add(instance);
-        } catch (IOException e) {
-            System.out.println(e);
-        } catch (ClassNotFoundException e) {
-            System.out.println(e);
-        } catch (NoSuchMethodException e) {
-            System.out.println(e);
-        } catch (IllegalAccessException e) {
-            System.out.println(e);
-        } catch (InvocationTargetException e) {
-            System.out.println(e.getTargetException());
-            System.out.println(e);
-            System.out.println(e.getCause());
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (InstantiationException e) {
-            System.out.println(e);
         }
     }
 }
 
 class URLClassHacker {
-    /*
-    * https://stackoverflow.com/questions/60764/how-should-i-load-jars-dynamically-at-runtime
-    * https://www.chilkatsoft.com/p/p_499.asp
-     */
     private final Class<?>[] parameters = new Class[]{URL.class};
 
     public void addFile(String s) throws IOException {
@@ -108,7 +86,7 @@ class URLClassHacker {
             method.setAccessible(true);
             method.invoke(sysLoader, new Object[]{ u });
         } catch (Throwable t) {
-            System.out.println(t);
+            t.printStackTrace();
         }
     }
 }
