@@ -1,26 +1,25 @@
 package nl.ivoka;
 
+import org.dom4j.DocumentException;
+
 import java.io.File;
-import java.io.FilenameFilter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 class JavascriptPluginManager {
     JavascriptPlugin[] plugins;
 
-    public JavascriptPluginManager() {
-        String dir = "server/plugins/javascript";
+    public JavascriptPluginManager() throws DocumentException, IOException, NullPointerException {
+        String dir = Main.pluginsDir + "/javascript";
 
         plugins = new JavascriptPlugin[0];
 
-        File[] pluginFiles = (new File(dir)).listFiles(new FilenameFilter() {
-            @Override
-            public boolean accept(File dir, String name) {
-                return name.endsWith(".js");
-            }
-        });
+        File[] pluginFiles = (new File(dir)).listFiles((directory, name) -> name.endsWith(".js"));
 
-        if (pluginFiles.length > 0) {
+        if (pluginFiles == null) {
+
+        } else if (pluginFiles.length > 0) {
             List<JavascriptPlugin> _plugins = new ArrayList<>();
 
             System.out.println("Loading Javascript Plugins!");

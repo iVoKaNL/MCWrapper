@@ -30,14 +30,14 @@ public class Config {
      * @param file  String - path to file to be loaded
      * @throws DocumentException
      */
-    public Config(String file) throws DocumentException { loadConfig(new File(file)); }
+    public Config(String file) throws DocumentException, IOException { this.file = new File(file); loadConfig(new File(file)); saveConfig(); }
 
     /**
      * Initialize Config
      * @param file  File - to be loaded
      * @throws DocumentException
      */
-    public Config(File file) throws DocumentException { loadConfig(file); }
+    public Config(File file) throws DocumentException, IOException { this.file = file; loadConfig(file); saveConfig(); }
 
     /**
      * Create a new XMLFile (without writing to disk)
@@ -100,6 +100,26 @@ public class Config {
             e.add(element.next());
         }
         return e.toArray(new Element[0]);
+    }
+
+    /**
+     * Set attribute of key
+     * @param key   String - element key
+     * @param attrKey   String - attribute key
+     */
+    public String getAttribute(String key, String attrKey) { return getAttribute(key, attrKey, 0); }
+
+    /**
+     * Get attribute of key
+     * @param key   String - element key
+     * @param attrKey   String - attribute key
+     * @param index Integer - Which item in array to take
+     */
+    public String getAttribute(String key, String attrKey, Integer index) {
+        if (currentNode.elementIterator(key).hasNext()) {
+            return getElements(key)[index].attributeValue(attrKey);
+        }
+        return null;
     }
 
     /**

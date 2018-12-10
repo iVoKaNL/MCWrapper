@@ -4,7 +4,6 @@ import nl.ivoka.MinecraftConnector;
 import nl.ivoka.ServerManager;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -24,12 +23,7 @@ public class PluginManager {
         urlClassHacker = new URLClassHacker();
         this.serverManager = serverManager;
 
-        File[] pluginFiles = dir.listFiles(new FilenameFilter() {
-            @Override
-            public boolean accept(File dir, String name) {
-                return name.endsWith(".jar");
-            }
-        });
+        File[] pluginFiles = dir.listFiles((directory, name) -> name.endsWith(".jar"));
 
         if (pluginFiles.length > 0) {
             System.out.println("Loading plugins!");

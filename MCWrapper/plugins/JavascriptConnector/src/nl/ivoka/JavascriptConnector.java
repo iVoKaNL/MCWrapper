@@ -6,12 +6,15 @@ import nl.ivoka.EventArgs.PlayerEvents.PlayerLeftEventArgs;
 import nl.ivoka.EventArgs.PlayerEvents.PlayerPositionEventArgs;
 import nl.ivoka.EventArgs.ServerEvents.ServerStatusEventArgs;
 import nl.ivoka.Plugins.IMCWrapperPlugin;
+import org.dom4j.DocumentException;
+
+import java.io.IOException;
 
 public class JavascriptConnector implements IMCWrapperPlugin {
     public String Name="JavascriptConnector";
     private JavascriptPluginManager manager;
 
-    public JavascriptConnector(MinecraftConnector connector) {
+    public JavascriptConnector(MinecraftConnector connector) throws DocumentException, IOException{
         manager = new JavascriptPluginManager();
 
         if (connector.events == null) {

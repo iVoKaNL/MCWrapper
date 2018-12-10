@@ -3,6 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/MCWrapper_jar</output-path>
     <root id="archive" name="MCWrapper.jar">
       <element id="module-output" name="MCWrapper" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../libraries/dom4j-1.6.1.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

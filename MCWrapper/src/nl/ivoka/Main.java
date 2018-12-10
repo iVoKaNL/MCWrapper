@@ -40,13 +40,20 @@ public class Main {
         new Server.server();
 
         try {
-            config = new Config(new File(configsDir+"/MCWrapper.xml"));
+            //config = new Config(new File(configsDir+"/MCWrapper.xml"));
+            config = new Config(new File("MCWrapper.xml"));
 
-            serverManager = new ServerManager(config.getValue("ServerFile"));
+            if (config.getAttribute("WorkingDirectory", "usecustom").equals("true")) {
+                pluginsDir = new File(config.getValue("WorkingDirectory") + "/" + pluginsDir.getPath());
+                configsDir = new File(config.getValue("WorkingDirectory") + "/" + configsDir.getPath());
+
+                serverManager = new ServerManager(config.getValue("ServerFile"), new File(config.getValue("WorkingDirectory")));
+            } else
+                serverManager = new ServerManager(config.getValue("ServerFile"));
 
             serverManager.start();
 
-            if (config.getValue("UsePlugins") == "true")
+            if (config.getValue("UsePlugins").equals("true"))
                 pluginManager = new PluginManager(pluginsDir, serverManager);
 
             inputThread = new Thread(() -> inputThread());

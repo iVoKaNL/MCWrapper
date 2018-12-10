@@ -4,6 +4,8 @@ import nl.ivoka.EventArgs.ServerEvents.ServerOutputEventArgs;
 import nl.ivoka.EventArgs.PlayerEvent;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ServerManager {
     public MinecraftConnector connector;
@@ -17,12 +19,40 @@ public class ServerManager {
     private Thread outputThread;
 
     public ServerManager(String jarFile) {
-        String executable = Main.config.getValue("JavaExecutable");
-        String arguments = Main.config.getValue("JavaArguments");
-        String serverArgs = Main.config.getValue("ServerJarArguments");
+        List<String> startingArguments = new ArrayList<>();
+        startingArguments.add(Main.config.getValue("JavaExecutable"));
+        for (String arg : Main.config.getValues("JavaArguments")) {
+            for (String _add : arg.split("\\s+")) {
+                startingArguments.add(_add);
+            }
+        }
+        startingArguments.add("-jar");
+        startingArguments.add(jarFile);
+        startingArguments.add(Main.config.getValue("ServerJarArguments"));
 
-        pb = new ProcessBuilder(executable, arguments, jarFile, serverArgs);
+        pb = new ProcessBuilder(startingArguments);
         pb.redirectErrorStream(true);
+        System.out.println("Server starting with: "+pb.command());
+
+        events = new PlayerEvent();
+    }
+    public ServerManager(String jarFile, File directory) {
+        List<String> startingArguments = new ArrayList<>();
+        startingArguments.add(Main.config.getValue("JavaExecutable"));
+        for (String arg : Main.config.getValues("JavaArguments")) {
+            for (String _add : arg.split("\\s+")) {
+                startingArguments.add(_add);
+            }
+        }
+        startingArguments.add("-jar");
+        startingArguments.add(jarFile);
+        startingArguments.add(Main.config.getValue("ServerJarArguments"));
+
+        pb = new ProcessBuilder(startingArguments);
+
+        pb.directory(directory);
+        pb.redirectErrorStream(true);
+        System.out.println("Server starting with: "+pb.command());
 
         events = new PlayerEvent();
     }
@@ -61,7 +91,7 @@ public class ServerManager {
 
     private void outputThread() {
         try {
-            for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+            for (String line = reader.readLine(); line != null && mc.isAlive(); line = reader.readLine()) {
                 events.broadcast(new ServerOutputEventArgs(line));
                 System.out.println(line);
             }

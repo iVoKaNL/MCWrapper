@@ -4,6 +4,7 @@ import nl.ivoka.API.Console;
 import nl.ivoka.API.Player;
 import nl.ivoka.API.Server;
 import nl.ivoka.API.Config;
+import org.dom4j.DocumentException;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -11,12 +12,13 @@ import javax.script.ScriptException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 
 class JavascriptPlugin {
     String name;
     ScriptEngine runtime;
 
-    public JavascriptPlugin(String name, File source) {
+    public JavascriptPlugin(String name, File source) throws DocumentException, IOException {
         this.name = name;
 
         ScriptEngineManager factory = new ScriptEngineManager();
@@ -25,7 +27,7 @@ class JavascriptPlugin {
         runtime.put("Console", Console.instance);
         runtime.put("Player", Player.instance);
         runtime.put("Server", Server.instance);
-        runtime.put("Config", new Config(name));
+        runtime.put("Config", new Config(Main.configsDir + "/" + name + ".xml"));
 
         run(source);
     }

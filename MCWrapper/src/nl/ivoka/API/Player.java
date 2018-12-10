@@ -13,14 +13,14 @@ public class Player {
 
     private Player() {}
 
-    public void sendMessageTo(String name, String jsonMessage) throws IOException {
+    public void sendMessageTo(String name, String jsonMessage) {
         Server.instance.runCommand("tellraw "+name+" "+jsonMessage);
     }
-    public void sendMessageTo(String name, String message, String color) throws IOException {
+    public void sendMessageTo(String name, String message, String color) {
         Server.instance.runCommand("tellraw "+name+" {\"text\":\""+message+"\",\"color\":\""+color+"\"}");
     }
 
-    public void refreshPosition(String name) throws IOException {
-        Server.instance.runCommand("tp "+name+" ~ ~ ~");
+    public void refreshPosition(String name) {
+        Server.instance.runCommand("tp "+name+" ~1 ~1 ~1");
     }
 }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <ServerFile>minecraft.jar</ServerFile>
+    <JavaExecutable>java</JavaExecutable>
+    <JavaArguments>-Xms1G -Xmx1G</JavaArguments>
+    <ServerJarArguments>nogui</ServerJarArguments>
+    <UsePlugins>true</UsePlugins>
+</root>
