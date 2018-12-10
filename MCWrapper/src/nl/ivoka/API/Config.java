@@ -103,7 +103,7 @@ public class Config {
     }
 
     /**
-     * Set attribute of key
+     * Get attribute of key
      * @param key   String - element key
      * @param attrKey   String - attribute key
      */

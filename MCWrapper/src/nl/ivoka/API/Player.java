@@ -1,7 +1,5 @@
 package nl.ivoka.API;
 
-import java.io.IOException;
-
 public class Player {
     public static Player instance;
 
