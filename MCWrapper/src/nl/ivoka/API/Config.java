@@ -396,6 +396,31 @@ public class Config {
     }
 
     /**
+     * Check if child element exists
+     * @param parentKey String  - parent element key
+     * @param childKey  String  - child element key
+     * @return          boolean - true if child element exists, false if child element does not exist
+     */
+    public boolean childElementExists(String parentKey, String childKey) { return childElementExists(parentKey, childKey, 0); }
+
+    /**
+     * Check if child element exists in given parent element (index)
+     * @param parentKey     String  - parent element key
+     * @param childKey      String  - child element key
+     * @param parentIndex   Integer - parent element index
+     * @return              boolean - true if child element exists, false if child element does not exist
+     */
+    public boolean childElementExists(String parentKey, String childKey, Integer parentIndex) {
+        if (currentNode.elementIterator(parentKey).hasNext())
+            currentNode = getElements(parentKey)[parentIndex];
+
+        boolean value = elementExists(childKey);
+
+        currentNode = rootNode;
+        return value;
+    }
+
+    /**
      * Check if element exists and is not empty
      * @param key   String  - element key
      * @return      boolean - true if element exists and is not empty, false if element does not exists or if element is empty
@@ -413,6 +438,32 @@ public class Config {
             return true;
         else
             return false;
+    }
+
+    /**
+     * Check if element exists and is not empty
+     * @param parentKey String  - parent element key
+     * @param childKey  String  - child element key
+     * @return          boolean - true if child element exists and is not empty, false if child element does not exist or if child element is empty
+     */
+    public boolean childElementExistsAndNotEmpty(String parentKey, String childKey) { return childElementExistsAndNotEmpty(parentKey, childKey, 0, 0); }
+
+    /**
+     * Check if element exists and is not empty
+     * @param parentKey     String  - parent element key
+     * @param childKey      String  - child element key
+     * @param parentIndex   Integer - parent element index
+     * @param childIndex    Integer - child element index
+     * @return              boolean - true if child element exists and is not empty, false if child element does not exist or if child element is empty
+     */
+    public boolean childElementExistsAndNotEmpty(String parentKey, String childKey, Integer parentIndex, Integer childIndex) {
+        if (currentNode.elementIterator(parentKey).hasNext())
+            currentNode = getElements(parentKey)[parentIndex];
+
+        boolean value = elementExistsAndNotEmpty(childKey, childIndex);
+
+        currentNode = rootNode;
+        return value;
     }
 
     public class XMLValues {
