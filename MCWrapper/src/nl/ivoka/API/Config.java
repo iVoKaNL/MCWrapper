@@ -186,7 +186,33 @@ public class Config {
     }
 
     /**
-     * Get all values
+     * Get all values of parent element
+     * @param parentKey String      - parent element key
+     * @param childKey  String      - child element key to check for
+     * @return          String[]    - Returns a String array containing all values of parent element
+     */
+    public String[] getChildValues(String parentKey, String childKey) { return getChildValues(parentKey, childKey, 0); }
+
+    /**
+     * Get all values of parent element where index
+     * @param parentKey     String      - parent element key
+     * @param childKey      String      - child element key to check for
+     * @param parentIndex   Integer     - parent element index
+     * @return              String[]    - Returns a String array containing all values of parent element
+     */
+    public String[] getChildValues(String parentKey, String childKey, Integer parentIndex) {
+        if (currentNode.elementIterator(parentKey).hasNext())
+            currentNode = getElements(parentKey)[parentIndex];
+        else
+            return null;
+
+        String[] values = getValues(childKey);
+        currentNode = rootNode;
+        return values;
+    }
+
+    /**
+     * Get all values (only elements that do not contain childelement)
      * @return String[] - Returns a String array containing all values
      */
     public String[] getValues() {
@@ -196,6 +222,30 @@ public class Config {
             s.add(element.next().getText());
         }
         return s.toArray(new String[0]);
+    }
+
+    /**
+     * Get all values of parent element
+     * @param parentKey String      - parent element key
+     * @return          String[]    - Returns a String array containing all values of parent element
+     */
+    public String[] getChildValues(String parentKey) { return getChildValues(parentKey, 0); }
+
+    /**
+     * Get all values of parent element where index
+     * @param parentKey     String      - parent element key
+     * @param parentIndex   Integer     - parent element index
+     * @return              String[]    - Returns a String array containing all values of parent element
+     */
+    public String[] getChildValues(String parentKey, Integer parentIndex) {
+        if (currentNode.elementIterator(parentKey).hasNext())
+            currentNode = getElements(parentKey)[parentIndex];
+        else
+            return null;
+
+        String[] values = getValues();
+        currentNode = rootNode;
+        return values;
     }
 
     /**
