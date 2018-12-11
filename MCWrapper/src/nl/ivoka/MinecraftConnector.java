@@ -1,17 +1,21 @@
 package nl.ivoka;
 
-import nl.ivoka.API.Console;
 import nl.ivoka.EventArgs.*;
 import nl.ivoka.EventArgs.PlayerEvents.*;
 import nl.ivoka.EventArgs.ServerEvents.ServerOutputEventArgs;
-import nl.ivoka.EventArgs.ServerEvents.ServerEventArgs;
 import nl.ivoka.EventArgs.ServerEvents.ServerSaveEventArgs;
 import nl.ivoka.EventArgs.ServerEvents.ServerStatusEventArgs;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class MinecraftConnector {
 
     ServerManager serverManager;
     public PlayerEvent events;
+
+    public Map<String, String> players = new HashMap<>();
 
     public MinecraftConnector(ServerManager serverManager) {
         this.serverManager = serverManager;
@@ -55,6 +59,7 @@ public class MinecraftConnector {
             events.broadcast(new PlayerJoinedEventArgs(name));
         } else if (message.contains("left the game")) {
             String name = message.split("\\s+")[0];
+            players.remove(name);
 
             events.broadcast(new PlayerLeftEventArgs(name));
         }
@@ -75,6 +80,12 @@ public class MinecraftConnector {
                 events.broadcast(new PlayerPositionEventArgs(name, position));
             } else
                 return;
+        } else if (info.contains("[User Authenticator #") && info.contains("/INFO]: UUID of player ")) {
+            String[] split = message.split("\\s+");
+            String name = split[split.length-3];
+            String UUID = split[split.length-1];
+
+            players.put(name, UUID);
         } else {
             return;
         }
@@ -87,5 +98,14 @@ public class MinecraftConnector {
             return false;
         }
         return true;
+    }
+
+    public void printPlayersMapAsString() {
+        String content = players.entrySet()
+                .stream()
+                .map(e -> e.getKey() + "=\"" + e.getValue() + "\"")
+                .collect(Collectors.joining(", "));
+
+        System.out.println(content);
     }
 }

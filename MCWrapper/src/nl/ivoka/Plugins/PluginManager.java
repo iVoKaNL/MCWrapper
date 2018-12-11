@@ -49,7 +49,7 @@ public class PluginManager {
         try {
             urlClassHacker.addFile(file);
 
-            Class<IMCWrapperPlugin> c1 = (Class<IMCWrapperPlugin>)ClassLoader.getSystemClassLoader().loadClass("nl.ivoka.JavascriptConnector");
+            Class<IMCWrapperPlugin> c1 = (Class<IMCWrapperPlugin>)ClassLoader.getSystemClassLoader().loadClass("nl.ivoka."+file.getName().split("\\.")[0]);
             Constructor<IMCWrapperPlugin> constructor = c1.getConstructor(MinecraftConnector.class);
             IMCWrapperPlugin instance = constructor.newInstance(serverManager.connector);
 
