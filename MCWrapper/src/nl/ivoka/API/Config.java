@@ -143,6 +143,35 @@ public class Config {
     }
 
     /**
+     * Get the value of a child element
+     * @param parentKey String - parent element key
+     * @param childKey  String - child element key
+     * @return          String - value of child element
+     */
+    public String getChildValue(String parentKey, String childKey) { return getChildValue(parentKey, childKey, 0, 0); }
+
+    /**
+     * Get the value of a child element where indexes match
+     * @param parentKey     String  - parent element key
+     * @param childKey      String  - child element key
+     * @param parentIndex   Integer - parent index
+     * @param childIndex    Integer - child index
+     * @return              String  - value of child element where indexes match
+     */
+    public String getChildValue(String parentKey, String childKey, Integer parentIndex, Integer childIndex) {
+        String value = null;
+
+        if (currentNode.elementIterator(parentKey).hasNext()) {
+            currentNode = getElements(parentKey)[parentIndex];
+            if (currentNode.elementIterator(childKey).hasNext())
+                value = getElements(childKey)[childIndex].getText();
+        }
+
+        currentNode = rootNode;
+        return value;
+    }
+
+    /**
      * Get all values
      * @param key   String      - element key
      * @return      String[]    - Returns a String array containing all values where conditions met
@@ -258,6 +287,100 @@ public class Config {
         else
             currentNode.addElement(key)
                     .addText(value);
+    }
+
+    /**
+     * Set the value of a child element
+     * @param parentKey String - parent element key
+     * @param childKey  String - child element key
+     * @param value     String - child element value
+     */
+    public void setChildValue(String parentKey, String childKey, String value) { setChildValue(parentKey, childKey, value, 0, 0); }
+
+    /**
+     * Set the value of a child element where indexes match
+     * @param parentKey     String  - parent element key
+     * @param childKey      String  - child element key
+     * @param value         String  - child element value
+     * @param parentIndex   Integer - parent index
+     * @param childIndex    Integer - child index
+     */
+    public void setChildValue(String parentKey, String childKey, String value, Integer parentIndex, Integer childIndex) {
+        if (currentNode.elementIterator(parentKey).hasNext())
+            currentNode = getElements(parentKey)[parentIndex];
+        else
+            currentNode = currentNode.addElement(parentKey);
+
+        if (currentNode.elementIterator(childKey).hasNext())
+            getElements(childKey)[childIndex].setText(value);
+        else
+            currentNode.addElement(childKey)
+                    .addText(value);
+
+        currentNode = rootNode;
+    }
+
+    /**
+     * Create an element
+     * @param key   String - element key
+     */
+    public void createElement(String key) { currentNode.addElement(key); }
+
+    /**
+     * Create an element with value
+     * @param key   String - element key
+     * @param value String - element value
+     */
+    public void createElement(String key, String value) { currentNode.addElement(key).addText(value); }
+
+    /**
+     * Create a child element
+     * @param parentKey String - parent element key
+     * @param childKey  String - child element key
+     */
+    public void createChildElement(String parentKey, String childKey) { createChildElement(parentKey, childKey, 0); }
+
+    /**
+     * Create a child element
+     * @param parentKey     String  - parent element key
+     * @param childKey      String  - child element key
+     * @param parentIndex   Integer - parent element index
+     */
+    public void createChildElement(String parentKey, String childKey, Integer parentIndex) {
+        if (currentNode.elementIterator(parentKey).hasNext())
+            currentNode = getElements(parentKey)[parentIndex];
+        else
+            currentNode = currentNode.addElement(parentKey);
+
+        currentNode.addElement(childKey);
+
+        currentNode = rootNode;
+    }
+
+    /**
+     * Create a child element with value
+     * @param parentKey String - parent element key
+     * @param childKey  String - child element key
+     * @param value     String - child element value
+     */
+    public void createChildElement(String parentKey, String childKey, String value) { createChildElement(parentKey, childKey, value, 0); }
+
+    /**
+     * Create a child element with value
+     * @param parentKey     String  - parent element key
+     * @param childKey      String  - child element key
+     * @param value         String  - child element value
+     * @param parentIndex   Integer - parent element index
+     */
+    public void createChildElement(String parentKey, String childKey, String value, Integer parentIndex) {
+        if (currentNode.elementIterator(parentKey).hasNext())
+            currentNode = getElements(parentKey)[parentIndex];
+        else
+            currentNode = currentNode.addElement(parentKey);
+
+        currentNode.addElement(childKey).addText(value);
+
+        currentNode = rootNode;
     }
 
     /**
