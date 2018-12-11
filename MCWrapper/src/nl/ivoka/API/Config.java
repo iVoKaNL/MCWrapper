@@ -252,6 +252,18 @@ public class Config {
                     .addText(value);
     }
 
+    /**
+     * Check if element exists
+     * @param key   String - element key
+     * @return      boolean - true if element exists, false if element does not exist
+     */
+    public boolean elementExists(String key) {
+        if (currentNode.elementIterator(key).hasNext())
+            return true;
+        else
+            return false;
+    }
+
     public class XMLValues {
         public String value, attrKey, attrValue;
 
