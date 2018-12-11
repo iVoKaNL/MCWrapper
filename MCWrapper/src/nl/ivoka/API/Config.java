@@ -104,16 +104,16 @@ public class Config {
 
     /**
      * Get attribute of key
-     * @param key   String - element key
+     * @param key       String - element key
      * @param attrKey   String - attribute key
      */
     public String getAttribute(String key, String attrKey) { return getAttribute(key, attrKey, 0); }
 
     /**
      * Get attribute of key
-     * @param key   String - element key
-     * @param attrKey   String - attribute key
-     * @param index Integer - Which item in array to take
+     * @param key       String  - element key
+     * @param attrKey   String  - attribute key
+     * @param index     Integer - Which item in array to take
      */
     public String getAttribute(String key, String attrKey, Integer index) {
         if (currentNode.elementIterator(key).hasNext()) {
@@ -123,21 +123,29 @@ public class Config {
     }
 
     /**
-     * Get the value where key = key
+     * Get the value where elements key = key
      * @param key   String - element key
-     * @return Returns a String containing value
+     * @return      String - value of element(key)
      */
-    public String getValue(String key) {
-        for (Iterator<Element> element = currentNode.elementIterator(key); element.hasNext();) {
-            return element.next().getText();
-        }
-        return null;
+    public String getValue(String key) { return getValue(key, 0); }
+
+    /**
+     * Get the value where elements key = key and checks for index
+     * @param key   String  - element key
+     * @param index Integer - Which item in array will be taken
+     * @return      String  - value of element(key) where index
+     */
+    public String getValue(String key, Integer index) {
+        if (currentNode.elementIterator(key).hasNext())
+            return getElements(key)[index].getText();
+        else
+            return null;
     }
 
     /**
      * Get all values
-     * @param key   String - element key
-     * @return Returns a String array containing all values where conditions met
+     * @param key   String      - element key
+     * @return      String[]    - Returns a String array containing all values where conditions met
      */
     public String[] getValues(String key) {
         List<String> s = new ArrayList<>();
@@ -150,7 +158,7 @@ public class Config {
 
     /**
      * Get all values
-     * @return Returns a String array containing all values
+     * @return String[] - Returns a String array containing all values
      */
     public String[] getValues() {
         List<String> s = new ArrayList<>();
@@ -163,16 +171,16 @@ public class Config {
 
     /**
      * Set attributes of key
-     * @param key   String - element key
-     * @param attributes    String(attribute key), String(attribute value)
+     * @param key           String              - element key
+     * @param attributes    Map<String, String> - attribute key, attribute value
      */
     public void setAttributes(String key, Map<String, String> attributes) { setAttributes(key, attributes, 0); }
 
     /**
      * Set attributes of key
-     * @param key   String - element key
-     * @param attributes    Map - String(attribute key), String(attribute value)
-     * @param index Integer - Which item in array will be taken
+     * @param key           String              - element key
+     * @param attributes    Map<String, String> - attribute key, attribute value
+     * @param index         Integer             - Which item in array will be taken
      */
     public void setAttributes(String key, Map<String, String> attributes, Integer index) {
         attributes.forEach((x, y) -> {
@@ -182,7 +190,7 @@ public class Config {
 
     /**
      * Set attribute of key
-     * @param key   String - element key
+     * @param key       String - element key
      * @param attrKey   String - attribute key
      * @param attrValue String - attribute value
      */
@@ -190,10 +198,10 @@ public class Config {
 
     /**
      * Set attribute of key
-     * @param key   String - element key
-     * @param attrKey   String - attribute key
-     * @param attrValue String - attribute value
-     * @param index Integer - Which item in array to take
+     * @param key       String  - element key
+     * @param attrKey   String  - attribute key
+     * @param attrValue String  - attribute value
+     * @param index     Integer - Which item in array to take
      */
     public void setAttribute(String key, String attrKey, String attrValue, Integer index) {
         if (currentNode.elementIterator(key).hasNext()) {
@@ -203,18 +211,18 @@ public class Config {
 
     /**
      * Set Values
-     * @param values    Map - String(element key), String(element value)
+     * @param values    Map<String, String>     - element key, element value
      *                  OR
-     *                  Map - String(element key), XMLValues(String(element value), String(attribute key), String(attribute value))
+     *                  Map<String, XMLValues>  - element key, (element value, attribute key, attribute value)
      */
     public void setValues(Map<?, ?> values) { setValues(values, 0); }
 
     /**
      * Set Values
-     * @param values    Map - String(element key), String(element value)
+     * @param values    Map<String, String>     - element key, element value
      *                  OR
-     *                  Map - String(element key), XMLValues(String(element value), String(attribute key), String(attribute value))
-     * @param index Integer - Which item in array to take
+     *                  Map<String, XMLValues>  - element key, (element value, attribute key, attribute value)
+     * @param index     Integer                 - Which item in array to take
      */
     public void setValues(Map<?, ?> values, Integer index) {
         values.forEach((x, y) -> {
@@ -240,8 +248,8 @@ public class Config {
 
     /**
      * Set Value
-     * @param key   String - element key
-     * @param value String - element value
+     * @param key   String  - element key
+     * @param value String  - element value
      * @param index Integer - Which item in array to take
      */
     public void setValue(String key, String value, Integer index) {
@@ -254,11 +262,31 @@ public class Config {
 
     /**
      * Check if element exists
-     * @param key   String - element key
+     * @param key   String  - element key
      * @return      boolean - true if element exists, false if element does not exist
      */
     public boolean elementExists(String key) {
         if (currentNode.elementIterator(key).hasNext())
+            return true;
+        else
+            return false;
+    }
+
+    /**
+     * Check if element exists and is not empty
+     * @param key   String  - element key
+     * @return      boolean - true if element exists and is not empty, false if element does not exists or if element is empty
+     */
+    public boolean elementExistsAndNotEmpty(String key) { return elementExistsAndNotEmpty(key, 0); }
+
+    /**
+     * Check if element exists and is not empty
+     * @param key   String  - element key
+     * @param index Integer - element index
+     * @return      boolean - true if element exists and is not empty, false if element does not exists or if element is empty
+     */
+    public boolean elementExistsAndNotEmpty(String key, Integer index) {
+        if (currentNode.elementIterator(key).hasNext() && !getElements(key)[index].getText().isEmpty())
             return true;
         else
             return false;
@@ -269,7 +297,7 @@ public class Config {
 
         /**
          * This is used when calling setValues(Map<String, XMLValues>);
-         * @param value String - element value
+         * @param value     String - element value
          * @param attrKey   String - attribute key
          * @param attrValue String - attribute value
          */
