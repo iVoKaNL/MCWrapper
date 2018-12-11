@@ -43,6 +43,7 @@ public class Main {
             //config = new Config(new File(configsDir+"/MCWrapper.xml"));
             config = new Config(new File("MCWrapper.xml"));
 
+            // Check if WorkingDirectory attribute usecustom is set to true, if so get value and use that as working directory
             if (config.getAttribute("WorkingDirectory", "usecustom").equals("true")) {
                 pluginsDir = new File(config.getValue("WorkingDirectory") + "/" + pluginsDir.getPath());
                 configsDir = new File(config.getValue("WorkingDirectory") + "/" + configsDir.getPath());
