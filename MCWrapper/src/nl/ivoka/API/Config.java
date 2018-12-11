@@ -315,7 +315,7 @@ public class Config {
             getElements(childKey)[childIndex].setText(value);
         else
             currentNode.addElement(childKey)
-                    .addText(value);
+                    .setText(value);
 
         currentNode = rootNode;
     }
@@ -331,7 +331,7 @@ public class Config {
      * @param key   String - element key
      * @param value String - element value
      */
-    public void createElement(String key, String value) { currentNode.addElement(key).addText(value); }
+    public void createElement(String key, String value) { currentNode.addElement(key).setText(value); }
 
     /**
      * Create a child element
@@ -378,7 +378,7 @@ public class Config {
         else
             currentNode = currentNode.addElement(parentKey);
 
-        currentNode.addElement(childKey).addText(value);
+        currentNode.addElement(childKey).setText(value);
 
         currentNode = rootNode;
     }
