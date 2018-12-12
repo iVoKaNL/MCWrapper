@@ -25,6 +25,7 @@
   },
   "minecraft:adventure/adventuring_time": {
     "criteria": {
+      "minecraft:forest": "2018-12-11 21:05:55 +0100",
       "minecraft:mountains": "2018-12-04 00:27:22 +0100",
       "minecraft:plains": "2018-12-04 00:05:05 +0100"
     },
