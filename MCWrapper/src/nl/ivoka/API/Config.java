@@ -104,16 +104,16 @@ public class Config {
 
     /**
      * Get attribute of key
-     * @param key   String - element key
+     * @param key       String - element key
      * @param attrKey   String - attribute key
      */
     public String getAttribute(String key, String attrKey) { return getAttribute(key, attrKey, 0); }
 
     /**
      * Get attribute of key
-     * @param key   String - element key
-     * @param attrKey   String - attribute key
-     * @param index Integer - Which item in array to take
+     * @param key       String  - element key
+     * @param attrKey   String  - attribute key
+     * @param index     Integer - Which item in array to take
      */
     public String getAttribute(String key, String attrKey, Integer index) {
         if (currentNode.elementIterator(key).hasNext()) {
@@ -123,21 +123,58 @@ public class Config {
     }
 
     /**
-     * Get the value where key = key
+     * Get the value where elements key = key
      * @param key   String - element key
-     * @return Returns a String containing value
+     * @return      String - value of element(key)
      */
-    public String getValue(String key) {
-        for (Iterator<Element> element = currentNode.elementIterator(key); element.hasNext();) {
-            return element.next().getText();
+    public String getValue(String key) { return getValue(key, 0); }
+
+    /**
+     * Get the value where elements key = key and checks for index
+     * @param key   String  - element key
+     * @param index Integer - Which item in array will be taken
+     * @return      String  - value of element(key) where index
+     */
+    public String getValue(String key, Integer index) {
+        if (currentNode.elementIterator(key).hasNext())
+            return getElements(key)[index].getText();
+        else
+            return null;
+    }
+
+    /**
+     * Get the value of a child element
+     * @param parentKey String - parent element key
+     * @param childKey  String - child element key
+     * @return          String - value of child element
+     */
+    public String getChildValue(String parentKey, String childKey) { return getChildValue(parentKey, childKey, 0, 0); }
+
+    /**
+     * Get the value of a child element where indexes match
+     * @param parentKey     String  - parent element key
+     * @param childKey      String  - child element key
+     * @param parentIndex   Integer - parent index
+     * @param childIndex    Integer - child index
+     * @return              String  - value of child element where indexes match
+     */
+    public String getChildValue(String parentKey, String childKey, Integer parentIndex, Integer childIndex) {
+        String value = null;
+
+        if (currentNode.elementIterator(parentKey).hasNext()) {
+            currentNode = getElements(parentKey)[parentIndex];
+            if (currentNode.elementIterator(childKey).hasNext())
+                value = getElements(childKey)[childIndex].getText();
         }
-        return null;
+
+        currentNode = rootNode;
+        return value;
     }
 
     /**
      * Get all values
-     * @param key   String - element key
-     * @return Returns a String array containing all values where conditions met
+     * @param key   String      - element key
+     * @return      String[]    - Returns a String array containing all values where conditions met
      */
     public String[] getValues(String key) {
         List<String> s = new ArrayList<>();
@@ -149,8 +186,34 @@ public class Config {
     }
 
     /**
-     * Get all values
-     * @return Returns a String array containing all values
+     * Get all values of parent element
+     * @param parentKey String      - parent element key
+     * @param childKey  String      - child element key to check for
+     * @return          String[]    - Returns a String array containing all values of parent element
+     */
+    public String[] getChildValues(String parentKey, String childKey) { return getChildValues(parentKey, childKey, 0); }
+
+    /**
+     * Get all values of parent element where index
+     * @param parentKey     String      - parent element key
+     * @param childKey      String      - child element key to check for
+     * @param parentIndex   Integer     - parent element index
+     * @return              String[]    - Returns a String array containing all values of parent element
+     */
+    public String[] getChildValues(String parentKey, String childKey, Integer parentIndex) {
+        if (currentNode.elementIterator(parentKey).hasNext())
+            currentNode = getElements(parentKey)[parentIndex];
+        else
+            return null;
+
+        String[] values = getValues(childKey);
+        currentNode = rootNode;
+        return values;
+    }
+
+    /**
+     * Get all values (only elements that do not contain childelement)
+     * @return String[] - Returns a String array containing all values
      */
     public String[] getValues() {
         List<String> s = new ArrayList<>();
@@ -162,17 +225,41 @@ public class Config {
     }
 
     /**
+     * Get all values of parent element
+     * @param parentKey String      - parent element key
+     * @return          String[]    - Returns a String array containing all values of parent element
+     */
+    public String[] getChildValues(String parentKey) { return getChildValues(parentKey, 0); }
+
+    /**
+     * Get all values of parent element where index
+     * @param parentKey     String      - parent element key
+     * @param parentIndex   Integer     - parent element index
+     * @return              String[]    - Returns a String array containing all values of parent element
+     */
+    public String[] getChildValues(String parentKey, Integer parentIndex) {
+        if (currentNode.elementIterator(parentKey).hasNext())
+            currentNode = getElements(parentKey)[parentIndex];
+        else
+            return null;
+
+        String[] values = getValues();
+        currentNode = rootNode;
+        return values;
+    }
+
+    /**
      * Set attributes of key
-     * @param key   String - element key
-     * @param attributes    String(attribute key), String(attribute value)
+     * @param key           String              - element key
+     * @param attributes    Map<String, String> - attribute key, attribute value
      */
     public void setAttributes(String key, Map<String, String> attributes) { setAttributes(key, attributes, 0); }
 
     /**
      * Set attributes of key
-     * @param key   String - element key
-     * @param attributes    Map - String(attribute key), String(attribute value)
-     * @param index Integer - Which item in array will be taken
+     * @param key           String              - element key
+     * @param attributes    Map<String, String> - attribute key, attribute value
+     * @param index         Integer             - Which item in array will be taken
      */
     public void setAttributes(String key, Map<String, String> attributes, Integer index) {
         attributes.forEach((x, y) -> {
@@ -182,7 +269,7 @@ public class Config {
 
     /**
      * Set attribute of key
-     * @param key   String - element key
+     * @param key       String - element key
      * @param attrKey   String - attribute key
      * @param attrValue String - attribute value
      */
@@ -190,10 +277,10 @@ public class Config {
 
     /**
      * Set attribute of key
-     * @param key   String - element key
-     * @param attrKey   String - attribute key
-     * @param attrValue String - attribute value
-     * @param index Integer - Which item in array to take
+     * @param key       String  - element key
+     * @param attrKey   String  - attribute key
+     * @param attrValue String  - attribute value
+     * @param index     Integer - Which item in array to take
      */
     public void setAttribute(String key, String attrKey, String attrValue, Integer index) {
         if (currentNode.elementIterator(key).hasNext()) {
@@ -203,18 +290,18 @@ public class Config {
 
     /**
      * Set Values
-     * @param values    Map - String(element key), String(element value)
+     * @param values    Map<String, String>     - element key, element value
      *                  OR
-     *                  Map - String(element key), XMLValues(String(element value), String(attribute key), String(attribute value))
+     *                  Map<String, XMLValues>  - element key, (element value, attribute key, attribute value)
      */
     public void setValues(Map<?, ?> values) { setValues(values, 0); }
 
     /**
      * Set Values
-     * @param values    Map - String(element key), String(element value)
+     * @param values    Map<String, String>     - element key, element value
      *                  OR
-     *                  Map - String(element key), XMLValues(String(element value), String(attribute key), String(attribute value))
-     * @param index Integer - Which item in array to take
+     *                  Map<String, XMLValues>  - element key, (element value, attribute key, attribute value)
+     * @param index     Integer                 - Which item in array to take
      */
     public void setValues(Map<?, ?> values, Integer index) {
         values.forEach((x, y) -> {
@@ -240,8 +327,8 @@ public class Config {
 
     /**
      * Set Value
-     * @param key   String - element key
-     * @param value String - element value
+     * @param key   String  - element key
+     * @param value String  - element value
      * @param index Integer - Which item in array to take
      */
     public void setValue(String key, String value, Integer index) {
@@ -253,8 +340,102 @@ public class Config {
     }
 
     /**
-     * Check if element exists
+     * Set the value of a child element
+     * @param parentKey String - parent element key
+     * @param childKey  String - child element key
+     * @param value     String - child element value
+     */
+    public void setChildValue(String parentKey, String childKey, String value) { setChildValue(parentKey, childKey, value, 0, 0); }
+
+    /**
+     * Set the value of a child element where indexes match
+     * @param parentKey     String  - parent element key
+     * @param childKey      String  - child element key
+     * @param value         String  - child element value
+     * @param parentIndex   Integer - parent index
+     * @param childIndex    Integer - child index
+     */
+    public void setChildValue(String parentKey, String childKey, String value, Integer parentIndex, Integer childIndex) {
+        if (currentNode.elementIterator(parentKey).hasNext())
+            currentNode = getElements(parentKey)[parentIndex];
+        else
+            currentNode = currentNode.addElement(parentKey);
+
+        if (currentNode.elementIterator(childKey).hasNext())
+            getElements(childKey)[childIndex].setText(value);
+        else
+            currentNode.addElement(childKey)
+                    .setText(value);
+
+        currentNode = rootNode;
+    }
+
+    /**
+     * Create an element
      * @param key   String - element key
+     */
+    public void createElement(String key) { currentNode.addElement(key); }
+
+    /**
+     * Create an element with value
+     * @param key   String - element key
+     * @param value String - element value
+     */
+    public void createElement(String key, String value) { currentNode.addElement(key).setText(value); }
+
+    /**
+     * Create a child element
+     * @param parentKey String - parent element key
+     * @param childKey  String - child element key
+     */
+    public void createChildElement(String parentKey, String childKey) { createChildElement(parentKey, childKey, 0); }
+
+    /**
+     * Create a child element
+     * @param parentKey     String  - parent element key
+     * @param childKey      String  - child element key
+     * @param parentIndex   Integer - parent element index
+     */
+    public void createChildElement(String parentKey, String childKey, Integer parentIndex) {
+        if (currentNode.elementIterator(parentKey).hasNext())
+            currentNode = getElements(parentKey)[parentIndex];
+        else
+            currentNode = currentNode.addElement(parentKey);
+
+        currentNode.addElement(childKey);
+
+        currentNode = rootNode;
+    }
+
+    /**
+     * Create a child element with value
+     * @param parentKey String - parent element key
+     * @param childKey  String - child element key
+     * @param value     String - child element value
+     */
+    public void createChildElement(String parentKey, String childKey, String value) { createChildElement(parentKey, childKey, value, 0); }
+
+    /**
+     * Create a child element with value
+     * @param parentKey     String  - parent element key
+     * @param childKey      String  - child element key
+     * @param value         String  - child element value
+     * @param parentIndex   Integer - parent element index
+     */
+    public void createChildElement(String parentKey, String childKey, String value, Integer parentIndex) {
+        if (currentNode.elementIterator(parentKey).hasNext())
+            currentNode = getElements(parentKey)[parentIndex];
+        else
+            currentNode = currentNode.addElement(parentKey);
+
+        currentNode.addElement(childKey).setText(value);
+
+        currentNode = rootNode;
+    }
+
+    /**
+     * Check if element exists
+     * @param key   String  - element key
      * @return      boolean - true if element exists, false if element does not exist
      */
     public boolean elementExists(String key) {
@@ -264,12 +445,83 @@ public class Config {
             return false;
     }
 
+    /**
+     * Check if child element exists
+     * @param parentKey String  - parent element key
+     * @param childKey  String  - child element key
+     * @return          boolean - true if child element exists, false if child element does not exist
+     */
+    public boolean childElementExists(String parentKey, String childKey) { return childElementExists(parentKey, childKey, 0); }
+
+    /**
+     * Check if child element exists in given parent element (index)
+     * @param parentKey     String  - parent element key
+     * @param childKey      String  - child element key
+     * @param parentIndex   Integer - parent element index
+     * @return              boolean - true if child element exists, false if child element does not exist
+     */
+    public boolean childElementExists(String parentKey, String childKey, Integer parentIndex) {
+        if (currentNode.elementIterator(parentKey).hasNext())
+            currentNode = getElements(parentKey)[parentIndex];
+
+        boolean value = elementExists(childKey);
+
+        currentNode = rootNode;
+        return value;
+    }
+
+    /**
+     * Check if element exists and is not empty
+     * @param key   String  - element key
+     * @return      boolean - true if element exists and is not empty, false if element does not exists or if element is empty
+     */
+    public boolean elementExistsAndNotEmpty(String key) { return elementExistsAndNotEmpty(key, 0); }
+
+    /**
+     * Check if element exists and is not empty
+     * @param key   String  - element key
+     * @param index Integer - element index
+     * @return      boolean - true if element exists and is not empty, false if element does not exists or if element is empty
+     */
+    public boolean elementExistsAndNotEmpty(String key, Integer index) {
+        if (currentNode.elementIterator(key).hasNext() && !getElements(key)[index].getText().isEmpty())
+            return true;
+        else
+            return false;
+    }
+
+    /**
+     * Check if element exists and is not empty
+     * @param parentKey String  - parent element key
+     * @param childKey  String  - child element key
+     * @return          boolean - true if child element exists and is not empty, false if child element does not exist or if child element is empty
+     */
+    public boolean childElementExistsAndNotEmpty(String parentKey, String childKey) { return childElementExistsAndNotEmpty(parentKey, childKey, 0, 0); }
+
+    /**
+     * Check if element exists and is not empty
+     * @param parentKey     String  - parent element key
+     * @param childKey      String  - child element key
+     * @param parentIndex   Integer - parent element index
+     * @param childIndex    Integer - child element index
+     * @return              boolean - true if child element exists and is not empty, false if child element does not exist or if child element is empty
+     */
+    public boolean childElementExistsAndNotEmpty(String parentKey, String childKey, Integer parentIndex, Integer childIndex) {
+        if (currentNode.elementIterator(parentKey).hasNext())
+            currentNode = getElements(parentKey)[parentIndex];
+
+        boolean value = elementExistsAndNotEmpty(childKey, childIndex);
+
+        currentNode = rootNode;
+        return value;
+    }
+
     public class XMLValues {
         public String value, attrKey, attrValue;
 
         /**
          * This is used when calling setValues(Map<String, XMLValues>);
-         * @param value String - element value
+         * @param value     String - element value
          * @param attrKey   String - attribute key
          * @param attrValue String - attribute value
          */

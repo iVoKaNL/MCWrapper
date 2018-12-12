@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <ServerStart>[Server thread/INFO]: Starting minecraft server</ServerStart>
+    <ServerStop>[Server Shutdown Thread/INFO]: Stopping server</ServerStop>
+    <ServerDone>[Server thread/INFO]: Done</ServerDone>
+    
+    <ServerSaving>[Server thread/INFO]: Saving the game</ServerSaving>
+    <ServerSaved>[Server thread/INFO]: Saved the game</ServerSaved>
+    <ServerSaveOFF>[Server thread/INFO]: Automatic saving is now disabled</ServerSaveOFF>
+    <ServerSaveON>[Server thread/INFO]: Automatic saving is now enabled</ServerSaveON>
+    
+    <PlayerJoin>
+        <CheckFor>[Server thread/INFO]: </CheckFor>
+        <CheckFor> joined the game</CheckFor>
+    </PlayerJoin>
+    <PlayerLeave>
+        <CheckFor>[Server thread/INFO]: </CheckFor>
+        <CheckFor> left the game</CheckFor>
+    </PlayerLeave>
+    <PlayerChat>
+        <CheckFor>[Server thread/INFO]: </CheckFor>
+        <CheckFor>&lt;</CheckFor>
+        <CheckFor>&gt;</CheckFor>
+    </PlayerChat>
+    <PlayerPosition>
+        <CheckFor>[Server thread/INFO]: </CheckFor>
+        <CheckFor>Teleported</CheckFor>
+    </PlayerPosition>
+    <PlayerUUID>
+        <CheckFor>[User Authenticator #</CheckFor>
+        <CheckFor>/INFO]: UUID of player </CheckFor>
+    </PlayerUUID>
+</root>
