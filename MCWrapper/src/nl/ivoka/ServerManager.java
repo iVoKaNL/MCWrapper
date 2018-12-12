@@ -2,6 +2,7 @@ package nl.ivoka;
 
 import nl.ivoka.EventArgs.ServerEvents.ServerOutputEventArgs;
 import nl.ivoka.EventArgs.PlayerEvent;
+import org.dom4j.DocumentException;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class ServerManager {
         events = new PlayerEvent();
     }
 
-    public void start() throws IOException {
+    public void start() throws IOException, DocumentException {
         System.out.println("Starting java...");
 
         mc = pb.start();
