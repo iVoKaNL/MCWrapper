@@ -76,6 +76,16 @@ public class Main {
                 } else if (x instanceof ServerStatusEventArgs) {
                     ServerStatusEventArgs e = (ServerStatusEventArgs) x;
                     System.out.println("ServerStatusEventArgs - " + e.event.toString());
+
+                    // IMPORTANT
+                    try {
+                        if (!serverManager.calledStop && e.event == ServerStatusEventArgs.Event.STOP)
+                            serverManager.stop();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
                 } else if (x instanceof ServerSaveEventArgs) {
                     ServerSaveEventArgs e = (ServerSaveEventArgs) x;
                     System.out.println("ServerSaveEventArgs - " + e.event.toString());

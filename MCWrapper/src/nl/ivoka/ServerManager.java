@@ -17,6 +17,8 @@ public class ServerManager {
 
     private BufferedWriter writer;
     private BufferedReader reader;
+
+    public boolean calledStop = false;
     private Thread outputThread;
 
     public ServerManager(String jarFile) {
@@ -72,12 +74,14 @@ public class ServerManager {
     }
 
     public void stop() throws IOException, InterruptedException {
+        calledStop = true;
+
         if (mc.isAlive())
             writeLine("stop");
 
         mc.waitFor();
 
-        System.out.println("Server stopped. Press any key to exit!");
+        System.out.println("Server stopped. Press enter to exit! (if one enter does not work, you may have to hit enter 3 times total, needs fixing)");
         Main.readLine();
         System.exit(0);
     }
