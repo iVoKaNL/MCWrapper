@@ -47,4 +47,11 @@
         <CheckFor>[User Authenticator #</CheckFor>
         <CheckFor>/INFO]: UUID of player </CheckFor>
     </PlayerUUID>
+    
+    <example>
+        <1>example needs to be an event name</1>
+        <2>But the child elements of an event can be named whatever you want</2>
+        <ChildElement>This can be named whatever you want, all child elements will be read</ChildElement>
+        <4>Everything needs to be closed properly for the program to not throw any errors</4>
+    </example>
 </root>

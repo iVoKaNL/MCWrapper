@@ -6,4 +6,9 @@
     <ServerJarArguments>nogui</ServerJarArguments>
     <UsePlugins>true</UsePlugins>
     <WorkingDirectory usecustom="true">server</WorkingDirectory>
+    <Logging enable="true">
+        <LogServerOutput>false</LogServerOutput>
+        <SaveTo>plugins/MCWrapper/logs</SaveTo>
+        <FileName>latest.log</FileName>
+    </Logging>
 </root>
