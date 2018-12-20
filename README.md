@@ -134,3 +134,85 @@ Console.instance.write("Write something to the console (and log if enabled) with
 Console.clear();
 Console.beep();
 ```
+
+## Config files
+### MCWrapper.xml (in root (same directory as MCWrapper.jar))
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <ServerFile>minecraft.jar</ServerFile>
+    <JavaExecutable>java</JavaExecutable>
+    <JavaArguments>-Xms1G -Xmx1G</JavaArguments>
+    <ServerJarArguments>nogui</ServerJarArguments>
+    <UsePlugins>true</UsePlugins>
+    <WorkingDirectory usecustom="true">server</WorkingDirectory> <!-- default false -->
+    <Logging enable="true"> <!-- default false -->
+        <LogServerOutput>true</LogServerOutput>
+        <LogDebugOutput>false</LogDebugOutput>
+        <FileDirectory>plugins/MCWrapper/logs</FileDirectory>
+        <FileName>latest.log</FileName>
+    </Logging>
+    <Debug>false</Debug>
+</root>
+```
+
+### EventValidators.xml (plugins/MCWrapper/configs)
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <ServerStart>
+        <CheckFor>[Server thread/INFO]: Starting minecraft server</CheckFor>
+    </ServerStart>
+    <ServerStop>
+        <CheckFor>[Server Shutdown Thread/INFO]: Stopping server</CheckFor>
+    </ServerStop>
+    <ServerDone>
+        <CheckFor>[Server thread/INFO]: Done</CheckFor>
+    </ServerDone>
+    
+    <ServerSaving>
+        <CheckFor>[Server thread/INFO]: Saving the game</CheckFor>
+    </ServerSaving>
+    <ServerSaved>
+        <CheckFor>[Server thread/INFO]: </CheckFor>
+        <CheckFor> Saved the game</CheckFor>
+    </ServerSaved>
+    <ServerSaveOFF>
+        <CheckFor>[Server thread/INFO]: </CheckFor>
+        <CheckFor> Automatic saving is now disabled</CheckFor>
+    </ServerSaveOFF>
+    <ServerSaveON>
+        <CheckFor>[Server thread/INFO]: </CheckFor>
+        <CheckFor> Automatic saving is now enabled</CheckFor>
+    </ServerSaveON>
+    
+    <PlayerJoin>
+        <CheckFor>[Server thread/INFO]: </CheckFor>
+        <CheckFor> joined the game</CheckFor>
+    </PlayerJoin>
+    <PlayerLeave>
+        <CheckFor>[Server thread/INFO]: </CheckFor>
+        <CheckFor> left the game</CheckFor>
+    </PlayerLeave>
+    <PlayerChat>
+        <CheckFor>[Server thread/INFO]: </CheckFor>
+        <CheckFor>&lt;</CheckFor>
+        <CheckFor>&gt;</CheckFor>
+    </PlayerChat>
+    <PlayerPosition>
+        <CheckFor>[Server thread/INFO]: </CheckFor>
+        <CheckFor>Teleported</CheckFor>
+    </PlayerPosition>
+    <PlayerUUID>
+        <CheckFor>[User Authenticator #</CheckFor>
+        <CheckFor>/INFO]: UUID of player </CheckFor>
+    </PlayerUUID>
+    
+    <example>
+        <one>example needs to be an event name</one>
+        <two>But the child elements of an event can be named whatever you want</two>
+        <ChildElement>This can be named whatever you want, all child elements will be read</ChildElement>
+        <four>Everything needs to be closed properly for the program to not throw any errors</four>
+    </example>
+</root>
+```
