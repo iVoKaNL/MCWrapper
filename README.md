@@ -12,7 +12,41 @@ values.put("Argument", new Config().new XMLValues("-Xmx1G -Xms1G -jar", "require
 values.put("UsePlugins", new Config().new XMLValues("true", "required", "yes"));
 config.setValues(values);
 
+config.setValue("key", "value");
+config.setChildValue("parentKey", "childKey", "value");
+config.getValue("key"); // returns "value"
+config.getChildValue("parentKey", "childKey"); // optional arguments are parentIndex and childIndex
+config.setAttributes("key", "Map<String, String> attributes"); // also setChildAttributes (but with the parentKey)
+config.createElement("key"); // createChildElement
+config.elementExists("key"); // returns boolean
+config.elementExistsAndNotEmpty("key"); // return boolean
+
 config.saveConfig();
+
+// This is not finished (there are a lot more methods that need to be added to this little Wiki, but you can look at the Config.java)
+```
+
+### Player
+```java
+Player.instance.sendMessageTo("notch", "{"text":"Welcome to this server!","color":"gold"}");
+Player.instance.sendMessageTo("notch", "Welcome to this server!", "gold");
+Player.instance.refreshPosition("notch");
+Player.instance.runCommandAsPlayer("notch", "say I Like Minecraft");
+```
+
+### Server
+```java
+Server.instance.broadcastMessage("{"text":"The server is saving the world.","color":"red"}");
+Server.instance.broadcastMessage("The server is saving the world.", "red");
+Server.instance.runCommand("save-all");
+```
+
+### Console
+```java
+Console.instance.writeLine("Write somthing to the console (and log if enabled)");
+Console.instance.write("Write something to the console (and log if enabled) without new line");
+Console.clear();
+Console.beep();
 ```
 
 ## Javascript plugin example
