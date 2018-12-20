@@ -7,31 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7c3244c-a428-421b-a315-0874b07e9196" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/nl/ivoka/API/Logger.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/MCWrapper.xml" afterPath="$PROJECT_DIR$/MCWrapper.xml" />
       <change beforePath="$PROJECT_DIR$/plugins/JavascriptConnector/.idea/workspace.xml" afterPath="$PROJECT_DIR$/plugins/JavascriptConnector/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/plugins/JavascriptConnector/src/nl/ivoka/JavascriptConnector.java" afterPath="$PROJECT_DIR$/plugins/JavascriptConnector/src/nl/ivoka/JavascriptConnector.java" />
-      <change beforePath="$PROJECT_DIR$/plugins/JavascriptConnector/src/nl/ivoka/JavascriptPlugin.java" afterPath="$PROJECT_DIR$/plugins/JavascriptConnector/src/nl/ivoka/JavascriptPlugin.java" />
-      <change beforePath="$PROJECT_DIR$/plugins/JavascriptConnector/src/nl/ivoka/JavascriptPluginManager.java" afterPath="$PROJECT_DIR$/plugins/JavascriptConnector/src/nl/ivoka/JavascriptPluginManager.java" />
-      <change beforePath="$PROJECT_DIR$/server/plugins/MCWrapper/configs/EventValidators.xml" afterPath="$PROJECT_DIR$/server/plugins/MCWrapper/configs/EventValidators.xml" />
       <change beforePath="$PROJECT_DIR$/server/server.properties" afterPath="$PROJECT_DIR$/server/server.properties" />
-      <change beforePath="$PROJECT_DIR$/server/usercache.json" afterPath="$PROJECT_DIR$/server/usercache.json" />
-      <change beforePath="$PROJECT_DIR$/server/world/data/villages.dat" afterPath="$PROJECT_DIR$/server/world/data/villages.dat" />
-      <change beforePath="$PROJECT_DIR$/server/world/data/villages_end.dat" afterPath="$PROJECT_DIR$/server/world/data/villages_end.dat" />
-      <change beforePath="$PROJECT_DIR$/server/world/data/villages_nether.dat" afterPath="$PROJECT_DIR$/server/world/data/villages_nether.dat" />
-      <change beforePath="$PROJECT_DIR$/server/world/level.dat" afterPath="$PROJECT_DIR$/server/world/level.dat" />
-      <change beforePath="$PROJECT_DIR$/server/world/level.dat_old" afterPath="$PROJECT_DIR$/server/world/level.dat_old" />
-      <change beforePath="$PROJECT_DIR$/server/world/playerdata/1b14abca-4dc8-4cdb-9622-c85a0f32219e.dat" afterPath="$PROJECT_DIR$/server/world/playerdata/1b14abca-4dc8-4cdb-9622-c85a0f32219e.dat" />
-      <change beforePath="$PROJECT_DIR$/server/world/region/r.0.-1.mca" afterPath="$PROJECT_DIR$/server/world/region/r.0.-1.mca" />
-      <change beforePath="$PROJECT_DIR$/server/world/region/r.0.0.mca" afterPath="$PROJECT_DIR$/server/world/region/r.0.0.mca" />
-      <change beforePath="$PROJECT_DIR$/server/world/session.lock" afterPath="$PROJECT_DIR$/server/world/session.lock" />
-      <change beforePath="$PROJECT_DIR$/server/world/stats/1b14abca-4dc8-4cdb-9622-c85a0f32219e.json" afterPath="$PROJECT_DIR$/server/world/stats/1b14abca-4dc8-4cdb-9622-c85a0f32219e.json" />
-      <change beforePath="$PROJECT_DIR$/src/nl/ivoka/API/Console.java" afterPath="$PROJECT_DIR$/src/nl/ivoka/API/Console.java" />
-      <change beforePath="$PROJECT_DIR$/src/nl/ivoka/Main.java" afterPath="$PROJECT_DIR$/src/nl/ivoka/Main.java" />
-      <change beforePath="$PROJECT_DIR$/src/nl/ivoka/MinecraftConnector.java" afterPath="$PROJECT_DIR$/src/nl/ivoka/MinecraftConnector.java" />
-      <change beforePath="$PROJECT_DIR$/src/nl/ivoka/Plugins/PluginManager.java" afterPath="$PROJECT_DIR$/src/nl/ivoka/Plugins/PluginManager.java" />
-      <change beforePath="$PROJECT_DIR$/src/nl/ivoka/ServerManager.java" afterPath="$PROJECT_DIR$/src/nl/ivoka/ServerManager.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -84,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/src/nl/ivoka/ServerManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="528">
-              <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+              <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -94,7 +72,7 @@
         <entry file="file://$PROJECT_DIR$/src/nl/ivoka/API/Logger.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="600">
-              <caret line="46" column="45" lean-forward="true" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
+              <caret line="46" column="45" lean-forward="false" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -401,16 +379,15 @@
       <workItem from="1544473487875" duration="8826000" />
       <workItem from="1544556910326" duration="10975000" />
       <workItem from="1544617631423" duration="6678000" />
-      <workItem from="1545232896072" duration="9658000" />
+      <workItem from="1545232896072" duration="10171000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53184000" />
+    <option name="totallyTimeSpent" value="53697000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2939" height="1600" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -421,7 +398,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956812" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33023256" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33023256" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -689,7 +666,7 @@
     <entry file="file://$PROJECT_DIR$/src/nl/ivoka/API/Logger.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
-          <caret line="46" column="45" lean-forward="true" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
+          <caret line="46" column="45" lean-forward="false" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -697,7 +674,7 @@
     <entry file="file://$PROJECT_DIR$/src/nl/ivoka/ServerManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
-          <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding />
         </state>
       </provider>
