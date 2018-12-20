@@ -31,3 +31,4 @@ MCWrapper/server/eula.txt
 MCWrapper/server/logs/*
 MCWrapper/server/world/*
 MCWrapper/server/crash-reports/*
+.DS_Store
