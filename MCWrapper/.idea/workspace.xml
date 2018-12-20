@@ -7,9 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7c3244c-a428-421b-a315-0874b07e9196" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/plugins/JavascriptConnector/.idea/workspace.xml" afterPath="$PROJECT_DIR$/plugins/JavascriptConnector/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/server/server.properties" afterPath="$PROJECT_DIR$/server/server.properties" />
+      <change beforePath="$PROJECT_DIR$/src/nl/ivoka/API/Config.java" afterPath="$PROJECT_DIR$/src/nl/ivoka/API/Config.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Config.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Config.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/nl/ivoka/API/Config.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+            <state relative-caret-position="414">
+              <caret line="273" column="80" lean-forward="false" selection-start-line="273" selection-start-column="80" selection-end-line="273" selection-end-column="80" />
               <folding />
             </state>
           </provider>
@@ -58,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ServerManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ServerManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nl/ivoka/ServerManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+            <state relative-caret-position="93">
+              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -94,6 +93,7 @@
       <find>System.out</find>
       <find>System.out.println</find>
       <find>System.out.print</find>
+      <find>setChildValues</find>
     </findStrings>
     <replaceStrings>
       <replace>setText</replace>
@@ -121,12 +121,12 @@
         <option value="$PROJECT_DIR$/src/nl/ivoka/EventArgs/PlayerEvents/PlayerChatEventArgs.java" />
         <option value="$PROJECT_DIR$/src/nl/ivoka/API/Player.java" />
         <option value="$PROJECT_DIR$/src/nl/ivoka/API/Console.java" />
-        <option value="$PROJECT_DIR$/src/nl/ivoka/API/Config.java" />
         <option value="$PROJECT_DIR$/src/nl/ivoka/MinecraftConnector.java" />
         <option value="$PROJECT_DIR$/src/nl/ivoka/Plugins/PluginManager.java" />
         <option value="$PROJECT_DIR$/src/nl/ivoka/Main.java" />
         <option value="$PROJECT_DIR$/src/nl/ivoka/API/Logger.java" />
         <option value="$PROJECT_DIR$/src/nl/ivoka/ServerManager.java" />
+        <option value="$PROJECT_DIR$/src/nl/ivoka/API/Config.java" />
       </list>
     </option>
   </component>
@@ -379,15 +379,16 @@
       <workItem from="1544473487875" duration="8826000" />
       <workItem from="1544556910326" duration="10975000" />
       <workItem from="1544617631423" duration="6678000" />
-      <workItem from="1545232896072" duration="10171000" />
+      <workItem from="1545232896072" duration="12160000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53697000" />
+    <option name="totallyTimeSpent" value="55686000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2939" height="1600" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -398,7 +399,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956812" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33023256" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33023256" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -647,14 +648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/nl/ivoka/API/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/nl/ivoka/MinecraftConnector.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="410">
@@ -673,8 +666,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nl/ivoka/ServerManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+        <state relative-caret-position="93">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nl/ivoka/API/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="273" column="80" lean-forward="false" selection-start-line="273" selection-start-column="80" selection-end-line="273" selection-end-column="80" />
           <folding />
         </state>
       </provider>

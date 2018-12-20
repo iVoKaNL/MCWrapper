@@ -268,6 +268,28 @@ public class Config {
     }
 
     /**
+     * Set attributes of child element
+     * @param parentKey     String              - parent element key
+     * @param childKey      String              - child element key
+     * @param attributes    Map<String, String> - attribute key, attribute value
+     */
+    public void setChildAttributes(String parentKey, String childKey, Map<String, String> attributes) { setChildAttributes(parentKey, childKey, attributes, 0, 0); }
+
+    /**
+     * Set attributes of child element
+     * @param parentKey     String              - parent element key
+     * @param childKey      String              - child element key
+     * @param attributes    Map<String, String> - attribute key, attribute value
+     * @param parentIndex   Integer             - parent element index
+     * @param childIndex    Integer             - child element index (same for every child element)
+     */
+    public void setChildAttributes(String parentKey, String childKey, Map<String, String> attributes, Integer parentIndex, Integer childIndex) {
+        attributes.forEach((x, y) -> {
+            setChildAttribute(parentKey, childKey, x, y, parentIndex, childIndex);
+        });
+    }
+
+    /**
      * Set attribute of key
      * @param key       String - element key
      * @param attrKey   String - attribute key
@@ -286,6 +308,37 @@ public class Config {
         if (currentNode.elementIterator(key).hasNext()) {
             getElements(key)[index].addAttribute(attrKey, attrValue);
         }
+    }
+
+    /**
+     * Set attribute of child element
+     * @param parentKey String - parent element key
+     * @param childKey  String - child element key
+     * @param attrKey   String - attribute key
+     * @param attrValue String - attribute value
+     */
+    public void setChildAttribute(String parentKey, String childKey, String attrKey, String attrValue) { setChildAttribute(parentKey, childKey, attrKey, attrValue, 0, 0); }
+
+    /**
+     * Set attribute of child element
+     * @param parentKey     String  - parent element key
+     * @param childKey      String  - child element key
+     * @param attrKey       String  - attribute key
+     * @param attrValue     String  - attribute value
+     * @param parentIndex   Integer - parent element index
+     * @param childIndex    Integer - child element index
+     */
+    public void setChildAttribute(String parentKey, String childKey, String attrKey, String attrValue, Integer parentIndex, Integer childIndex) {
+        if (currentNode.elementIterator(parentKey).hasNext())
+            currentNode = getElements(parentKey)[parentIndex];
+        else
+            currentNode = currentNode.addElement(parentKey);
+
+        if (currentNode.elementIterator(childKey).hasNext()) {
+            getElements(childKey)[childIndex].addAttribute(attrKey, attrValue);
+        }
+
+        currentNode = rootNode;
     }
 
     /**
@@ -337,6 +390,38 @@ public class Config {
         else
             currentNode.addElement(key)
                     .addText(value);
+    }
+
+    /**
+     * Set values of a child element
+     * @param parentKey String                  - parent element key
+     * @param values    Map<String, String>     - element key, element value
+     *                  OR
+     *                  Map<String, XMLValues>  - element key, (element value, attribute key, attribute value)
+     */
+    public void setChildValues(String parentKey, Map<?, ?> values) { setChildValues(parentKey, values, 0, 0); }
+
+    /**
+     * Set values of a child element
+     * @param parentKey     String                  - parent element key
+     * @param values        Map<String, String>     - element key, element value
+     *                      OR
+     *                      Map<String, XMLValues>  - element key, (element value, attribute key, attribute value)
+     * @param parentIndex   Integer                 - parent index
+     * @param childIndex    Integer                 - child index (same for every child element)
+     */
+    public void setChildValues(String parentKey, Map<?, ?> values, Integer parentIndex, Integer childIndex) {
+        values.forEach((x, y) -> {
+            if (x instanceof String) {
+                if (y instanceof XMLValues) {
+                    XMLValues xmlValues = (XMLValues)y;
+
+                    setChildValue(parentKey, (String)x, xmlValues.value, parentIndex, childIndex);
+                    setChildAttribute(parentKey, (String)x, xmlValues.attrKey, xmlValues.attrValue, parentIndex, childIndex);
+                } else
+                    setChildValue(parentKey, (String)x, (String)y, parentIndex, childIndex);
+            }
+        });
     }
 
     /**
