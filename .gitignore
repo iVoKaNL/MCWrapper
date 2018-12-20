@@ -22,31 +22,12 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-# Apple generated files
-.DS_Store
-AppleDouble
-
 # Minecraft log files
-*.log
 *.log.gz
 
-# VisualStudio added ignores
-MCWrapper/.DS_Store
-MCWrapper/server/.DS_Store
-MCWrapper/server/usercache.json
-MCWrapper/server/plugins/.DS_Store
-MCWrapper/server/world/level.dat
-MCWrapper/server/world/level.dat_old
-MCWrapper/server/world/session.lock
-MCWrapper/server/world/advancements/1b14abca-4dc8-4cdb-9622-c85a0f32219e.json
-MCWrapper/server/world/data/villages.dat
-MCWrapper/server/world/data/villages_end.dat
-MCWrapper/server/world/data/villages_nether.dat
-MCWrapper/server/world/playerdata/1b14abca-4dc8-4cdb-9622-c85a0f32219e.dat
-MCWrapper/server/world/region/r.-1.-1.mca
-MCWrapper/server/world/region/r.-1.0.mca
-MCWrapper/server/world/region/r.0.-1.mca
-MCWrapper/server/world/region/r.0.0.mca
-MCWrapper/server/world/stats/1b14abca-4dc8-4cdb-9622-c85a0f32219e.json
-MCWrapper/server/world/level.dat_old
-MCWrapper/.DS_Store
+# Server files
+MCWrapper/server/*.json
+MCWrapper/server/eula.txt
+MCWrapper/server/logs/*
+MCWrapper/server/world/*
+MCWrapper/server/crash-reports/*
