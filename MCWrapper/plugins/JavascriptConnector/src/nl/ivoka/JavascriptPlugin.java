@@ -32,24 +32,24 @@ class JavascriptPlugin {
         run(source);
     }
 
-    public void run(String source) {
+    public void run(String source) throws IOException {
         try {
             runtime.eval(source);
         } catch (ScriptException e) {
-            System.out.println("Error in Javascript Plugin "+name);
-            System.out.println(" \\ Error: "+e.getMessage());
+            Console.instance.writeLine("Error in Javascript Plugin "+name);
+            Console.instance.writeLine(" \\ Error: "+e.getMessage());
         }
     }
 
-    public void run(File source) {
+    public void run(File source) throws IOException {
         try {
             runtime.eval(new FileReader(source.getAbsolutePath()));
         } catch (FileNotFoundException e) {
-            System.out.println("Error in Javascript Plugin "+name);
-            System.out.println(" \\ Error: "+e.getMessage());
+            Console.instance.writeLine("Error in Javascript Plugin "+name);
+            Console.instance.writeLine(" \\ Error: "+e.getMessage());
         } catch (ScriptException e) {
-            System.out.println("Error in Javascript Plugin "+name);
-            System.out.println(" \\ Error: "+e.getMessage());
+            Console.instance.writeLine("Error in Javascript Plugin "+name);
+            Console.instance.writeLine(" \\ Error: "+e.getMessage());
         }
     }
 }

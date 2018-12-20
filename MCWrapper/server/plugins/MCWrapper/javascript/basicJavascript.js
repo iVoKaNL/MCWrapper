@@ -16,8 +16,10 @@ function ChatReceived(name, message) //ChatReceived(name, message) is invoked wh
 		Server.runCommand("kick "+name+" Please do not use caps lock!"); //kick player cause he used caps
 
 	Console.writeLine("Message: "+message+"\nIs .light: "+(message.toLowerCase().trim() == ".light"));
-	if(message.toLowerCase() == ".light")
+	if(message.toLowerCase() == ".light") {
+		Player.runCommandAsPlayer(name, "setblock ~ ~ ~ minecraft:torch");
 		Player.refreshPosition(name);
+	}
 	else if(message.split(' ')[0] == '.tpme')
 		Server.runCommand("tp "+name+" "+message.split(' ')[1]);
 }

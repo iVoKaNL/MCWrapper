@@ -1,5 +1,6 @@
 package nl.ivoka.Plugins;
 
+import nl.ivoka.API.Console;
 import nl.ivoka.MinecraftConnector;
 import nl.ivoka.ServerManager;
 
@@ -18,7 +19,7 @@ public class PluginManager {
     URLClassHacker urlClassHacker;
     ServerManager serverManager;
 
-    public PluginManager(File dir, ServerManager serverManager) {
+    public PluginManager(File dir, ServerManager serverManager) throws IOException {
         plugins = new ArrayList<>();
         urlClassHacker = new URLClassHacker();
         this.serverManager = serverManager;
@@ -26,21 +27,21 @@ public class PluginManager {
         File[] pluginFiles = dir.listFiles((directory, name) -> name.endsWith(".jar"));
 
         if (pluginFiles.length > 0) {
-            System.out.println("Loading plugins!");
+            Console.instance.writeLine("Loading plugins!");
             for (File file : pluginFiles) {
-                System.out.println("Loading Plugin: "+file);
+                Console.instance.writeLine("Loading Plugin: "+file);
                 loadPlugin(file);
             }
-            System.out.println("Finished Loading Plugins!");
+            Console.instance.writeLine("Finished Loading Plugins!");
         } else
-            System.out.println("No Plugins found!");
+            Console.instance.writeLine("No Plugins found!");
 
-        System.out.println(plugins.size()+" Plugins loaded");
+        Console.instance.writeLine(plugins.size()+" Plugins loaded");
     }
 
     public void unLoadPlugin(String name) {
-        plugins.forEach((x) -> {
-            if (name == x.Name)
+        plugins.forEach((IMCWrapperPlugin x) -> {
+            if (name.equals(x.Name))
                 plugins.remove(x);
         });
     }

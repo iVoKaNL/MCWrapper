@@ -13,14 +13,12 @@ public class Console {
     }
 
     private Console() {
-
     }
 
-    public void writeLine(String message) {
-        System.out.println(message);
-    }
-    public void write(String message) {
+    public void writeLine(String message) throws IOException { write(message+"\n"); }
+    public void write(String message) throws IOException {
         System.out.print(message);
+        Logger.instance.writeLog(message);
     }
     public void clear() {
         try {
