@@ -1,5 +1,6 @@
 package nl.ivoka;
 
+import nl.ivoka.API.Console;
 import org.dom4j.DocumentException;
 
 import java.io.File;
@@ -22,17 +23,17 @@ class JavascriptPluginManager {
         } else if (pluginFiles.length > 0) {
             List<JavascriptPlugin> _plugins = new ArrayList<>();
 
-            System.out.println("Loading Javascript Plugins!");
+            Console.instance.writeLine("Loading Javascript Plugins!");
             for (File file : pluginFiles) {
-                System.out.println("Loading Plugin: "+file);
+                Console.instance.writeLine("Loading Plugin: "+file);
                 String name = file.getName();
                 JavascriptPlugin plugin = new JavascriptPlugin(name, file);
                 _plugins.add(plugin);
             }
             plugins = _plugins.toArray(new JavascriptPlugin[0]);
-            System.out.println("Finished Loading Javascript Plugins!");
+            Console.instance.writeLine("Finished Loading Javascript Plugins!");
         } else
-            System.out.println("No Javascript Plugins found!");
-        System.out.println(plugins.length+" Javascript Plugins loaded");
+            Console.instance.writeLine("No Javascript Plugins found!");
+        Console.instance.writeLine(plugins.length+" Javascript Plugins loaded");
     }
 }

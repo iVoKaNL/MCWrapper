@@ -1,6 +1,7 @@
 package nl.ivoka;
 
 import nl.ivoka.API.Config;
+import nl.ivoka.API.Console;
 import nl.ivoka.EventArgs.*;
 import nl.ivoka.EventArgs.PlayerEvents.*;
 import nl.ivoka.EventArgs.ServerEvents.ServerOutputEventArgs;
@@ -137,13 +138,13 @@ public class MinecraftConnector {
         return Arrays.stream(items).allMatch(inputString::contains);
     }
 
-    public void printPlayersMapAsString() {
+    public void printPlayersMapAsString() throws IOException {
         String content = players.entrySet()
                 .stream()
                 .map(e -> e.getKey() + "=\"" + e.getValue() + "\"")
                 .collect(Collectors.joining(", "));
 
-        System.out.println(content);
+        Console.instance.writeLine(content);
     }
 
     void loadEventValidators() throws DocumentException, IOException {

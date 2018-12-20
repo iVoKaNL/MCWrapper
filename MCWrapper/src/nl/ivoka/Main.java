@@ -25,21 +25,22 @@ public class Main {
     public static File configsDir;
 
     public static void main(String[] args) {
-        reader = new BufferedReader(new InputStreamReader(System.in));
-
-        pluginsDir = new File("plugins/MCWrapper");
-        configsDir = new File(pluginsDir+"/configs");
-
-        if (!pluginsDir.exists())
-            pluginsDir.mkdirs();
-        if (!configsDir.exists())
-            configsDir.mkdirs();
-
-        new Console.console();
-        new Player.player();
-        new Server.server();
-
         try {
+            reader = new BufferedReader(new InputStreamReader(System.in));
+
+            pluginsDir = new File("plugins/MCWrapper");
+            configsDir = new File(pluginsDir+"/configs");
+
+            if (!pluginsDir.exists())
+                pluginsDir.mkdirs();
+            if (!configsDir.exists())
+                configsDir.mkdirs();
+
+            new Console.console();
+            new Player.player();
+            new Server.server();
+            new Logger.logger();
+
             //config = new Config(new File(configsDir+"/MCWrapper.xml"));
             config = new Config(new File("MCWrapper.xml"));
 
@@ -61,40 +62,44 @@ public class Main {
             inputThread.start();
 
             serverManager.connector.events.addListener((x) -> {
-                if (x instanceof PlayerChatEventArgs) {
-                    PlayerChatEventArgs e = (PlayerChatEventArgs) x;
-                    System.out.println("PlayerChatEventArgs - " + e.name + " - " + e.chat);
-                } else if (x instanceof PlayerJoinedEventArgs) {
-                    PlayerJoinedEventArgs e = (PlayerJoinedEventArgs) x;
-                    System.out.println("PlayerJoinedEventArgs - " + e.name);
-                } else if (x instanceof PlayerLeftEventArgs) {
-                    PlayerLeftEventArgs e = (PlayerLeftEventArgs) x;
-                    System.out.println("PlayerLeftEventArgs - " + e.name);
-                } else if (x instanceof PlayerPositionEventArgs) {
-                    PlayerPositionEventArgs e = (PlayerPositionEventArgs) x;
-                    System.out.println("PlayerPositionEventArgs - " + e.name + " - " + e.position);
-                } else if (x instanceof ServerStatusEventArgs) {
-                    ServerStatusEventArgs e = (ServerStatusEventArgs) x;
-                    System.out.println("ServerStatusEventArgs - " + e.event.toString());
+                try {
+                    if (x instanceof PlayerChatEventArgs) {
+                        PlayerChatEventArgs e = (PlayerChatEventArgs) x;
+                        Console.instance.writeLine("PlayerChatEventArgs - " + e.name + " - " + e.chat);
+                    } else if (x instanceof PlayerJoinedEventArgs) {
+                        PlayerJoinedEventArgs e = (PlayerJoinedEventArgs) x;
+                        Console.instance.writeLine("PlayerJoinedEventArgs - " + e.name);
+                    } else if (x instanceof PlayerLeftEventArgs) {
+                        PlayerLeftEventArgs e = (PlayerLeftEventArgs) x;
+                        Console.instance.writeLine("PlayerLeftEventArgs - " + e.name);
+                    } else if (x instanceof PlayerPositionEventArgs) {
+                        PlayerPositionEventArgs e = (PlayerPositionEventArgs) x;
+                        Console.instance.writeLine("PlayerPositionEventArgs - " + e.name + " - " + e.position);
+                    } else if (x instanceof ServerStatusEventArgs) {
+                        ServerStatusEventArgs e = (ServerStatusEventArgs) x;
+                        Console.instance.writeLine("ServerStatusEventArgs - " + e.event.toString());
 
-                    // IMPORTANT
-                    try {
-                        if (!serverManager.calledStop && e.event == ServerStatusEventArgs.Event.STOP)
-                            serverManager.stop();
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    } catch (InterruptedException ex) {
-                        ex.printStackTrace();
-                    }
-                } else if (x instanceof ServerSaveEventArgs) {
-                    ServerSaveEventArgs e = (ServerSaveEventArgs) x;
-                    System.out.println("ServerSaveEventArgs - " + e.event.toString());
-                } else if (x instanceof ServerEventArgs) {
-                    System.out.println("ServerEventArgs");
-                } else if (x instanceof EventArgs) {
-                    System.out.println("EventArgs");
-                } else
-                    return;
+                        // IMPORTANT
+                        try {
+                            if (!serverManager.calledStop && e.event == ServerStatusEventArgs.Event.STOP)
+                                serverManager.stop();
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        } catch (InterruptedException ex) {
+                            ex.printStackTrace();
+                        }
+                    } else if (x instanceof ServerSaveEventArgs) {
+                        ServerSaveEventArgs e = (ServerSaveEventArgs) x;
+                        Console.instance.writeLine("ServerSaveEventArgs - " + e.event.toString());
+                    } else if (x instanceof ServerEventArgs) {
+                        Console.instance.writeLine("ServerEventArgs");
+                    } else if (x instanceof EventArgs) {
+                        Console.instance.writeLine("EventArgs");
+                    } else
+                        return;
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             });
         } catch (DocumentException e) {
             e.printStackTrace();
