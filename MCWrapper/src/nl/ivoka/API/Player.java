@@ -18,7 +18,8 @@ public class Player {
         Server.instance.runCommand("tellraw "+name+" {\"text\":\""+message+"\",\"color\":\""+color+"\"}");
     }
 
-    public void refreshPosition(String name) {
-        Server.instance.runCommand("tp "+name+" ~1 ~1 ~1");
-    }
+    //public void refreshPosition(String name) { Server.instance.runCommand("tp "+name+" ~ ~ ~"); }
+    public void refreshPosition(String name) { runCommandAsPlayer(name, "tp ~ ~ ~"); }
+
+    public void runCommandAsPlayer(String name, String command) { Server.instance.runCommand("execute as @p[name="+name+"] run "+command); }
 }

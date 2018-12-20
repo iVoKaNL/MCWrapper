@@ -20,6 +20,7 @@ public class MinecraftConnector {
 
     public Map<String, String> players = new HashMap<>();
 
+    /*
     private String ServerStart,
         ServerStop,
         ServerDone,
@@ -27,6 +28,15 @@ public class MinecraftConnector {
         ServerSaved,
         ServerSaveOFF,
         ServerSaveON;
+    */
+
+    private String[] ServerStart,
+            ServerStop,
+            ServerDone,
+            ServerSaving,
+            ServerSaved,
+            ServerSaveOFF,
+            ServerSaveON;
     private String[] PlayerJoin,
         PlayerLeave,
         PlayerChat,
@@ -42,91 +52,6 @@ public class MinecraftConnector {
         events = new PlayerEvent();
     }
 
-    void loadEventValidators() throws DocumentException, IOException {
-        Config eventValidator = new Config(new File(Main.configsDir+"/EventValidators.xml"));
-
-        ServerStart = eventValidator.elementExistsAndNotEmpty("ServerStart") ? eventValidator.getValue("ServerStart"):"[Server thread/INFO]: Starting minecraft server";
-        ServerStop = eventValidator.elementExistsAndNotEmpty("ServerStop") ? eventValidator.getValue("ServerStop"):"[Server Shutdown Thread/INFO]: Stopping server";
-        ServerDone = eventValidator.elementExistsAndNotEmpty("ServerDone") ? eventValidator.getValue("ServerDone"):"[Server thread/INFO]: Done";
-
-        ServerSaving = eventValidator.elementExistsAndNotEmpty("ServerSaving") ? eventValidator.getValue("ServerSaving"):"[Server thread/INFO]: Saving the game";
-        ServerSaved = eventValidator.elementExistsAndNotEmpty("ServerSaved") ? eventValidator.getValue("ServerSaved"):"[Server thread/INFO]: Saved the game";
-        ServerSaveOFF = eventValidator.elementExistsAndNotEmpty("ServerSaveOFF") ? eventValidator.getValue("ServerSaveOFF"):"[Server thread/INFO]: Automatic saving is now disabled";
-        ServerSaveON = eventValidator.elementExistsAndNotEmpty("ServerSaveON") ? eventValidator.getValue("ServerSaveON"):"[Server thread/INFO]: Automatic saving is now enabled";
-
-        { // PlayerJoin
-            List<String> _PlayerJoin = new ArrayList<>();
-            if (eventValidator.elementExists("PlayerJoin")) {
-                for (String pJoin : eventValidator.getChildValues("PlayerJoin")) {
-                    if (pJoin.length() > 0)
-                        _PlayerJoin.add(pJoin);
-                }
-            }
-            if (_PlayerJoin.size() < 1) {
-                _PlayerJoin.add("[Server thread/INFO]: ");
-                _PlayerJoin.add(" joined the game");
-            }
-            PlayerJoin = _PlayerJoin.toArray(new String[0]);
-        }
-        { // PlayerLeave
-            List<String> _PlayerLeave = new ArrayList<>();
-            if (eventValidator.elementExists("PlayerLeave")) {
-                for (String pLeave : eventValidator.getChildValues("PlayerLeave")) {
-                    if (pLeave.length() > 0)
-                        _PlayerLeave.add(pLeave);
-                }
-            }
-            if (_PlayerLeave.size() < 1) {
-                _PlayerLeave.add("[Server thread/INFO]: ");
-                _PlayerLeave.add(" left the game");
-            }
-            PlayerLeave = _PlayerLeave.toArray(new String[0]);
-        }
-        { // PlayerChat
-            List<String> _PlayerChat = new ArrayList<>();
-            if (eventValidator.elementExists("PlayerChat")) {
-                for (String pChat : eventValidator.getChildValues("PlayerChat")) {
-                    if (pChat.length() > 0)
-                        _PlayerChat.add(pChat);
-                }
-            }
-            if (_PlayerChat.size() < 1) {
-                _PlayerChat.add("[Server thread/INFO]: ");
-                _PlayerChat.add("<");
-                _PlayerChat.add(">");
-            }
-            PlayerChat = _PlayerChat.toArray(new String[0]);
-        }
-        { // PlayerPosition
-            List<String> _PlayerPosition = new ArrayList<>();
-            if (eventValidator.elementExists("PlayerPosition")) {
-                for (String pPosition : eventValidator.getChildValues("PlayerPosition")) {
-                    if (pPosition.length() > 0)
-                        _PlayerPosition.add(pPosition);
-                }
-            }
-            if (_PlayerPosition.size() < 1) {
-                _PlayerPosition.add("[Server thread/INFO]: ");
-                _PlayerPosition.add("Teleported");
-            }
-            PlayerPosition = _PlayerPosition.toArray(new String[0]);
-        }
-        { // PlayerUUID
-            List<String> _PlayerUUID = new ArrayList<>();
-            if (eventValidator.elementExists("PlayerUUID")) {
-                for (String pUUID : eventValidator.getChildValues("PlayerUUID")) {
-                    if (pUUID.length() > 0)
-                        _PlayerUUID.add(pUUID);
-                }
-            }
-            if (_PlayerUUID.size() < 1) {
-                _PlayerUUID.add("[User Authenticator #");
-                _PlayerUUID.add("/INFO]: UUID of player ");
-            }
-            PlayerUUID = _PlayerUUID.toArray(new String[0]);
-        }
-    }
-
     public void onDataReceived(EventArgs x) {
         String data;
         if (x instanceof ServerOutputEventArgs)
@@ -140,23 +65,8 @@ public class MinecraftConnector {
         String info = data.substring(11).trim();
         String message = info.substring(info.indexOf(":")+1).trim();
 
-        if (info.contains(ServerStart))
-            events.broadcast(new ServerStatusEventArgs(ServerStatusEventArgs.Event.START));
-        else if (info.contains(ServerStop))
-            events.broadcast(new ServerStatusEventArgs(ServerStatusEventArgs.Event.STOP));
-        else if (info.contains(ServerDone))
-            events.broadcast(new ServerStatusEventArgs(ServerStatusEventArgs.Event.DONE));
-
-        else if (info.contains(ServerSaving))
-            events.broadcast(new ServerSaveEventArgs(ServerSaveEventArgs.Event.SAVING));
-        else if (info.contains(ServerSaved))
-            events.broadcast(new ServerSaveEventArgs(ServerSaveEventArgs.Event.SAVED));
-        else if (info.contains(ServerSaveOFF))
-            events.broadcast(new ServerSaveEventArgs(ServerSaveEventArgs.Event.OFF));
-        else if (info.contains(ServerSaveON))
-            events.broadcast(new ServerSaveEventArgs(ServerSaveEventArgs.Event.ON));
-
-        else if (containsItemFromArray(info, PlayerChat)) {
+        // First check for chat and position (so players can't fake certain events)
+        if (containsItemFromArray(info, PlayerChat)) {
             String[] split = message.split("[<>]", 3);
             String name = split[1];
             String chat = split[2].trim();
@@ -174,6 +84,24 @@ public class MinecraftConnector {
                 return;
         }
 
+        // Second check for server events (saveing, stopping, done, etc.)
+        else if (containsItemFromArray(info, ServerStart))
+            events.broadcast(new ServerStatusEventArgs(ServerStatusEventArgs.Event.START));
+        else if (containsItemFromArray(info, ServerStop))
+            events.broadcast(new ServerStatusEventArgs(ServerStatusEventArgs.Event.STOP));
+        else if (containsItemFromArray(info, ServerDone))
+            events.broadcast(new ServerStatusEventArgs(ServerStatusEventArgs.Event.DONE));
+
+        else if (containsItemFromArray(info, ServerSaving))
+            events.broadcast(new ServerSaveEventArgs(ServerSaveEventArgs.Event.SAVING));
+        else if (containsItemFromArray(info, ServerSaved))
+            events.broadcast(new ServerSaveEventArgs(ServerSaveEventArgs.Event.SAVED));
+        else if (containsItemFromArray(info, ServerSaveOFF))
+            events.broadcast(new ServerSaveEventArgs(ServerSaveEventArgs.Event.OFF));
+        else if (containsItemFromArray(info, ServerSaveON))
+            events.broadcast(new ServerSaveEventArgs(ServerSaveEventArgs.Event.ON));
+
+        // Third check for other player events (joining, leaving, etc.)
         else if (containsItemFromArray(info, PlayerJoin)) {
             String name = message.split("\\s+")[0];
 
@@ -216,5 +144,191 @@ public class MinecraftConnector {
                 .collect(Collectors.joining(", "));
 
         System.out.println(content);
+    }
+
+    void loadEventValidators() throws DocumentException, IOException {
+        Config eventValidator = new Config(new File(Main.configsDir+"/EventValidators.xml"));
+
+        /*
+        ServerStart = eventValidator.elementExistsAndNotEmpty("ServerStart") ? eventValidator.getValue("ServerStart"):"[Server thread/INFO]: Starting minecraft server";
+        ServerStop = eventValidator.elementExistsAndNotEmpty("ServerStop") ? eventValidator.getValue("ServerStop"):"[Server Shutdown Thread/INFO]: Stopping server";
+        ServerDone = eventValidator.elementExistsAndNotEmpty("ServerDone") ? eventValidator.getValue("ServerDone"):"[Server thread/INFO]: Done";
+
+        ServerSaving = eventValidator.elementExistsAndNotEmpty("ServerSaving") ? eventValidator.getValue("ServerSaving"):"[Server thread/INFO]: Saving the game";
+        ServerSaved = eventValidator.elementExistsAndNotEmpty("ServerSaved") ? eventValidator.getValue("ServerSaved"):"[Server thread/INFO]: Saved the game";
+        ServerSaveOFF = eventValidator.elementExistsAndNotEmpty("ServerSaveOFF") ? eventValidator.getValue("ServerSaveOFF"):"[Server thread/INFO]: Automatic saving is now disabled";
+        ServerSaveON = eventValidator.elementExistsAndNotEmpty("ServerSaveON") ? eventValidator.getValue("ServerSaveON"):"[Server thread/INFO]: Automatic saving is now enabled";
+        */
+
+        { // ServerStart
+            List<String> tmpServer = new ArrayList<>();
+            if (eventValidator.elementExists("ServerStart")) {
+                for (String sEvent : eventValidator.getChildValues("ServerStart")) {
+                    if (sEvent.length() > 0)
+                        tmpServer.add(sEvent);
+                }
+            }
+            if (tmpServer.size() < 1)
+                tmpServer.add("[Server thread/INFO]: Starting minecraft server");
+
+            ServerStart = tmpServer.toArray(new String[0]);
+        }
+        { // ServerStop
+            List<String> tmpServer = new ArrayList<>();
+            if (eventValidator.elementExists("ServerStop")) {
+                for (String sEvent : eventValidator.getChildValues("ServerStop")) {
+                    if (sEvent.length() > 0)
+                        tmpServer.add(sEvent);
+                }
+            }
+            if (tmpServer.size() < 1)
+                tmpServer.add("[Server Shutdown Thread/INFO]: Stopping server");
+
+            ServerStop = tmpServer.toArray(new String[0]);
+        }
+        { // ServerDone
+            List<String> tmpServer = new ArrayList<>();
+            if (eventValidator.elementExists("ServerDone")) {
+                for (String sEvent : eventValidator.getChildValues("ServerDone")) {
+                    if (sEvent.length() > 0)
+                        tmpServer.add(sEvent);
+                }
+            }
+            if (tmpServer.size() < 1)
+                tmpServer.add("[Server thread/INFO]: Done");
+
+            ServerDone = tmpServer.toArray(new String[0]);
+        }
+
+        { // ServerSaving
+            List<String> tmpServer = new ArrayList<>();
+            if (eventValidator.elementExists("ServerSaving")) {
+                for (String sEvent : eventValidator.getChildValues("ServerSaving")) {
+                    if (sEvent.length() > 0)
+                        tmpServer.add(sEvent);
+                }
+            }
+            if (tmpServer.size() < 1)
+                tmpServer.add("[Server thread/INFO]: Saving the game");
+
+            ServerSaving = tmpServer.toArray(new String[0]);
+        }
+        { // ServerSaved
+            List<String> tmpServer = new ArrayList<>();
+            if (eventValidator.elementExists("ServerSaved")) {
+                for (String sEvent : eventValidator.getChildValues("ServerSaved")) {
+                    if (sEvent.length() > 0)
+                        tmpServer.add(sEvent);
+                }
+            }
+            if (tmpServer.size() < 1) {
+                tmpServer.add("[Server thread/INFO]: ");
+                tmpServer.add(" Saved the game");
+            }
+
+            ServerSaved = tmpServer.toArray(new String[0]);
+        }
+        { // ServerSaveOFF
+            List<String> tmpServer = new ArrayList<>();
+            if (eventValidator.elementExists("ServerSaveOFF")) {
+                for (String sEvent : eventValidator.getChildValues("ServerSaveOFF")) {
+                    if (sEvent.length() > 0)
+                        tmpServer.add(sEvent);
+                }
+            }
+            if (tmpServer.size() < 1) {
+                tmpServer.add("[Server thread/INFO]: ");
+                tmpServer.add(" Automatic saving is now disabled");
+            }
+
+            ServerSaveOFF = tmpServer.toArray(new String[0]);
+        }
+        { // ServerSaveON
+            List<String> tmpServer = new ArrayList<>();
+            if (eventValidator.elementExists("ServerSaveON")) {
+                for (String sEvent : eventValidator.getChildValues("ServerSaveON")) {
+                    if (sEvent.length() > 0)
+                        tmpServer.add(sEvent);
+                }
+            }
+            if (tmpServer.size() < 1) {
+                tmpServer.add("[Server thread/INFO]: ");
+                tmpServer.add(" Automatic saving is now enabled");
+            }
+
+            ServerSaveON = tmpServer.toArray(new String[0]);
+        }
+
+        { // PlayerJoin
+            List<String> tmpPlayer = new ArrayList<>();
+            if (eventValidator.elementExists("PlayerJoin")) {
+                for (String pEvent : eventValidator.getChildValues("PlayerJoin")) {
+                    if (pEvent.length() > 0)
+                        tmpPlayer.add(pEvent);
+                }
+            }
+            if (tmpPlayer.size() < 1) {
+                tmpPlayer.add("[Server thread/INFO]: ");
+                tmpPlayer.add(" joined the game");
+            }
+            PlayerJoin = tmpPlayer.toArray(new String[0]);
+        }
+        { // PlayerLeave
+            List<String> tmpPlayer = new ArrayList<>();
+            if (eventValidator.elementExists("PlayerLeave")) {
+                for (String pEvent : eventValidator.getChildValues("PlayerLeave")) {
+                    if (pEvent.length() > 0)
+                        tmpPlayer.add(pEvent);
+                }
+            }
+            if (tmpPlayer.size() < 1) {
+                tmpPlayer.add("[Server thread/INFO]: ");
+                tmpPlayer.add(" left the game");
+            }
+            PlayerLeave = tmpPlayer.toArray(new String[0]);
+        }
+        { // PlayerChat
+            List<String> tmpPlayer = new ArrayList<>();
+            if (eventValidator.elementExists("PlayerChat")) {
+                for (String pEvent : eventValidator.getChildValues("PlayerChat")) {
+                    if (pEvent.length() > 0)
+                        tmpPlayer.add(pEvent);
+                }
+            }
+            if (tmpPlayer.size() < 1) {
+                tmpPlayer.add("[Server thread/INFO]: ");
+                tmpPlayer.add("<");
+                tmpPlayer.add(">");
+            }
+            PlayerChat = tmpPlayer.toArray(new String[0]);
+        }
+        { // PlayerPosition
+            List<String> tmpPlayer = new ArrayList<>();
+            if (eventValidator.elementExists("PlayerPosition")) {
+                for (String pEvent : eventValidator.getChildValues("PlayerPosition")) {
+                    if (pEvent.length() > 0)
+                        tmpPlayer.add(pEvent);
+                }
+            }
+            if (tmpPlayer.size() < 1) {
+                tmpPlayer.add("[Server thread/INFO]: ");
+                tmpPlayer.add("Teleported");
+            }
+            PlayerPosition = tmpPlayer.toArray(new String[0]);
+        }
+        { // PlayerUUID
+            List<String> tmpPlayer = new ArrayList<>();
+            if (eventValidator.elementExists("PlayerUUID")) {
+                for (String pEvent : eventValidator.getChildValues("PlayerUUID")) {
+                    if (pEvent.length() > 0)
+                        tmpPlayer.add(pEvent);
+                }
+            }
+            if (tmpPlayer.size() < 1) {
+                tmpPlayer.add("[User Authenticator #");
+                tmpPlayer.add("/INFO]: UUID of player ");
+            }
+            PlayerUUID = tmpPlayer.toArray(new String[0]);
+        }
     }
 }
