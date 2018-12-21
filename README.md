@@ -2,6 +2,7 @@
 This is a Minecraft server wrapper
 
 ## Javascript plugin example
+#### WHEN YOU RELOAD PLUGINS, ServerStart wont be called (because server is already started). So if your javascript plugin does something importand in that function note that it's possible you'll get a error!
 ### Basic
 ```javascript
 function OnCommand(name, arg) {} //OnCommand(name, args) is invoked when a player says something beginning with an '!'
