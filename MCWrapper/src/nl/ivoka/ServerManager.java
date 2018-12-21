@@ -67,7 +67,7 @@ public class ServerManager {
 
         mc.waitFor();
 
-        Console.instance.writeLine("Server stopped. Press enter to exit! (if one enter does not work, you may have to hit enter 3 times total, needs fixing)");
+        Console.instance.writeLine("Server stopped. Press enter to exit! (may have to hit enter multiple times!)");
         Logger.instance.closeLog();
         Main.readLine();
         System.exit(0);

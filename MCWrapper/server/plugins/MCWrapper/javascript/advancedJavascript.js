@@ -65,3 +65,6 @@ function PlayerJoin(name) //PlayerJoin(name) is invoked when a player with name 
 {
 	Player.sendMessageTo(name, welcomeMessage, welcomeColor); //Send the welcome message to the new Player
 }
+
+// THIS IS ADDED BECAUSE OF THE !plugins reload command
+RefreshValues();

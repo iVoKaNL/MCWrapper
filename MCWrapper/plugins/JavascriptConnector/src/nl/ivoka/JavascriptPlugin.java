@@ -17,9 +17,11 @@ import java.io.IOException;
 class JavascriptPlugin {
     String name;
     ScriptEngine runtime;
+    Config config;
 
     public JavascriptPlugin(String name, File source) throws DocumentException, IOException {
         this.name = name;
+        this.config = new Config(Main.configsDir + "/" + name + ".xml");
 
         ScriptEngineManager factory = new ScriptEngineManager();
         runtime = factory.getEngineByName("JavaScript");
@@ -27,12 +29,12 @@ class JavascriptPlugin {
         runtime.put("Console", Console.instance);
         runtime.put("Player", Player.instance);
         runtime.put("Server", Server.instance);
-        runtime.put("Config", new Config(Main.configsDir + "/" + name + ".xml"));
+        runtime.put("Config", config);
 
         run(source);
     }
 
-    public void run(String source) throws IOException {
+    public void run(String source) {
         try {
             runtime.eval(source);
         } catch (ScriptException e) {
@@ -41,7 +43,7 @@ class JavascriptPlugin {
         }
     }
 
-    public void run(File source) throws IOException {
+    public void run(File source) {
         try {
             runtime.eval(new FileReader(source.getAbsolutePath()));
         } catch (FileNotFoundException e) {
@@ -51,6 +53,11 @@ class JavascriptPlugin {
             Console.instance.writeLine("Error in Javascript Plugin "+name);
             Console.instance.writeLine(" \\ Error: "+e.getMessage());
         }
+    }
+
+    public void stop() {
+        config = null;
+        runtime = null;
     }
 }
 

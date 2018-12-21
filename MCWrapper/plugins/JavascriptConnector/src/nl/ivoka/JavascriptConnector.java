@@ -12,69 +12,76 @@ import org.dom4j.DocumentException;
 import java.io.IOException;
 
 public class JavascriptConnector implements IMCWrapperPlugin {
-    public String Name="JavascriptConnector";
-    private JavascriptPluginManager manager;
+    public String Name() { return "JavascriptConnector"; }
 
-    public JavascriptConnector(MinecraftConnector connector) throws DocumentException, IOException {
+    private JavascriptPluginManager manager;
+    private MinecraftConnector connector;
+
+    public JavascriptConnector(MinecraftConnector connector) throws DocumentException, IOException, NullPointerException {
         manager = new JavascriptPluginManager();
+        this.connector = connector;
 
         if (connector.events == null) {
-            Console.instance.writeLine(Name+": error while loading plugin. Events = null");
+            Console.instance.writeLine(Name() + ": error while loading plugin. Events = null");
             return;
         } else {
             connector.events.addListener((x) -> {
-                try {
-                    if (x instanceof PlayerChatEventArgs)
-                        PlayerChat((PlayerChatEventArgs) x);
-                    else if (x instanceof PlayerJoinedEventArgs)
-                        PlayerJoin((PlayerJoinedEventArgs) x);
-                    else if (x instanceof PlayerLeftEventArgs)
-                        PlayerLeft((PlayerLeftEventArgs) x);
-                    else if (x instanceof PlayerPositionEventArgs)
-                        PlayerPosition((PlayerPositionEventArgs) x);
-                    else if (x instanceof ServerStatusEventArgs) {
-                        ServerStatusEventArgs e = (ServerStatusEventArgs) x;
-                        if (e.event == ServerStatusEventArgs.Event.START)
-                            ServerStart(e);
-                        else if (e.event == ServerStatusEventArgs.Event.STOP)
-                            ServerStop(e);
-                    } else
-                        return;
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                if (x instanceof PlayerChatEventArgs)
+                    PlayerChat((PlayerChatEventArgs) x);
+                else if (x instanceof PlayerJoinedEventArgs)
+                    PlayerJoin((PlayerJoinedEventArgs) x);
+                else if (x instanceof PlayerLeftEventArgs)
+                    PlayerLeft((PlayerLeftEventArgs) x);
+                else if (x instanceof PlayerPositionEventArgs)
+                    PlayerPosition((PlayerPositionEventArgs) x);
+                else if (x instanceof ServerStatusEventArgs) {
+                    ServerStatusEventArgs e = (ServerStatusEventArgs) x;
+                    if (e.event == ServerStatusEventArgs.Event.START)
+                        ServerStart(e);
+                    else if (e.event == ServerStatusEventArgs.Event.STOP)
+                        ServerStop(e);
+                } else
+                    return;
             });
         }
     }
 
-    private void PlayerJoin(PlayerJoinedEventArgs e) throws IOException { TriggerEvent("PlayerJoin", e.name); }
-    private void PlayerLeft(PlayerLeftEventArgs e) throws IOException { TriggerEvent("PlayerLeave", e.name); }
-    private void PlayerPosition(PlayerPositionEventArgs e) throws IOException { TriggerEvent("PlayerPosition", e.name, e.position); }
-    private void PlayerChat(PlayerChatEventArgs e) throws IOException { TriggerEvent("ChatReceived", e.name, e.chat); }
+    public void reload() { manager.reloadPlugins(); }
+    public void stop() { manager.stopPlugins(); }
+    public void start() {
+        manager.reloadPlugins();
+    }
 
-    private void ServerStart(ServerStatusEventArgs e) throws IOException { TriggerEvent("ServerStart"); }
-    private void ServerStop(ServerStatusEventArgs e) throws IOException { TriggerEvent("ServerStop"); }
+    private void PlayerJoin(PlayerJoinedEventArgs e) { TriggerEvent("PlayerJoin", e.name); }
+    private void PlayerLeft(PlayerLeftEventArgs e) { TriggerEvent("PlayerLeave", e.name); }
+    private void PlayerPosition(PlayerPositionEventArgs e) { TriggerEvent("PlayerPosition", e.name, e.position); }
+    private void PlayerChat(PlayerChatEventArgs e) { TriggerEvent("ChatReceived", e.name, e.chat); }
 
-    private void TriggerEvent(String name, Object... args) throws IOException {
-        for (JavascriptPlugin plugin : manager.plugins) {
+    private void ServerStart(ServerStatusEventArgs e) { TriggerEvent("ServerStart"); }
+    private void ServerStop(ServerStatusEventArgs e) { TriggerEvent("ServerStop"); }
 
-            String _tmp = "if(typeof "+
-                    name+
-                    " != 'undefined') "+
-                    name+
-                    "(";
+    private void TriggerEvent(String name, Object... args) {
+        if (manager.plugins != null) {
+            for (JavascriptPlugin plugin : manager.plugins) {
 
-            for (int i = 0; i < args.length; i++) {
-                plugin.runtime.put("arg" + i, args[i]);
+                String _tmp = "if(typeof " +
+                        name +
+                        " != 'undefined') " +
+                        name +
+                        "(";
 
-                _tmp += "arg"+
-                        i;
-                if (i != args.length-1)
-                    _tmp += ", ";
+                for (int i = 0; i < args.length; i++) {
+                    plugin.runtime.put("arg" + i, args[i]);
+
+                    _tmp += "arg" +
+                            i;
+                    if (i != args.length - 1)
+                        _tmp += ", ";
+                }
+                _tmp += ");";
+
+                plugin.run(_tmp);
             }
-            _tmp += ");";
-
-            plugin.run(_tmp);
         }
     }
 }

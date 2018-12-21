@@ -10,19 +10,26 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class PluginManager {
 
-    public List<IMCWrapperPlugin> plugins;
+    public enum PluginState {
+        RUNNING,
+        STOPPED
+    }
+
+    public Map<IMCWrapperPlugin, PluginState> plugins;
     URLClassHacker urlClassHacker;
     ServerManager serverManager;
+    File dir;
 
-    public PluginManager(File dir, ServerManager serverManager) throws IOException {
-        plugins = new ArrayList<>();
-        urlClassHacker = new URLClassHacker();
+    public PluginManager(File dir, ServerManager serverManager) {
         this.serverManager = serverManager;
+        this.dir = dir;
+        plugins = new LinkedHashMap<>();
+        urlClassHacker = new URLClassHacker();
 
         File[] pluginFiles = dir.listFiles((directory, name) -> name.endsWith(".jar"));
 
@@ -39,9 +46,85 @@ public class PluginManager {
         Console.instance.writeLine(plugins.size()+" Plugins loaded");
     }
 
-    public void unLoadPlugin(String name) {
-        plugins.forEach((IMCWrapperPlugin x) -> {
-            if (name.equals(x.Name))
+    public void startPlugin(String name) {
+        plugins.forEach((IMCWrapperPlugin x, PluginState y) -> {
+            if (name.equals(x.Name())) {
+                if (y.equals(PluginState.STOPPED)) {
+                    Console.instance.writeLine("Starting: "+name);
+                    x.start();
+                    plugins.replace(x, PluginState.RUNNING);
+                    Console.instance.writeLine("Started: "+name);
+                } else
+                    Console.instance.writeLine("Couldn't start "+x.Name()+" because this plugin is already running");
+            }
+        });
+    }
+    public void startPlugins() {
+        plugins.forEach((IMCWrapperPlugin x, PluginState y) -> {
+            if (y.equals(PluginState.STOPPED)) {
+                Console.instance.writeLine("Starting: "+x.Name());
+                x.start();
+                plugins.replace(x, PluginState.RUNNING);
+                Console.instance.writeLine("Started: "+x.Name());
+            }
+            Console.instance.writeLine("Started all plugins that were not running.");
+        });
+    }
+
+    public void reloadPlugin(String name) {
+        plugins.forEach((IMCWrapperPlugin x, PluginState y) -> {
+            if (name.equals(x.Name()) && y.equals(PluginState.RUNNING)) {
+                Console.instance.writeLine("Reloading: "+name);
+                x.reload();
+                Console.instance.writeLine("Reloaded: "+name);
+            }
+        });
+    }
+    public void reloadPlugins() {
+        Console.instance.writeLine("Reloading "+plugins.size()+" plugin(s)");
+        plugins.forEach((IMCWrapperPlugin x, PluginState y) -> {
+            if (y.equals(PluginState.RUNNING)) {
+                Console.instance.writeLine("Reloading: " + x.Name());
+                x.reload();
+                Console.instance.writeLine("Reloaded: " + x.Name());
+            }
+        });
+        Console.instance.writeLine("Successfully reloaded "+plugins.size()+" plugins");
+    }
+
+    public void stopPlugin(String name) {
+        plugins.forEach((IMCWrapperPlugin x, PluginState y) -> {
+            if (name.equals(x.Name()) && y.equals(PluginState.RUNNING)) {
+                Console.instance.writeLine("Stopping: "+name);
+                x.stop();
+                plugins.replace(x, PluginState.STOPPED);
+                Console.instance.writeLine("Stopped: "+name);
+            }
+        });
+    }
+    public void stopPlugins() {
+        Console.instance.writeLine("Stopping "+plugins.size()+" plugin(s)");
+        plugins.forEach((IMCWrapperPlugin x, PluginState y) -> {
+            if (y.equals(PluginState.RUNNING)) {
+                Console.instance.writeLine("Stopping: " + x.Name());
+                x.stop();
+                plugins.replace(x, PluginState.STOPPED);
+                Console.instance.writeLine("Stopped: " + x.Name());
+            }
+        });
+        Console.instance.writeLine("Successfully stopped "+plugins.size()+" plugins");
+    }
+
+    public void unloadPlugin(String name) {
+        plugins.forEach((IMCWrapperPlugin x, PluginState y) -> {
+            if (name.equals(x.Name()) && y.equals(PluginState.RUNNING)) {
+                Console.instance.writeLine("Stopping: "+name);
+                x.stop();
+                plugins.replace(x, PluginState.STOPPED);
+                Console.instance.writeLine("Stopped: "+name);
+
+                plugins.remove(x);
+            } else
                 plugins.remove(x);
         });
     }
@@ -54,7 +137,7 @@ public class PluginManager {
             Constructor<IMCWrapperPlugin> constructor = c1.getConstructor(MinecraftConnector.class);
             IMCWrapperPlugin instance = constructor.newInstance(serverManager.connector);
 
-            plugins.add(instance);
+            plugins.put(instance, PluginState.RUNNING);
         } catch (Exception e) {
             e.printStackTrace();
         }

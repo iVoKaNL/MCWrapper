@@ -36,4 +36,43 @@ class JavascriptPluginManager {
             Console.instance.writeLine("No Javascript Plugins found!");
         Console.instance.writeLine(plugins.length+" Javascript Plugins loaded");
     }
+    public void reloadPlugins() {
+        try {
+            String dir = Main.pluginsDir + "/javascript";
+
+            plugins = new JavascriptPlugin[0];
+
+            File[] pluginFiles = (new File(dir)).listFiles((directory, name) -> name.endsWith(".js"));
+
+            if (pluginFiles == null) {
+
+            } else if (pluginFiles.length > 0) {
+                List<JavascriptPlugin> _plugins = new ArrayList<>();
+
+                Console.instance.writeLine("Loading Javascript Plugins!");
+                for (File file : pluginFiles) {
+                    Console.instance.writeLine("Loading Plugin: " + file);
+                    String name = file.getName();
+                    JavascriptPlugin plugin = new JavascriptPlugin(name, file);
+                    _plugins.add(plugin);
+                }
+                plugins = _plugins.toArray(new JavascriptPlugin[0]);
+                Console.instance.writeLine("Finished Loading Javascript Plugins!");
+            } else
+                Console.instance.writeLine("No Javascript Plugins found!");
+            Console.instance.writeLine(plugins.length + " Javascript Plugins loaded");
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+    }
+    public void stopPlugins() {
+        for (JavascriptPlugin plugin : plugins) {
+            plugin.stop();
+        }
+        plugins = null;
+    }
 }
