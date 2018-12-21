@@ -15,10 +15,14 @@ public class Console {
     private Console() {
     }
 
-    public void writeLine(String message) throws IOException { write(message+"\n"); }
-    public void write(String message) throws IOException {
-        System.out.print(message);
-        Logger.instance.writeLog(message);
+    public void writeLine(String message) { write(message+"\n"); }
+    public void write(String message) {
+        try {
+            System.out.print(message);
+            Logger.instance.writeLog(message);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public void clear() {
         try {
