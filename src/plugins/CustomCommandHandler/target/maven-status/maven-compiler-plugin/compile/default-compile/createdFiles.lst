@@ -1,0 +1,5 @@
+nl/ivoka/CustomCommandHandler.class
+nl/ivoka/Commands/config.class
+META-INF/services/nl.ivoka.Plugin.IMCWrapperPlugin
+nl/ivoka/Commands/help.class
+nl/ivoka/Commands/listeners.class
