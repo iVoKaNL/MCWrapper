@@ -115,23 +115,23 @@ config.saveConfig();
 
 ### Player
 ```java
-Player.instance.sendMessageTo("notch", "{"text":"Welcome to this server!","color":"gold"}");
-Player.instance.sendMessageTo("notch", "Welcome to this server!", "gold");
-Player.instance.refreshPosition("notch");
-Player.instance.runCommandAsPlayer("notch", "say I Like Minecraft");
+Player.instance().sendMessageTo("notch", "{"text":"Welcome to this server!","color":"gold"}");
+Player.instance().sendMessageTo("notch", "Welcome to this server!", "gold");
+Player.instance().refreshPosition("notch");
+Player.instance().runCommandAsPlayer("notch", "say I Like Minecraft");
 ```
 
 ### Server
 ```java
-Server.instance.broadcastMessage("{"text":"The server is saving the world.","color":"red"}");
-Server.instance.broadcastMessage("The server is saving the world.", "red");
-Server.instance.runCommand("save-all");
+Server.instance().broadcastMessage("{"text":"The server is saving the world.","color":"red"}");
+Server.instance().broadcastMessage("The server is saving the world.", "red");
+Server.instance().runCommand("save-all");
 ```
 
 ### Console
 ```java
-Console.instance.writeLine("Write somthing to the console (and log if enabled)");
-Console.instance.write("Write something to the console (and log if enabled) without new line");
+Console.instance().writeLine("Write somthing to the console (and log if enabled)", Console.PREFIX.MAIN, Console.PREFIX.INFO);
+Console.instance().write("Write something to the console (and log if enabled) without new line", Console.PREFIX.MAIN, Console.PREFIX.INFO);
 Console.clear();
 Console.beep();
 ```
