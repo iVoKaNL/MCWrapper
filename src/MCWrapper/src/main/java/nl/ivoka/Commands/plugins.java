@@ -27,7 +27,7 @@ public class plugins implements CustomCommand {
     }
 
     public void help() {
-        writeInfo("Usage 'help':");
+        writeInfo("Usage 'plugins':");
         writeInfo("  !plugins help - Show this help menu");
         writeInfo("  !plugins list - Show a list of all plugins");
         writeInfo("  !plugins reload [plugin] - Reloads all plugins, when [plugin] argument is given reload specific plugin");

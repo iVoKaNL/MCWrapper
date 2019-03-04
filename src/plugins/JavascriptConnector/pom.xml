@@ -14,7 +14,7 @@
             <artifactId>ServiceLoaderTest</artifactId>
             <version>LATEST</version>
             <scope>system</scope>
-            <systemPath>/Users/jorisvos/Desktop/MCWrapper/target/MCWrapper-1.0-SNAPSHOT-jar-with-dependencies.jar</systemPath>
+            <systemPath>/Users/jorisvos/Desktop/GITMCWRAPPER/MCWrapper/src/MCWrapper/target/MCWrapper-1.0-SNAPSHOT-jar-with-dependencies.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.kohsuke.metainf-services</groupId>

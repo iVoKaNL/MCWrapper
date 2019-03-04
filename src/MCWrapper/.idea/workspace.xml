@@ -2,65 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cc61d1b-3fdf-40c0-9590-48cb0a8b8050" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/.idea/artifacts/MCWrapper_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/.idea/dictionaries/jorisvos.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/.idea/libraries/dom4j_1_6_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/MCWrapper.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/MCWrapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/Old/Config.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/out/production/MCWrapper/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/plugins/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/plugins/.idea/artifacts/JavascriptConnector_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/plugins/.idea/libraries/MCWrapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/plugins/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/plugins/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/plugins/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/plugins/JavascriptConnector/.idea/artifacts/JavascriptConnector_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/plugins/JavascriptConnector/.idea/libraries/MCWrapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/plugins/JavascriptConnector/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/plugins/JavascriptConnector/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/plugins/JavascriptConnector/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/plugins/JavascriptConnector/JavascriptConnector.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/plugins/JavascriptConnector/out/production/JavascriptConnector/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/plugins/JavascriptConnector/src/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/plugins/JavascriptConnector/src/nl/ivoka/JavascriptConnector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/plugins/JavascriptConnector/src/nl/ivoka/JavascriptPlugin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/plugins/JavascriptConnector/src/nl/ivoka/JavascriptPluginManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/server/eula.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/server/plugins/MCWrapper/configs/EventValidators.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/server/plugins/MCWrapper/configs/advancedJavascript.js.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/server/plugins/MCWrapper/configs/basicJavascript.js.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/server/plugins/MCWrapper/javascript/advancedJavascript.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/server/plugins/MCWrapper/javascript/basicJavascript.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/server/server.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/API/Config.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/API/Console.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/API/Logger.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/API/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/API/Server.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/API/StringHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/EventArgs/EventArgs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/EventArgs/PlayerEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/EventArgs/PlayerEvents/PlayerChatEventArgs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/EventArgs/PlayerEvents/PlayerJoinedEventArgs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/EventArgs/PlayerEvents/PlayerLeftEventArgs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/EventArgs/PlayerEvents/PlayerPositionEventArgs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/EventArgs/ServerEvents/ServerEventArgs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/EventArgs/ServerEvents/ServerOutputEventArgs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/EventArgs/ServerEvents/ServerSaveEventArgs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/EventArgs/ServerEvents/ServerStatusEventArgs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/MinecraftConnector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/Plugins/IMCWrapperPlugin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/Plugins/PluginManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MCWrapper/src/nl/ivoka/ServerManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../backup/EventValidators_BACKUP.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ivoka/Commands/plugins.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ivoka/Commands/plugins.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plugins/CustomCommandHandler/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../plugins/CustomCommandHandler/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plugins/CustomCommandHandler/CustomCommandHandler.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plugins/CustomCommandHandler/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../plugins/CustomCommandHandler/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plugins/CustomCommandHandler/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../plugins/CustomCommandHandler/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plugins/JavascriptConnector/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../plugins/JavascriptConnector/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plugins/JavascriptConnector/JavascriptConnector.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plugins/JavascriptConnector/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../plugins/JavascriptConnector/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plugins/JavascriptConnector/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../plugins/JavascriptConnector/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -89,7 +40,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/API/Console.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
+            <state relative-caret-position="195">
               <caret line="18" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -107,11 +58,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="34" column="44" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
+            <state relative-caret-position="240">
+              <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Commands/plugins.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -198,7 +161,6 @@
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/Events/Handlers/CommandHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/API/Commands/Command.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/API/Commands/CustomCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/Commands/plugins.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/API/Config.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/API/ConsoleColors.java" />
@@ -207,6 +169,7 @@
         <option value="$PROJECT_DIR$/target/server/plugins/MCWrapper/javascript/testJS.js" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/API/Console.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/Commands/plugins.java" />
       </list>
     </option>
   </component>
@@ -245,7 +208,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -279,17 +241,27 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ivoka" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="MCWrapper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MCWrapper" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ivoka" type="462c0819:PsiDirectoryNode" />
+              <item name="Commands" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551741863723" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551742832748" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -331,17 +303,18 @@
       <workItem from="1551740638968" duration="36000" />
       <workItem from="1551740959850" duration="578000" />
       <workItem from="1551741827467" duration="38000" />
+      <workItem from="1551742580376" duration="252000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54761000" />
+    <option name="totallyTimeSpent" value="55013000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2148" y="23" width="1679" height="1507" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19792303" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20036653" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -358,7 +331,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32932863" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -559,16 +532,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Commands/plugins.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="19" column="56" lean-forward="true" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/fusesource/jansi/jansi/1.17.1/jansi-1.17.1.jar!/org/fusesource/jansi/AnsiConsole.class" />
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Server/ServerManager.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -616,7 +579,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/API/Console.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
+        <state relative-caret-position="195">
           <caret line="18" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -633,8 +596,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="34" column="44" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
+        <state relative-caret-position="240">
+          <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Commands/plugins.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
