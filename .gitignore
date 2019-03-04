@@ -26,9 +26,5 @@ hs_err_pid*
 *.log.gz
 
 # Server files
-MCWrapper/server/*.json
-MCWrapper/server/eula.txt
-MCWrapper/server/logs/*
-MCWrapper/server/world/*
-MCWrapper/server/crash-reports/*
+src/MCWrapper/target/server
 .DS_Store
