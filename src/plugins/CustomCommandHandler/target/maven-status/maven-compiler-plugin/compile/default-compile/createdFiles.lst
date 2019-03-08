@@ -1,5 +1,7 @@
-nl/ivoka/CustomCommandHandler.class
-nl/ivoka/Commands/config.class
+nl/ivoka/CustomCommands/config.class
 META-INF/services/nl.ivoka.Plugin.IMCWrapperPlugin
-nl/ivoka/Commands/help.class
-nl/ivoka/Commands/listeners.class
+nl/ivoka/CustomCommands/help.class
+nl/ivoka/CustomCommands/listeners.class
+nl/ivoka/CustomCommands/oldconfigcommand.class
+nl/ivoka/CustomCommandHandler.class
+nl/ivoka/CustomCommands/commandlisteners.class

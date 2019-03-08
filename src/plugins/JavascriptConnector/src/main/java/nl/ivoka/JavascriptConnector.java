@@ -1,16 +1,22 @@
 package nl.ivoka;
 
+import nl.ivoka.API.Commands.CommandListener;
 import nl.ivoka.API.Console;
 import nl.ivoka.Events.*;
+import nl.ivoka.Events.Handlers.CommandHandler;
 import nl.ivoka.Events.Handlers.EventHandler;
+import nl.ivoka.Events.MCWrapperEvents.CommandEvent;
 import nl.ivoka.Events.PlayerEvents.*;
 import nl.ivoka.Events.ServerEvents.*;
 import nl.ivoka.Plugin.IMCWrapperPlugin;
 import nl.ivoka.Plugin.PluginManager;
 import org.kohsuke.MetaInfServices;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
 @MetaInfServices
-public class JavascriptConnector implements IMCWrapperPlugin {
+public class JavascriptConnector implements IMCWrapperPlugin, CommandListener {
     private static String name = "JavascriptConnector";
     private static boolean running = false;
 
@@ -56,9 +62,24 @@ public class JavascriptConnector implements IMCWrapperPlugin {
             ServerOutput((ServerOutputEvent)e);
     }
 
+    @Override
+    public void CommandListener(EventArgs x) {
+        CommandEvent e = (CommandEvent)x;
+
+        try {
+            Class<?> eventClass = Class.forName("nl.ivoka.JavascriptCommands."+e.command);
+            Constructor<?> eventConstructor = eventClass.getConstructor(CommandEvent.class, JavascriptConnector.class);
+            eventConstructor.newInstance(e, this);
+
+            if (e.identifier!=null)
+                CommandHandler.instance().commandExecuted(e.identifier);
+        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException ex) {}
+    }
+
     public String getName() { return name; }
     public boolean isRunning() { return running; }
 
+    public JavascriptPluginManager getJavascriptPluginManager() { return manager; }
     public PluginManager getPluginManager() { return pluginManager; }
     public void setPluginManager(PluginManager pluginManager) { this.pluginManager=pluginManager; }
 
@@ -76,8 +97,10 @@ public class JavascriptConnector implements IMCWrapperPlugin {
             writeError(name+" pluginManager variable is NULL!!! Shouldn't be possible, please report! Add log file!");
         } else {
             running=true;
-            manager.loadPlugins();
+            manager.startPlugins();
+
             EventHandler.instance().addListener(name, this::EventListener);
+            CommandHandler.instance().addListener(name, this::CommandListener);
         }
 
         checkState();
@@ -95,6 +118,8 @@ public class JavascriptConnector implements IMCWrapperPlugin {
             writeError(name+" is not running!");
         else {
             EventHandler.instance().removeListener(name);
+            CommandHandler.instance().removeListener(name);
+
             manager.stopPlugins();
             running=false;
         }
@@ -130,7 +155,7 @@ public class JavascriptConnector implements IMCWrapperPlugin {
 
     private void TriggerEvent(String name, Object... args) {
         if (manager.getPluginCount()>=1) {
-            for (JavascriptPlugin plugin : manager.getPlugins()) {
+            for (JavascriptPlugin plugin : manager.getPlugins().values()) {
                 String _javascript = "if(typeof "+name+" != 'undefined') "+name+"(";
 
                 for (int i=0; i<args.length; i++) {

@@ -166,6 +166,8 @@ public class Main {
                     serverManager.writeLine(line);
             }
         }
+        PluginManager c1 = new PluginManager(new File(""));
+        c1.equals("");
     }
 
     public static void debug(String msg) { debug(msg, false); }

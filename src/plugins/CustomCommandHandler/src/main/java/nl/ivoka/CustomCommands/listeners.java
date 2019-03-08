@@ -1,4 +1,4 @@
-package nl.ivoka.Commands;
+package nl.ivoka.CustomCommands;
 
 import nl.ivoka.API.Commands.Command;
 import nl.ivoka.API.Console;
@@ -38,33 +38,33 @@ public class listeners implements CustomCommand {
         writeInfo("Usage 'listeners':");
         writeInfo("  !listeners help - Show this help menu");
         writeInfo("  !listeners list - Shows a list of all event listeners");
-        writeInfo("  !listeners remove [listener1, listener2, ...] - Remove all listeners, or all specified listeners");
+        writeInfo("  !listeners remove [listener1, listener2, ...] - Remove all event listeners, or all specified event listeners");
         writeInfo("  !listeners fire <Event> [arg1, arg2, ...] - Fire a event of type 'Event', if arguments are given use them to create event");
     }
 
     private void list() {
-        String message = "Listeners("+ EventHandler.instance().getEventListenersSize()+"): ";
+        StringBuilder message = new StringBuilder("Event listeners("+ EventHandler.instance().getEventListenersSize()+"): ");
 
-        for (String listener : EventHandler.instance().getListeners())
-            message+=listener+", ";
+        for (String listener : EventHandler.instance().getListeners()) {
+            message.append(listener);
+            message.append(", ");
+        }
 
-        message = message.substring(0, message.length()-2);
-
-        Console.instance().writeLine(message, Console.PREFIX.INFO);
+        Console.instance().writeLine(message.substring(0, message.length()-2), Console.PREFIX.INFO);
     }
 
     private void remove() {
         if (args.length == 1) {
             EventHandler.instance().clearListeners();
 
-            Console.instance().writeLine("Removed all listeners!", Console.PREFIX.INFO);
+            Console.instance().writeLine("Removed all event listeners!", Console.PREFIX.INFO);
         } else {
             for (int i=1; i<args.length; i++) {
                 if (EventHandler.instance().containsListener(args[i])) {
                     EventHandler.instance().removeListener(args[i]);
                     Console.instance().writeLine("Removed "+args[i], Console.PREFIX.INFO);
                 } else
-                    Console.instance().writeLine(args[i]+" is not a listener!", Console.PREFIX.INFO);
+                    Console.instance().writeLine(args[i]+" is not a event listener!", Console.PREFIX.INFO);
             }
         }
     }

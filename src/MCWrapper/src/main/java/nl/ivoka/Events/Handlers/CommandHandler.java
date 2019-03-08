@@ -20,9 +20,9 @@ public class CommandHandler extends Handler {
     @Override
     public void fireEvent(EventArgs args) { fireEvent(args, false); }
     public void fireEvent(EventArgs args, boolean allCommands) {
-        Integer _identifier = new Random().nextInt();
-
         if (!allCommands) {
+            Integer _identifier = new Random().nextInt();
+
             while(runningCommand.contains(_identifier))
                 _identifier = new Random().nextInt();
 
@@ -35,11 +35,13 @@ public class CommandHandler extends Handler {
                 if (runningCommand.contains(identifier))
                     y.accept(args);
             });
+
+            if (runningCommand.contains(_identifier)) {
+                Console.instance().writeLine("There is no command listener for the given command.", Console.PREFIX.COMMANDHANDLER, Console.PREFIX.INFO);
+                runningCommand.remove(_identifier);
+            }
         } else
             eventListeners.forEach((x, y) -> y.accept(args));
-
-        if (runningCommand.contains(_identifier))
-            Console.instance().writeLine("There is no command listener for the given command.", Console.PREFIX.COMMANDHANDLER, Console.PREFIX.INFO);
     }
 
     public void commandExecuted(Integer identifier) { runningCommand.remove(identifier); }

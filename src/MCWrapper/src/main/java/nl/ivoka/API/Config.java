@@ -524,6 +524,38 @@ public class Config {
     }
 
     /**
+     * Remove an element
+     * @param key   String - element key
+     */
+    public void removeElement(String key) { removeElement(key, 0); }
+
+    /**
+     * Remove an element
+     * @param key   String  - element key
+     * @param index Integer - element index
+     */
+    public void removeElement(String key, Integer index) {
+        if (currentNode.elementIterator(key).hasNext())
+            currentNode.remove(getElements(key)[0]);
+    }
+
+    /**
+     * Remove a child element
+     * @param parentKey String - parent element key
+     * @param childKey  String - child element key
+     */
+    public void removeChildElement(String parentKey, String childKey) { removeChildElement(parentKey, childKey,0, 0); }
+
+    /**
+     * Remove a child element
+     * @param parentKey     String  - parent element key
+     * @param childKey      String  - child element key
+     * @param parentIndex   Integer - parent index
+     * @param childIndex    Integer - child index
+     */
+    public void removeChildElement(String parentKey, String childKey, Integer parentIndex, Integer childIndex) {}
+
+    /**
      * Check if element exists
      * @param key   String  - element key
      * @return      boolean - true if element exists, false if element does not exist

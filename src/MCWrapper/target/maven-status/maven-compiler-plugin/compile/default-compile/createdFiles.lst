@@ -28,6 +28,7 @@ nl/ivoka/Plugin/PluginManager$PLUGINSTATE.class
 nl/ivoka/API/StringHelper.class
 nl/ivoka/Events/PlayerEvents/PlayerChatEvent.class
 nl/ivoka/API/Config.class
+nl/ivoka/API/Commands/CommandListener.class
 nl/ivoka/Server/MinecraftConnector.class
 nl/ivoka/Events/Handlers/CommandHandler.class
 nl/ivoka/API/Server.class

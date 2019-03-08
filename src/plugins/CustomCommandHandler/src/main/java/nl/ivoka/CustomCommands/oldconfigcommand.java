@@ -1,4 +1,4 @@
-package nl.ivoka.Commands;
+package nl.ivoka.CustomCommands;
 
 import nl.ivoka.API.Commands.CustomCommand;
 import nl.ivoka.API.Config;
@@ -10,11 +10,11 @@ import org.dom4j.DocumentException;
 import java.io.File;
 import java.io.IOException;
 
-public class config implements CustomCommand {
+public class oldconfigcommand implements CustomCommand {
     private CustomCommandHandler c;
     private String[] args;
 
-    public config(CommandEvent e, CustomCommandHandler c) {
+    public oldconfigcommand(CommandEvent e, CustomCommandHandler c) {
         if (e!=null&&c!=null) {
             this.c = c;
             this.args = e.args;
@@ -31,23 +31,23 @@ public class config implements CustomCommand {
     }
 
     public void help() {
-        writeInfo("Usage 'config':");
-        writeInfo("  !config help - Show this help menu");
-        writeInfo("  !config list - Shows a list of all config files");
-        writeInfo("  !config show [config] - Show 'config', if not specified show default MCWrapper.xml config");
-        writeInfo("  !config getvalues [config] - Shows all values of 'config', if not specified show default MCWrapper.xml config");
+        writeInfo("Usage 'oldconfigcommand':");
+        writeInfo("  !oldconfigcommand help - Show this help menu");
+        writeInfo("  !oldconfigcommand list - Shows a list of all oldconfigcommand files");
+        writeInfo("  !oldconfigcommand show [oldconfigcommand] - Show 'oldconfigcommand', if not specified show default MCWrapper.xml oldconfigcommand");
+        writeInfo("  !oldconfigcommand getvalues [oldconfigcommand] - Shows all values of 'oldconfigcommand', if not specified show default MCWrapper.xml oldconfigcommand");
 
-        writeInfo("  !config getvalue <key> [config] - TODO");
-        writeInfo("  !config setvalue <key> <value> [config] - TODO");
-        writeInfo("  !config getchildvalue <parentKey> <childKey> [config] - TODO");
-        writeInfo("  !config setchildvalue <parentKey> <childKey> <value> [config] - TODO");
+        writeInfo("  !oldconfigcommand getvalue <key> [oldconfigcommand] - TODO");
+        writeInfo("  !oldconfigcommand setvalue <key> <value> [oldconfigcommand] - TODO");
+        writeInfo("  !oldconfigcommand getchildvalue <parentKey> <childKey> [oldconfigcommand] - TODO");
+        writeInfo("  !oldconfigcommand setchildvalue <parentKey> <childKey> <value> [oldconfigcommand] - TODO");
         // TODO Add more commands
     }
 
     private void list() {
         File[] configFiles = Main.getConfigsDir().listFiles(name -> name.getPath().toLowerCase().endsWith(".xml"));
 
-        String msg="Config files ("+configFiles.length+"): ";
+        String msg="Config _files ("+configFiles.length+"): ";
         for (File configFile : configFiles)
             msg+=configFile.getName()+", ";
         msg = msg.substring(0, msg.length()-2);

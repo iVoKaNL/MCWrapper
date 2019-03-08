@@ -14,7 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-class JavascriptPlugin {
+class JavascriptPlugin implements AutoCloseable {
     private String name;
     private ScriptEngine runtime;
     private Config config;
@@ -47,7 +47,7 @@ class JavascriptPlugin {
             writeError(e);
         }
     }
-    public void run(String source) {
+    void run(String source) {
         try {
             runtime.eval(source);
         } catch (ScriptException e) {
@@ -56,14 +56,17 @@ class JavascriptPlugin {
         }
     }
 
-    public void runtimePut(String key, Object value) { runtime.put(key, value); }
+    void runtimePut(String key, Object value) { runtime.put(key, value); }
 
-    public void stop() {
+    void stop() {
         run("if(typeof Stop != 'undefined') Stop();");
 
         config = null;
         runtime = null;
     }
+
+    String getName() { return name; }
+    public void close() { stop(); }
 
     private void writeError(String msg) { Console.instance().writeLine(msg, Console.PREFIX.JAVASCRIPTCONNECTOR, Console.PREFIX.ERROR); }
     private void writeError(Exception e) { Console.instance().writeLine(e, Console.PREFIX.JAVASCRIPTCONNECTOR, Console.PREFIX.ERROR); }

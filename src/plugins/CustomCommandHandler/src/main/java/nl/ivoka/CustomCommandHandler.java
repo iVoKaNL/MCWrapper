@@ -1,5 +1,6 @@
 package nl.ivoka;
 
+import nl.ivoka.API.Commands.CommandListener;
 import nl.ivoka.Events.EventArgs;
 import nl.ivoka.Events.Handlers.CommandHandler;
 import nl.ivoka.Events.MCWrapperEvents.CommandEvent;
@@ -11,7 +12,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 @MetaInfServices
-public class CustomCommandHandler implements IMCWrapperPlugin {
+public class CustomCommandHandler implements IMCWrapperPlugin, CommandListener {
     private static String name = "CustomCommandHandler";
     private static boolean running = false;
 
@@ -19,16 +20,17 @@ public class CustomCommandHandler implements IMCWrapperPlugin {
 
     public CustomCommandHandler() {}
 
-    private void CommandListener(EventArgs x) {
+    @Override
+    public void CommandListener(EventArgs x) {
         CommandEvent e = (CommandEvent)x;
 
         try {
-            Class<?> eventClass = Class.forName("nl.ivoka.Commands."+e.command);
+            Class<?> eventClass = Class.forName("nl.ivoka.CustomCommands."+e.command);
             Constructor<?> eventConstructor = eventClass.getConstructor(CommandEvent.class, CustomCommandHandler.class);
             eventConstructor.newInstance(e, this);
 
-            if (x.identifier!=null)
-                CommandHandler.instance().commandExecuted(x.identifier);
+            if (e.identifier!=null)
+                CommandHandler.instance().commandExecuted(e.identifier);
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException ex) {}
     }
 
