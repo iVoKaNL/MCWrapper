@@ -45,7 +45,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Events/Handlers/EventHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+              <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -54,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Events/Handlers/Handler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -65,11 +65,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/API/Logger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="82" column="87" selection-start-line="82" selection-start-column="70" selection-end-line="82" selection-end-column="87" />
+            <state relative-caret-position="328">
+              <caret line="38" column="133" selection-start-line="38" selection-start-column="133" selection-end-line="38" selection-end-column="133" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="452">
+              <caret line="45" column="52" lean-forward="true" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -167,7 +176,6 @@
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/Events/EventArgs.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/API/Commands/Command.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/API/Commands/CustomCommand.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/API/ConsoleColors.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/Plugin/PluginManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/Server/ServerManager.java" />
@@ -178,6 +186,7 @@
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/Events/Handlers/CommandHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/API/Config.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/API/Logger.java" />
       </list>
     </option>
@@ -238,113 +247,7 @@
             </path>
             <path>
               <item name="MCWrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MCWrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MCWrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MCWrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ivoka" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MCWrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MCWrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ivoka" type="462c0819:PsiDirectoryNode" />
-              <item name="API" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MCWrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MCWrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ivoka" type="462c0819:PsiDirectoryNode" />
-              <item name="API" type="462c0819:PsiDirectoryNode" />
-              <item name="Commands" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MCWrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MCWrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ivoka" type="462c0819:PsiDirectoryNode" />
-              <item name="Commands" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MCWrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MCWrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ivoka" type="462c0819:PsiDirectoryNode" />
-              <item name="Events" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MCWrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MCWrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ivoka" type="462c0819:PsiDirectoryNode" />
-              <item name="Events" type="462c0819:PsiDirectoryNode" />
-              <item name="Handlers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MCWrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MCWrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ivoka" type="462c0819:PsiDirectoryNode" />
-              <item name="Events" type="462c0819:PsiDirectoryNode" />
-              <item name="MCWrapperEvents" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MCWrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MCWrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ivoka" type="462c0819:PsiDirectoryNode" />
-              <item name="Events" type="462c0819:PsiDirectoryNode" />
-              <item name="PlayerEvents" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MCWrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MCWrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ivoka" type="462c0819:PsiDirectoryNode" />
-              <item name="Events" type="462c0819:PsiDirectoryNode" />
-              <item name="ServerEvents" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MCWrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MCWrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ivoka" type="462c0819:PsiDirectoryNode" />
-              <item name="Plugin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MCWrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MCWrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ivoka" type="462c0819:PsiDirectoryNode" />
-              <item name="Server" type="462c0819:PsiDirectoryNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -357,7 +260,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552480814833" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552483292872" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -413,18 +316,18 @@
       <workItem from="1551784592068" duration="107000" />
       <workItem from="1551789326951" duration="160000" />
       <workItem from="1551881003348" duration="9546000" />
-      <workItem from="1552375629884" duration="2524000" />
+      <workItem from="1552375629884" duration="3252000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67437000" />
+    <option name="totallyTimeSpent" value="68165000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="975" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21001221" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21001221" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -449,7 +352,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="right" id="Maven" order="5" visible="true" weight="0.18864469" />
+      <window_info active="true" anchor="right" id="Maven" order="5" visible="true" weight="0.18864469" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Database" order="8" weight="0.3298717" />
@@ -577,13 +480,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -719,7 +615,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Events/Handlers/EventHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -736,17 +632,24 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Events/Handlers/Handler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="45" column="52" lean-forward="true" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/API/Logger.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="82" column="87" selection-start-line="82" selection-start-column="70" selection-end-line="82" selection-end-column="87" />
+        <state relative-caret-position="328">
+          <caret line="38" column="133" selection-start-line="38" selection-start-column="133" selection-end-line="38" selection-end-column="133" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
