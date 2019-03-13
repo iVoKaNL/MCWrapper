@@ -3,23 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1cc61d1b-3fdf-40c0-9590-48cb0a8b8050" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ivoka/API/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ivoka/API/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ivoka/Events/Handlers/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ivoka/Events/Handlers/CommandHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ivoka/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ivoka/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../plugins/CustomCommandHandler/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../plugins/CustomCommandHandler/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../plugins/CustomCommandHandler/src/main/java/nl/ivoka/Commands/config.java" beforeDir="false" afterPath="$PROJECT_DIR$/../plugins/CustomCommandHandler/src/main/java/nl/ivoka/CustomCommands/oldconfigcommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../plugins/CustomCommandHandler/src/main/java/nl/ivoka/Commands/help.java" beforeDir="false" afterPath="$PROJECT_DIR$/../plugins/CustomCommandHandler/src/main/java/nl/ivoka/CustomCommands/help.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../plugins/CustomCommandHandler/src/main/java/nl/ivoka/Commands/listeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/../plugins/CustomCommandHandler/src/main/java/nl/ivoka/CustomCommands/listeners.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../plugins/CustomCommandHandler/src/main/java/nl/ivoka/CustomCommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../plugins/CustomCommandHandler/src/main/java/nl/ivoka/CustomCommandHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../plugins/CustomCommandHandler/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../plugins/CustomCommandHandler/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../plugins/JavascriptConnector/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../plugins/JavascriptConnector/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../plugins/JavascriptConnector/src/main/java/nl/ivoka/JavascriptConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../plugins/JavascriptConnector/src/main/java/nl/ivoka/JavascriptConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../plugins/JavascriptConnector/src/main/java/nl/ivoka/JavascriptPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../plugins/JavascriptConnector/src/main/java/nl/ivoka/JavascriptPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../plugins/JavascriptConnector/src/main/java/nl/ivoka/JavascriptPluginManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../plugins/JavascriptConnector/src/main/java/nl/ivoka/JavascriptPluginManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../plugins/JavascriptConnector/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../plugins/JavascriptConnector/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../plugins/JavascriptConnector/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../plugins/JavascriptConnector/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ivoka/API/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ivoka/API/Logger.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -48,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Events/Handlers/CommandHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="41" column="13" lean-forward="true" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+            <state relative-caret-position="505">
+              <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -58,22 +42,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Events/Handlers/EventHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="169" column="22" lean-forward="true" selection-start-line="169" selection-start-column="22" selection-end-line="169" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="135">
+              <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/API/Config.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Events/Handlers/Handler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4678">
-              <caret line="553" column="49" selection-start-line="553" selection-start-column="49" selection-end-line="553" selection-end-column="49" />
+            <state relative-caret-position="240">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -82,19 +63,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/API/Commands/CustomCommand.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/API/Logger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="48" lean-forward="true" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Server/MinecraftConnector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2047">
-              <caret line="207" column="64" selection-start-line="207" selection-start-column="64" selection-end-line="207" selection-end-column="64" />
+            <state relative-caret-position="402">
+              <caret line="82" column="87" selection-start-line="82" selection-start-column="70" selection-end-line="82" selection-end-column="87" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,10 +75,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Server/ServerManager.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Server/MinecraftConnector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-568">
-              <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+            <state relative-caret-position="2580">
+              <caret line="207" column="64" selection-start-line="207" selection-start-column="64" selection-end-line="207" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -141,6 +113,7 @@
       <find>IsAs</find>
       <find>instanceof</find>
       <find>setValue</find>
+      <find>LocalDateTime.now</find>
     </findStrings>
     <replaceStrings>
       <replace>Main.getConfig().</replace>
@@ -184,7 +157,6 @@
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/Events/ServerEvents/ServerStatusEvent.java" />
         <option value="$PROJECT_DIR$/target/test/server/plugins/MCWrapper/javascript/basicJavascript kopie.js" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/Events/EventHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/API/Logger.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/Events/MCWrapperEvents/CommandEvent.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/Events/Handlers/MinecraftEventHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/Events/Handlers/EventHandler.java" />
@@ -206,6 +178,7 @@
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/Events/Handlers/CommandHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/API/Config.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ivoka/API/Logger.java" />
       </list>
     </option>
   </component>
@@ -232,10 +205,10 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1680" />
-    <option name="height" value="958" />
+    <option name="height" value="975" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -245,7 +218,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -379,12 +351,13 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552046255995" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552480814833" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -416,7 +389,9 @@
       <option name="JAR_PATH" value="$PROJECT_DIR$/target/MCWrapper-1.0-SNAPSHOT-jar-with-dependencies.jar" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/target" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <method v="2" />
+      <method v="2">
+        <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/pom.xml" goal="package" />
+      </method>
     </configuration>
   </component>
   <component name="SvnConfiguration">
@@ -438,26 +413,28 @@
       <workItem from="1551784592068" duration="107000" />
       <workItem from="1551789326951" duration="160000" />
       <workItem from="1551881003348" duration="9546000" />
+      <workItem from="1552375629884" duration="2524000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64913000" />
+    <option name="totallyTimeSpent" value="67437000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="981" extended-state="6" />
+    <frame x="0" y="23" width="1680" height="975" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20757021" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21001221" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" weight="0.3295583" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.19010124" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.18912797" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -522,16 +499,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/target/test/server/plugins/MCWrapper/javascript/basicJavascript kopie.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/API/Logger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="708">
-          <caret line="85" column="34" lean-forward="true" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Events/ServerEvents/ServerStatusEvent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -581,27 +548,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Events/Handlers/EventHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="42" lean-forward="true" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Plugin/IMCWrapperPlugin.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="29" column="121" selection-start-line="29" selection-start-column="121" selection-end-line="29" selection-end-column="121" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Events/Handlers/Handler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -701,36 +651,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Server/MinecraftConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2047">
-          <caret line="207" column="64" selection-start-line="207" selection-start-column="64" selection-end-line="207" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Server/ServerManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-568">
-          <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Events/Handlers/CommandHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="41" column="13" lean-forward="true" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-197">
@@ -749,19 +669,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/API/Commands/CustomCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="169" column="22" lean-forward="true" selection-start-line="169" selection-start-column="22" selection-end-line="169" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="120">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/API/Config.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4678">
+        <state relative-caret-position="806">
           <caret line="553" column="49" selection-start-line="553" selection-start-column="49" selection-end-line="553" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -769,10 +686,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/API/Commands/CustomCommand.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="48" lean-forward="true" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
+        <state relative-caret-position="453">
+          <caret line="169" column="22" selection-start-line="169" selection-start-column="22" selection-end-line="169" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Server/ServerManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Events/Handlers/CommandHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Events/Handlers/EventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Server/MinecraftConnector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2580">
+          <caret line="207" column="64" selection-start-line="207" selection-start-column="64" selection-end-line="207" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/Events/Handlers/Handler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ivoka/API/Logger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="82" column="87" selection-start-line="82" selection-start-column="70" selection-end-line="82" selection-end-column="87" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -36,7 +36,7 @@ public class Logger {
                         Console.instance().writeLine("Error: something went wrong when making directories.", Console.PREFIX.ERROR, Console.PREFIX.LOGGER);
                 }
                 if (logFilePath.isFile()) {
-                    if (!logFilePath.renameTo(new File(logDir + "/" + LocalDateTime.now().toString() + ".log")))
+                    if (!logFilePath.renameTo(new File(logDir + "/" + LocalDateTime.now().toString().replace('/', '-') + ".log")))
                         Console.instance().writeLine("Error: something went wrong when closing Logger and renaming log file.", Console.PREFIX.ERROR, Console.PREFIX.LOGGER);
                 }
 
@@ -80,7 +80,7 @@ public class Logger {
                 logWriter.close();
 
                 if (logFilePath.isFile())
-                    if (!logFilePath.renameTo(new File(logDir + "/" + LocalDateTime.now().toString() + ".log")))
+                    if (!logFilePath.renameTo(new File(logDir + "/" + LocalDateTime.now().toString().replace('/', '-') + ".log")))
                         Console.instance().writeLine("Error: something went wrong when closing Logger and renaming log file.", Console.PREFIX.LOGGER, Console.PREFIX.ERROR);
             }
         } catch (IOException e) {}
