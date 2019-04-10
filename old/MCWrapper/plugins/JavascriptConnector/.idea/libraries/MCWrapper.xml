@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="MCWrapper">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../out/artifacts/MCWrapper_jar/MCWrapper.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

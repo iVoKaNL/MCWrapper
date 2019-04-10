@@ -93,7 +93,6 @@ hs_err_pid*
 *.log.gz
 
 # Server files
-src/MCWrapper/target
-src/plugins/JavascriptConnector/target
-src/plugins/CustomCommandHandler/target
+server
+target
 .DS_Store
