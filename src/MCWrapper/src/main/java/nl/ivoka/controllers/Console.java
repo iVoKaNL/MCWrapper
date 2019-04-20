@@ -63,6 +63,6 @@ public class Console implements Initializable {
         inputTxt.setDisable(true);
     }
 
-    private void writeError(Exception e) { nl.ivoka.API.Console.instance().writeLine(e, nl.ivoka.API.Console.PREFIX.MAIN, nl.ivoka.API.Console.PREFIX.CONSOLE, nl.ivoka.API.Console.PREFIX.ERROR); }
-    private void writeInfo(String msg) { nl.ivoka.API.Console.instance().writeLine(msg, nl.ivoka.API.Console.PREFIX.MAIN, nl.ivoka.API.Console.PREFIX.CONSOLE, nl.ivoka.API.Console.PREFIX.INFO); }
+    private void writeError(Exception e) { nl.ivoka.API.console.Console.instance().writeLine(e, nl.ivoka.API.console.Console.PREFIX.MAIN, nl.ivoka.API.console.Console.PREFIX.CONSOLE, nl.ivoka.API.console.Console.PREFIX.ERROR); }
+    private void writeInfo(String msg) { nl.ivoka.API.console.Console.instance().writeLine(msg, nl.ivoka.API.console.Console.PREFIX.MAIN, nl.ivoka.API.console.Console.PREFIX.CONSOLE, nl.ivoka.API.console.Console.PREFIX.INFO); }
 }

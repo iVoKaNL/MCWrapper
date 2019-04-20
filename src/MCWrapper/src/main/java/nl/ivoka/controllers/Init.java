@@ -5,8 +5,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
-import nl.ivoka.API.Config;
-import nl.ivoka.API.Console;
+import nl.ivoka.API.xml.Config;
+import nl.ivoka.API.console.Console;
 import nl.ivoka.MCWrapper;
 import nl.ivoka.Main;
 import org.dom4j.DocumentException;
@@ -32,6 +32,10 @@ public class Init implements Initializable {
     private TextField javaArgTxt;
     @FXML
     private TextField serverArgTxt;
+    @FXML
+    private TextField mcWrapperCoreIP;
+    @FXML
+    private TextField mcWrapperCorePort;
 
     @FXML
     private Slider minRamSld;
@@ -48,14 +52,11 @@ public class Init implements Initializable {
     private RadioButton logMCWrapperOutputRdb;
     @FXML
     private RadioButton debugRdb;
+    @FXML
+    private RadioButton mcWrapperCoreRdb;
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        Main.getStage().setTitle("MCWrapper - Initialize");
-
-        MCWrapper.getPluginsDir().mkdirs();
-        MCWrapper.getConfigsDir().mkdirs();
-    }
+    public void initialize(URL url, ResourceBundle rb) { Main.getStage().setTitle("MCWrapper - Initialize"); }
 
     @FXML
     private void onMinRamChange() { minRamTxt.setText(String.valueOf((int) Math.round(minRamSld.getValue()))); }
@@ -102,6 +103,10 @@ public class Init implements Initializable {
             config.setAttribute("Logging", "enable", String.valueOf(logOutputRdb.isSelected()));
 
             config.setValue("Debug", String.valueOf(debugRdb.isSelected()));
+
+            config.setChildValue("MCWrapper-core", "IPAddress", mcWrapperCoreIP.getText());
+            config.setChildValue("MCWrapper-core", "Port", mcWrapperCorePort.getText());
+            config.setAttribute("MCWrapper-core", "enable", String.valueOf(mcWrapperCoreRdb.isSelected()));
 
             config.saveConfig();
 

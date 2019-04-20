@@ -1,4 +1,4 @@
-package nl.ivoka.API;
+package nl.ivoka.API.console;
 
 import java.lang.reflect.Field;
 

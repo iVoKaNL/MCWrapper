@@ -1,18 +1,22 @@
 package nl.ivoka;
 
-import nl.ivoka.API.Console;
-import nl.ivoka.API.Logger;
-import nl.ivoka.API.MCWrapperXML;
+import nl.ivoka.API.console.Console;
+import nl.ivoka.API.console.Logger;
+import nl.ivoka.API.server.Player;
+import nl.ivoka.API.server.Server;
+import nl.ivoka.API.xml.MCWrapperXML;
 import nl.ivoka.managers.plugin.PluginManager;
 import nl.ivoka.managers.server.ServerManager;
 import org.fusesource.jansi.AnsiConsole;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class MCWrapper {
-    private static String name = "MCWrapper";
+    private final static String name = "MCWrapper";
+    private final static String stopListener = name+"-serverStopListener";
 
     private static ServerManager serverManager;
     private static PluginManager pluginManager;
@@ -37,31 +41,73 @@ public class MCWrapper {
         configsDir = new File(mcWrapperDir+"/configs");
         mcWrapperConfig = new File(mcWrapperDir+"/"+name+".xml");
 
+        // TODO make a option to show ConsoleColors.showColors() and an XML file to change colors
+
+        initializeAPIs(); createRequiredDirectories();
+
+        serverManager = new ServerManager();
+        serverManager.start();
+
+        if (config.isPluginsUsed())
+            pluginManager = new PluginManager();
+
+        inputThread = new Thread(MCWrapper::inputThread);
+        inputThread.start();
+
+        // TODO add serverstoplistener
+    }
+
+    // region Misc
+    private void initializeAPIs() {
         Console.instance();
         Logger.instance();
         Player.instance();
         Server.instance();
 
-        // TODO make a option to show ConsoleColors.showColors() and an XML file to change colors
-
-
+        Logger.instance().reload();
     }
 
+    private void createRequiredDirectories() {
+        if (!pluginsDir.exists())
+            pluginsDir.mkdirs();
+        if (!configsDir.exists())
+            configsDir.mkdirs();
+    }
 
-    // region Setters
+    private static void inputThread() {
+        for (String line=readLine(); !serverManager.isStopping(); line=readLine()) {
+            if (line.length()>0) {
+                if (line.equals("stop")) {
+                    serverManager.stop();
+                    break;
+                } else if (line.toCharArray()[0] == '!') {
+                    // TODO Add commandhandler fireevent
+                } else
+                    serverManager.writeLine(line);
+            }
+        }
+        // TODO check why pluginManager c1 is created in previous version
+    }
 
+    public static String readLine() {
+        try { return reader.readLine().trim(); }
+        catch (IOException e) { writeError(e); }
+        return "error";
+    }
     // endregion
-
     // region Getters
     public static String getName() { return name; }
+    public static String getStopListener() { return stopListener; }
 
     public static File getMCWrapperDir() { return  mcWrapperDir; }
     public static File getConfigsDir() { return configsDir; }
     public static File getPluginsDir() { return pluginsDir; }
 
     public static File getMCWrapperConfig() { return mcWrapperConfig; }
+
+    public static ServerManager getServerManager() { return serverManager; }
     // endregion
 
-    private void writeError(Exception e) { Console.instance().writeLine(e, Console.PREFIX.MCWRAPPER, Console.PREFIX.ERROR); }
-    private void writeInfo(String msg) { Console.instance().writeLine(msg, Console.PREFIX.MCWRAPPER, Console.PREFIX.INFO); }
+    private static void writeError(Exception e) { Console.instance().writeLine(e, Console.PREFIX.MCWRAPPER, Console.PREFIX.ERROR); }
+    private static void writeInfo(String msg) { Console.instance().writeLine(msg, Console.PREFIX.MCWRAPPER, Console.PREFIX.INFO); }
 }

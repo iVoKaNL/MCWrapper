@@ -1,7 +1,7 @@
 package nl.ivoka.controllers;
 
 import javafx.fxml.Initializable;
-import nl.ivoka.API.Console;
+import nl.ivoka.API.console.Console;
 
 import java.net.URL;
 import java.util.ResourceBundle;

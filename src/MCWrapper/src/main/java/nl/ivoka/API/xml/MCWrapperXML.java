@@ -1,10 +1,10 @@
-package nl.ivoka.API;
+package nl.ivoka.API.xml;
 
-import nl.ivoka.MCWrapper;
 import org.dom4j.DocumentException;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.InetAddress;
 
 public class MCWrapperXML {
     private File mcWrapperXML;
@@ -25,6 +25,9 @@ public class MCWrapperXML {
     private File logFileDirectory=new File("MCWrapper/logs");
     private File logFileName=new File("latest.log");
     private boolean debug=false;
+    private boolean useMCWrapperCore=true;
+    private InetAddress mcWrapperCoreIPAddress=InetAddress.getLocalHost();
+    private int mcWrapperCorePort=59898;
 
     public MCWrapperXML() throws DocumentException, IOException { load(new File("temp.xml")); }
     public MCWrapperXML(File mcWrapperXML) throws DocumentException, IOException { load(mcWrapperXML); }
@@ -60,6 +63,9 @@ public class MCWrapperXML {
             logFileDirectory = new File(config.getChildValue("Logging", "FileDirectory"));
         logFileName = new File(config.getChildValue("Logging", "FileName"));
         debug = Boolean.getBoolean(config.getValue("Debug"));
+        useMCWrapperCore = Boolean.getBoolean(config.getAttribute("MCWrapper-core", "enable"));
+        mcWrapperCoreIPAddress = InetAddress.getByName(config.getChildValue("MCWrapper-core", "IPAddress"));
+        mcWrapperCorePort = Integer.valueOf(config.getChildValue("MCWrapper-core", "Port"));
     }
 
     // region Getters
@@ -79,5 +85,8 @@ public class MCWrapperXML {
     public File getLogFileDirectory() { return logFileDirectory; }
     public File getLogFileName() { return logFileName; }
     public boolean isDebugEnabled() { return debug; }
+    public boolean isMCWrapperCoreEnabled() { return useMCWrapperCore; }
+    public InetAddress getMCWrapperCoreIPAddress() { return mcWrapperCoreIPAddress; }
+    public int getMCWrapperCorePort() { return mcWrapperCorePort; }
     // endregion
 }

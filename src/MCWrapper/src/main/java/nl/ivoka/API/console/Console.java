@@ -1,4 +1,4 @@
-package nl.ivoka.API;
+package nl.ivoka.API.console;
 
 import nl.ivoka.MCWrapper;
 
@@ -23,8 +23,9 @@ public class Console {
     public enum PREFIX {
         PLUGIN(ConsoleColors.PURPLE_UNDERLINED+"PLUGIN"+ ConsoleColors.RESET),
         INFO(ConsoleColors.GREEN_BOLD+"INFO"+ ConsoleColors.RESET),
+        WARNING(ConsoleColors.RED_BOLD+"WARNING"+ ConsoleColors.RESET),
         DEBUG(ConsoleColors.YELLOW_BOLD+"DEBUG"+ ConsoleColors.RESET),
-        ERROR(ConsoleColors.RED_BOLD+"ERROR"+ ConsoleColors.RESET),
+        ERROR(ConsoleColors.RED_BACKGROUND+""+ConsoleColors.YELLOW_BOLD+"ERROR"+ ConsoleColors.RESET),
 
         API(ConsoleColors.PURPLE_BOLD+"API"+ ConsoleColors.RESET),
 

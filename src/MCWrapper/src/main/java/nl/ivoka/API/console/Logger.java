@@ -1,4 +1,4 @@
-package nl.ivoka.API;
+package nl.ivoka.API.console;
 
 import nl.ivoka.Main;
 
@@ -17,7 +17,7 @@ public class Logger {
     }
     private Logger() { reload(); }
 
-    private void reload() {
+    public void reload() {
         try {
             logClosed=false;
             logDir = Main.getMCWrapperXML().getLogFileDirectory();

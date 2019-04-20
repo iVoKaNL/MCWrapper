@@ -1,4 +1,4 @@
-package nl.ivoka.API;
+package nl.ivoka.API.xml;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;

@@ -8,7 +8,7 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="488.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nl.ivoka.controllers.Init">
+<AnchorPane prefHeight="488.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nl.ivoka.controllers.Init">
     <children>
         <Label layoutX="14.0" layoutY="15.0" text="Server name: " AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="15.0" />
         <TextField fx:id="serverNameTxt" layoutX="197.0" layoutY="9.0" prefHeight="27.0" prefWidth="394.0" text="MCWrapper" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="10.0" />
@@ -67,16 +67,16 @@
         <RadioButton layoutX="247.0" layoutY="340.0" mnemonicParsing="false" selected="true" text="no" toggleGroup="$debug" AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="340.0" />
         <Button layoutX="459.0" layoutY="453.0" mnemonicParsing="false" onAction="#onCreateBtn" text="Create my server!" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="9.0" />
         <Button layoutX="403.0" layoutY="453.0" mnemonicParsing="false" onAction="#onCloseBtn" text="Close" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="144.0" />
-        <Label layoutX="14.0" layoutY="368.0" text="Use MCWrapper-core:" />
-        <TextField fx:id="mcWrapperCoreIP" layoutX="228.0" layoutY="390.0" prefHeight="27.0" prefWidth="363.0" text="127.0.0.1" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="390.0" />
-        <TextField fx:id="mcWrapperCorePort" layoutX="228.0" layoutY="417.0" prefHeight="27.0" prefWidth="339.0" text="59898" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="417.0" />
-        <RadioButton fx:id="mcWrapperCoreRdb" layoutX="198.0" layoutY="368.0" mnemonicParsing="false" selected="true" text="yes" AnchorPane.leftAnchor="198.0" AnchorPane.topAnchor="368.0">
-            <toggleGroup>
-                <ToggleGroup fx:id="mcWrapperCore" />
-            </toggleGroup>
-        </RadioButton>
-        <RadioButton layoutX="247.0" layoutY="368.0" mnemonicParsing="false" text="no" toggleGroup="$mcWrapperCore" AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="368.0" />
-        <Label layoutX="48.0" layoutY="395.0" text="IPAddress:" />
-        <Label layoutX="48.0" layoutY="422.0" text="Port:" />
+      <Label layoutX="14.0" layoutY="368.0" text="Use MCWrapper-core:" />
+      <TextField fx:id="mcWrapperCoreIP" layoutX="228.0" layoutY="390.0" prefHeight="27.0" prefWidth="363.0" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="390.0" />
+      <TextField fx:id="mcWrapperCorePort" layoutX="228.0" layoutY="417.0" prefHeight="27.0" prefWidth="339.0" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="417.0" />
+      <RadioButton fx:id="mcWrapperCoreRdb" layoutX="198.0" layoutY="368.0" mnemonicParsing="false" selected="true" text="yes" AnchorPane.leftAnchor="198.0" AnchorPane.topAnchor="368.0">
+         <toggleGroup>
+            <ToggleGroup fx:id="mcWrapperCore" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="247.0" layoutY="368.0" mnemonicParsing="false" text="no" toggleGroup="$mcWrapperCore" AnchorPane.leftAnchor="247.0" AnchorPane.topAnchor="368.0" />
+      <Label layoutX="48.0" layoutY="395.0" text="IPAddress:" />
+      <Label layoutX="48.0" layoutY="422.0" text="Port:" />
     </children>
 </AnchorPane>

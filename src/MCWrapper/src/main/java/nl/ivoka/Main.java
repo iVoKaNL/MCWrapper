@@ -6,8 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import nl.ivoka.API.Console;
-import nl.ivoka.API.MCWrapperXML;
+import nl.ivoka.API.console.Console;
+import nl.ivoka.API.xml.MCWrapperXML;
 
 import java.io.File;
 import java.io.IOException;
