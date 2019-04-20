@@ -11,7 +11,6 @@ import nl.ivoka.MCWrapper;
 import nl.ivoka.Main;
 import org.dom4j.DocumentException;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -52,11 +51,7 @@ public class Init implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Main.getStage().setTitle("Main - initialize");
-        System.out.println(MCWrapper.getMCWrapperConfig().getAbsolutePath());
-
-        if (new File("MCWrapper.xml").exists() || MCWrapper.getMCWrapperConfig().exists())
-            Main.getMain().setScene("home");
+        Main.getStage().setTitle("MCWrapper - Initialize");
 
         MCWrapper.getPluginsDir().mkdirs();
         MCWrapper.getConfigsDir().mkdirs();
@@ -68,11 +63,20 @@ public class Init implements Initializable {
     private void onMaxRamChange() { maxRamTxt.setText(String.valueOf((int)Math.round(maxRamSld.getValue()))); }
 
     @FXML
+    private void onMinDragDone() { minRamTxt.setText(String.valueOf((int) Math.round(minRamSld.getValue()))); }
+    @FXML
+    private void onMaxDragDone() { maxRamTxt.setText(String.valueOf((int)Math.round(maxRamSld.getValue()))); }
+
+    @FXML
     private void onCloseBtn() { Main.stopMCWrapper(); }
     @FXML
     private void onCreateBtn() {
         try {
-            Config config = new Config(MCWrapper.getMCWrapperConfig());
+            Config config;
+            if (workingDirectoryTxt.getText().length()>0)
+                config = new Config("MCWrapper.xml");
+            else
+                config = new Config(MCWrapper.getMCWrapperConfig());
 
             config.setValue("ServerName", serverNameTxt.getText());
             config.setValue("ServerFile", serverFileTxt.getText());

@@ -9,12 +9,13 @@ public enum PageRegister {
     INIT( "/pages/Init.fxml", "init"),
     HOME("/pages/Home.fxml", "home"),
 
-    USERS( "/pages/Users.fxml", "users"),
+    USERS("/pages/Players.fxml", "players"),
 
-    TABCONTROL( "/pages/TabControl.fxml", "tabcontrol"),
     CONSOLE( "/pages/Console.fxml", "console"),
     SETTINGS("/pages/Settings.fxml", "settings"),
-    PLUGINS("/pages/Plugins.fxml", "plugins");
+    PLUGINS("/pages/Plugins.fxml", "plugins"),
+
+    DETAILS("/pages/Details.fxml", "details");
 
     private String location, alias;
 
