@@ -7,7 +7,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import nl.ivoka.API.Console;
+import nl.ivoka.API.MCWrapperXML;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -17,17 +19,25 @@ public class Main extends Application {
 
     private static Stage stage;
     private static Main main;
+    private static MCWrapper mcWrapper;
+    private static MCWrapperXML mcWrapperXML;
 
     @Override
     public void start(Stage stage) throws Exception {
-        Main.stage = stage;
-        Main.main = this;
+        if (main == null) {
+            Main.stage = stage;
+            Main.main = this;
 
-        Parent root = FXMLLoader.load(getClass().getResource(PageRegister.INIT.getLocation()));
-        Scene scene = new Scene(root);
+            Parent root;
+            if (new File("MCWrapper.xml").exists() || MCWrapper.getMCWrapperConfig().exists())
+                root = FXMLLoader.load(getClass().getResource(PageRegister.HOME.getLocation()));
+            else
+                root = FXMLLoader.load(getClass().getResource(PageRegister.INIT.getLocation()));
+            Scene scene = new Scene(root);
 
-        stage.setScene(scene);
-        stage.show();
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     public static void stopMCWrapper() { Platform.exit(); }
@@ -45,9 +55,16 @@ public class Main extends Application {
         } catch (IOException e) { writeError(e); }
     }
 
-    // region getters
+    // region Setters
+    public static void setMCWrapper(MCWrapper mcWrapper) { Main.mcWrapper = mcWrapper; }
+    public static void setMCWrapperXML(MCWrapperXML mcWrapperXML) { Main.mcWrapperXML = mcWrapperXML; }
+    // endregion
+
+    // region Getters
     public static Stage getStage() { return stage; }
     public static Main getMain() { return main; }
+    public static MCWrapper getMCWrapper() { return mcWrapper; }
+    public static MCWrapperXML getMCWrapperXML() { return mcWrapperXML; }
     // endregion
 
     private void writeError(Exception e) { Console.instance().writeLine(e, Console.PREFIX.ROOT, Console.PREFIX.ERROR); }
