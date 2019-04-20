@@ -43,6 +43,9 @@ public class Console {
         MAIN(ConsoleColors.GREEN_BRIGHT+"MAIN"+ ConsoleColors.RESET),
         INPUT(ConsoleColors.WHITE_BRIGHT+"INPUT"+ ConsoleColors.RESET),
 
+        USERS(ConsoleColors.WHITE_BRIGHT+"USERS"+ ConsoleColors.RESET),
+
+        MCWRAPPER(ConsoleColors.BLACK_BRIGHT+""+ConsoleColors.GREEN_BACKGROUND+"CONSOLE"+ConsoleColors.RESET),
         SERVERMANAGER(ConsoleColors.BLACK_BOLD_BRIGHT+"SERVERMANAGER"+ ConsoleColors.RESET),
         PLUGINMANAGER(ConsoleColors.PURPLE_BOLD_BRIGHT+"PLUGINMANAGER"+ ConsoleColors.RESET),
         MINECRAFTCONNECTOR(ConsoleColors.BLUE_BOLD_BRIGHT+"MINECRAFTCONNECTOR"+ ConsoleColors.RESET),

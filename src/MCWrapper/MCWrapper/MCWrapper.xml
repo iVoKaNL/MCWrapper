@@ -1,2 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<root><ServerName>MCWrapper</ServerName><ServerFile>spigot-1.13.2.jar</ServerFile><JavaExecutable>java</JavaExecutable><Xms>1024</Xms><Xmx>1024</Xmx><JavaArguments></JavaArguments><ServerJarArguments>nogui</ServerJarArguments><UsePlugins>true</UsePlugins><WorkingDirectory usecustom="false"></WorkingDirectory><Logging enable="false"><LogServerOutput>true</LogServerOutput><LogMCWrapperOutput>true</LogMCWrapperOutput><FileDirectory>MCWrapper/logs</FileDirectory><FileName>latest.log</FileName></Logging><Debug>false</Debug></root>
+<root>
+    <ServerName>MCWrapper</ServerName>
+    <ServerFile>spigot-1.13.2.jar</ServerFile>
+    <JavaExecutable>java</JavaExecutable>
+    <Xms>1024</Xms>
+    <Xmx>1024</Xmx>
+    <JavaArguments></JavaArguments>
+    <ServerJarArguments>nogui</ServerJarArguments>
+    <UsePlugins>true</UsePlugins>
+    <WorkingDirectory usecustom="false"></WorkingDirectory>
+    <Logging enable="true">
+        <LogServerOutput>true</LogServerOutput>
+        <LogMCWrapperOutput>true</LogMCWrapperOutput>
+        <FileDirectory>MCWrapper/logs</FileDirectory>
+        <FileName>latest.log</FileName>
+    </Logging>
+    <Debug>true</Debug>
+</root>

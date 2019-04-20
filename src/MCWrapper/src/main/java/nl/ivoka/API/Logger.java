@@ -1,6 +1,5 @@
 package nl.ivoka.API;
 
-import nl.ivoka.MCWrapper;
 import nl.ivoka.Main;
 
 import java.io.File;
@@ -16,22 +15,15 @@ public class Logger {
             instance = new Logger();
         return instance;
     }
-    private Logger() {
-        File logFile;
+    private Logger() { reload(); }
 
+    private void reload() {
         try {
-            if (MCWrapper.getConfig().getAttribute("WorkingDirectory", "usecustom").equals("true"))
-                logDir = new File(MCWrapper.getConfig().getValue("WorkingDirectory") + "/" + MCWrapper.getConfig().getChildValue("Logging", "FileDirectory"));
-            else
-                logDir = new File(MCWrapper.getConfig().getChildValue("Logging", "FileDirectory"));
-            logFile = new File(MCWrapper.getConfig().getChildValue("Logging", "FileName"));
-            logFilePath = new File(logDir + "/" + logFile);
+            logClosed=false;
+            logDir = Main.getMCWrapperXML().getLogFileDirectory();
+            logFilePath = new File(logDir+"/"+Main.getMCWrapperXML().getLogFileName());
 
-            enableLogging = Boolean.valueOf(MCWrapper.getConfig().getAttribute("Logging", "enable"));
-            enableServerOutputLogging = Boolean.valueOf(MCWrapper.getConfig().getChildValue("Logging", "LogServerOutput"));
-            enableDebugOutputLogging = Boolean.valueOf(MCWrapper.getConfig().getChildValue("Logging", "LogDebugOutput"));
-
-            if (enableLogging) {
+            if (Main.getMCWrapperXML().isLoggingEnabled()) {
                 if (!logDir.exists()) {
                     if (!logDir.mkdirs())
                         Console.instance().writeLine("Error: something went wrong when making directories.", Console.PREFIX.ERROR, Console.PREFIX.LOGGER);
@@ -52,16 +44,13 @@ public class Logger {
 
     private File logFilePath;
     private File logDir;
-
-    private boolean enableLogging;
-    private boolean enableServerOutputLogging;
-    private boolean enableDebugOutputLogging;
-
     private FileWriter logWriter;
+
+    private boolean logClosed;
 
     public void writeLog(String message) {
         try {
-            if (enableLogging) {
+            if (Main.getMCWrapperXML().isLoggingEnabled() && !logClosed) {
                 logWriter.write(message);
                 logWriter.flush();
             }
@@ -73,9 +62,7 @@ public class Logger {
     }
     public void closeLog() {
         try {
-            enableLogging               =false;
-            enableDebugOutputLogging    =false;
-            enableServerOutputLogging   =false;
+            logClosed=true;
 
             if (logWriter != null) {
                 logWriter.close();
@@ -87,6 +74,5 @@ public class Logger {
         } catch (IOException e) {}
     }
 
-    public boolean isEnableServerOutputLogging() { return enableServerOutputLogging; }
-    public boolean isEnableDebugOutputLogging() { return enableDebugOutputLogging; }
+    // TODO is...enabled -> MCWrapperXML.java
 }
