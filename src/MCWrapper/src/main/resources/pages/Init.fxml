@@ -18,11 +18,11 @@
         <TextField fx:id="javaExecTxt" layoutX="198.0" layoutY="91.0" prefHeight="27.0" prefWidth="394.0" text="java" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="91.0" />
         <TextField fx:id="minRamTxt" layoutX="492.0" layoutY="118.0" prefHeight="27.0" prefWidth="78.0" text="1024" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="118.0" />
         <Label layoutX="15.0" layoutY="123.0" text="Min. ram:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="123.0" />
-        <Slider fx:id="minRamSld" layoutX="201.0" layoutY="125.0" majorTickUnit="1024.0" max="8192.0" onMouseDragged="#onMinRamChange" prefHeight="16.0" prefWidth="264.0" value="1024.0" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="125.0" />
+        <Slider fx:id="minRamSld" layoutX="201.0" layoutY="125.0" majorTickUnit="1024.0" max="8192.0" onMouseClicked="#onMinDragDone" onMouseDragged="#onMinRamChange" prefHeight="16.0" prefWidth="264.0" value="1024.0" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="125.0" />
         <Label layoutX="567.0" layoutY="124.0" text="MB" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="124.0" />
         <TextField fx:id="maxRamTxt" layoutX="492.0" layoutY="145.0" prefHeight="27.0" prefWidth="78.0" text="1024" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="145.0" />
         <Label layoutX="15.0" layoutY="150.0" text="Max. ram:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="150.0" />
-        <Slider fx:id="maxRamSld" layoutX="201.0" layoutY="152.0" majorTickUnit="1024.0" max="8192.0" onMouseDragged="#onMaxRamChange" prefHeight="16.0" prefWidth="264.0" value="1024.0" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="152.0" />
+        <Slider fx:id="maxRamSld" layoutX="201.0" layoutY="152.0" majorTickUnit="1024.0" max="8192.0" onMouseClicked="#onMaxDragDone" onMouseDragged="#onMaxRamChange" prefHeight="16.0" prefWidth="264.0" value="1024.0" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="152.0" />
         <Label layoutX="567.0" layoutY="150.0" text="MB" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="150.0" />
         <Label layoutX="15.0" layoutY="177.0" text="Java arguments:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="177.0" />
         <TextField fx:id="javaArgTxt" layoutX="198.0" layoutY="172.0" prefHeight="27.0" prefWidth="394.0" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="172.0" />

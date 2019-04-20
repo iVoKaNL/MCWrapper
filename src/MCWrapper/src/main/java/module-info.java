@@ -4,6 +4,7 @@ module MCWrapper {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
+    requires jansi;
     requires dom4j;
 
     // make nl.ivoka accessable to javafx

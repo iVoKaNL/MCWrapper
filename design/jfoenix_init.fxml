@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nl.ivoka.controllers.Init">
+    <children>
+        <Label layoutX="14.0" layoutY="15.0" text="Server name: " AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="15.0" />
+        <JFXTextField fx:id="serverNameTxt" layoutX="197.0" layoutY="9.0" prefHeight="27.0" prefWidth="394.0" text="MCWrapper" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="10.0" />
+        <Label layoutX="15.0" layoutY="69.0" text="Server file: " AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="69.0" />
+        <JFXTextField fx:id="serverFileTxt" layoutX="198.0" layoutY="64.0" prefHeight="27.0" prefWidth="394.0" text="spigot-1.13.2.jar" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="64.0" />
+        <Label layoutX="15.0" layoutY="96.0" text="Java executable:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="96.0" />
+        <JFXTextField fx:id="javaExecTxt" layoutX="198.0" layoutY="91.0" prefHeight="27.0" prefWidth="394.0" text="java" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="91.0" />
+        <JFXTextField fx:id="minRamTxt" layoutX="492.0" layoutY="118.0" prefHeight="27.0" prefWidth="78.0" text="1024" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="118.0" />
+        <Label layoutX="15.0" layoutY="123.0" text="Min. ram:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="123.0" />
+        <JFXSlider fx:id="minRamSld" layoutX="201.0" layoutY="125.0" majorTickUnit="1024.0" max="8192.0" onMouseDragged="#onMinRamChange" prefHeight="16.0" prefWidth="264.0" value="1024.0" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="125.0" />
+        <Label layoutX="567.0" layoutY="124.0" text="MB" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="124.0" />
+        <JFXTextField fx:id="maxRamTxt" layoutX="492.0" layoutY="145.0" prefHeight="27.0" prefWidth="78.0" text="1024" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="145.0" />
+        <Label layoutX="15.0" layoutY="150.0" text="Max. ram:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="150.0" />
+        <JFXSlider fx:id="maxRamSld" layoutX="201.0" layoutY="152.0" majorTickUnit="1024.0" max="8192.0" onMouseDragged="#onMaxRamChange" prefHeight="16.0" prefWidth="264.0" value="1024.0" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="152.0" />
+        <Label layoutX="567.0" layoutY="150.0" text="MB" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="150.0" />
+        <Label layoutX="15.0" layoutY="177.0" text="Java arguments:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="177.0" />
+        <JFXTextField fx:id="javaArgTxt" layoutX="198.0" layoutY="172.0" prefHeight="27.0" prefWidth="394.0" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="172.0" />
+        <Label layoutX="15.0" layoutY="204.0" text="Server arguments:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="204.0" />
+        <JFXTextField fx:id="serverArgTxt" layoutX="198.0" layoutY="199.0" prefHeight="27.0" prefWidth="394.0" text="nogui" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="199.0" />
+        <Label layoutX="14.0" layoutY="232.0" text="Use custom plugins:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="232.0" />
+        <JFXRadioButton fx:id="useCustomPluginsRdb" layoutX="198.0" layoutY="232.0" mnemonicParsing="false" selected="true" text="yes" AnchorPane.leftAnchor="198.0" AnchorPane.topAnchor="232.0">
+            <toggleGroup>
+                <ToggleGroup fx:id="customPlugins" />
+            </toggleGroup>
+        </JFXRadioButton>
+        <JFXRadioButton layoutX="255.0" layoutY="232.0" mnemonicParsing="false" text="no" toggleGroup="$customPlugins" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="232.0" />
+        <JFXTextField fx:id="workingDirectoryTxt" layoutX="197.0" layoutY="37.0" prefHeight="27.0" prefWidth="394.0" promptText="blank to use current directory" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="37.0" />
+        <Label layoutX="14.0" layoutY="42.0" text="Working directory:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="42.0" />
+        <Label layoutX="14.0" layoutY="259.0" text="Log output:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="259.0" />
+        <JFXRadioButton fx:id="logOutputRdb" layoutX="198.0" layoutY="259.0" mnemonicParsing="false" selected="true" text="yes" AnchorPane.leftAnchor="198.0" AnchorPane.topAnchor="259.0">
+            <toggleGroup>
+                <ToggleGroup fx:id="logOutput" />
+            </toggleGroup>
+        </JFXRadioButton>
+        <JFXRadioButton layoutX="255.0" layoutY="259.0" mnemonicParsing="false" selected="true" text="no" toggleGroup="$logOutput" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="259.0" />
+        <Label layoutX="44.0" layoutY="286.0" text="Log server output:" AnchorPane.leftAnchor="44.0" AnchorPane.topAnchor="286.0" />
+        <JFXRadioButton fx:id="logServerOutputRdb" layoutX="228.0" layoutY="286.0" mnemonicParsing="false" selected="true" text="yes" AnchorPane.leftAnchor="228.0" AnchorPane.topAnchor="286.0">
+            <toggleGroup>
+                <ToggleGroup fx:id="logServerOutput" />
+            </toggleGroup>
+        </JFXRadioButton>
+        <JFXRadioButton layoutX="289.0" layoutY="286.0" mnemonicParsing="false" text="no" toggleGroup="$logServerOutput" AnchorPane.leftAnchor="289.0" AnchorPane.topAnchor="286.0" />
+        <Label layoutX="44.0" layoutY="313.0" text="Log MCWrapper output:" AnchorPane.leftAnchor="44.0" AnchorPane.topAnchor="313.0" />
+        <JFXRadioButton fx:id="logMCWrapperOutputRdb" layoutX="228.0" layoutY="313.0" mnemonicParsing="false" selected="true" text="yes" AnchorPane.leftAnchor="228.0" AnchorPane.topAnchor="313.0">
+            <toggleGroup>
+                <ToggleGroup fx:id="logMCWrapperOutputlogMCWrapperOutput" />
+            </toggleGroup>
+        </JFXRadioButton>
+        <JFXRadioButton layoutX="289.0" layoutY="313.0" mnemonicParsing="false" text="no" toggleGroup="$logMCWrapperOutputlogMCWrapperOutput" AnchorPane.leftAnchor="289.0" AnchorPane.topAnchor="313.0" />
+        <Label layoutX="14.0" layoutY="340.0" text="Debug:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="340.0" />
+        <JFXRadioButton fx:id="debugRdb" layoutX="198.0" layoutY="340.0" mnemonicParsing="false" selected="true" text="yes" AnchorPane.leftAnchor="198.0" AnchorPane.topAnchor="340.0">
+            <toggleGroup>
+                <ToggleGroup fx:id="debug" />
+            </toggleGroup>
+        </JFXRadioButton>
+        <JFXRadioButton layoutX="255.0" layoutY="340.0" mnemonicParsing="false" selected="true" text="no" toggleGroup="$debug" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="340.0" />
+        <JFXButton layoutX="463.0" layoutY="359.0" mnemonicParsing="false" onAction="#onCreateBtn" text="Create my server!" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+        <JFXButton layoutX="395.0" layoutY="359.0" mnemonicParsing="false" onAction="#onCloseBtn" text="Close" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="152.0" />
+    </children>
+</AnchorPane>
