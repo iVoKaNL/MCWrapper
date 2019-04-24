@@ -42,6 +42,9 @@ public class Console implements Initializable {
         start();
     }
 
+    @FXML
+    public void onStopBtn() { stop(); }
+
     public void start() {
         startBtn.setDisable(true);
         stopBtn.setDisable(false);

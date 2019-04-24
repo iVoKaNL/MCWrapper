@@ -1,13 +1,16 @@
 package nl.ivoka;
 
 import nl.ivoka.API.console.Console;
+import nl.ivoka.API.console.ConsoleColors;
 import nl.ivoka.API.console.Logger;
 import nl.ivoka.API.server.Player;
 import nl.ivoka.API.server.Server;
 import nl.ivoka.API.xml.MCWrapperXML;
+import nl.ivoka.events.EventArgs;
+import nl.ivoka.events.handler.EventHandler;
+import nl.ivoka.events.server.ServerOutputEventArgs;
 import nl.ivoka.managers.plugin.PluginManager;
 import nl.ivoka.managers.server.ServerManager;
-import org.fusesource.jansi.AnsiConsole;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -31,7 +34,6 @@ public class MCWrapper {
     private static File mcWrapperConfig = new File(mcWrapperDir+"/"+name+".xml");
 
     public MCWrapper() {
-        AnsiConsole.systemInstall();
         config = Main.getMCWrapperXML();
         reader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -54,10 +56,17 @@ public class MCWrapper {
         inputThread = new Thread(MCWrapper::inputThread);
         inputThread.start();
 
+        EventHandler.instance().addListener("TEMP", MCWrapper::temp);
         // TODO add serverstoplistener
     }
 
-    // region Misc
+    public static void temp(EventArgs eventArgs) {
+        if (!(eventArgs instanceof ServerOutputEventArgs)) {
+            System.out.println(ConsoleColors.WHITE_BOLD_BRIGHT + eventArgs.toString() + ConsoleColors.RESET);
+        }
+    }
+
+                            // region Misc
     private void initializeAPIs() {
         Console.instance();
         Logger.instance();

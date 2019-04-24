@@ -4,6 +4,8 @@ import nl.ivoka.MCWrapper;
 
 import java.awt.*;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -71,11 +73,17 @@ public class Console {
         Output(String.format(getPrefix(prefixes)+line, args));
     }
 
-    public void writeLine(Exception e, PREFIX... prefixes) { write(e+"\n", prefixes); }
+    public void writeLine(Exception e, PREFIX... prefixes) { write(e, prefixes); Output("\n"); }
     public void write(Exception e, PREFIX... prefixes) {
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        e.printStackTrace(pw);
+        String sStackTrace = sw.toString(); // stack trace as a string
+
+        System.out.println(sStackTrace);
         Output(getPrefix(prefixes)+
                 "Error: "+e.getMessage()+
-                "\nStacktrace: "+e.getStackTrace());
+                " Stacktrace: "+sStackTrace);
     }
 
     private void Output(String line) {

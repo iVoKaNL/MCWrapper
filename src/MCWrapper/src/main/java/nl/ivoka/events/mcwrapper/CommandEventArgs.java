@@ -13,4 +13,11 @@ public class CommandEventArgs extends EventArgs {
         //if (args[0].isEmpty())
         //    args = new String[0];
     }
+
+    @Override
+    public String toString() {
+        return "CommandEventArgs -"+
+                " command:"+command+
+                " args:"+args.toString();
+    }
 }

@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import nl.ivoka.API.console.Console;
 import nl.ivoka.API.xml.MCWrapperXML;
+import org.fusesource.jansi.AnsiConsole;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,6 +25,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        AnsiConsole.systemInstall();
+
         if (main == null) {
             Main.stage = stage;
             Main.main = this;
